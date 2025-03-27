@@ -48,13 +48,24 @@ export default function SellTab() {
           }
      };
 
+     const [isModalOpen, setIsModalOpen] = useState(false);
+
+     const openModal = () => {
+          setIsModalOpen(true);
+     };
+
+     const closeModal = () => {
+          setIsModalOpen(false);
+     };
+
      return (
           <div className="flex items-start justify-between lg:flex-row flex-col gap-6 pt-5 md:px-4">
                <div className="space-y-4 w-full lg:max-w-[474px]">
-                    <h1 className="text-[24px] md:text-4xl leading-[95%] font-semibold md:text-left text-center">Want to sell your watch<span className="md:block hidden"> or jewelry?</span>?</h1>
+                    <h1 className="text-[24px] md:text-4xl leading-[95%] font-semibold md:text-left text-center md:block hidden">Want to sell your watch or jewelry? </h1>
+                    <h1 className="text-[24px] md:text-4xl leading-[95%] font-semibold md:text-left text-center block md:hidden">Want to sell your watch?</h1>
                     <p className="mt-2 pb-2 md:pb-8 text-black text-sm md:text-base font-normal leading-[20px] md:text-left text-center">
                          Get a fast, fair offer and turn your item into cash instantly. <span className="md:block hidden">We guarantee transparency and hassle-free
-                         transactions—no hidden fees, no delays.</span>
+                              transactions—no hidden fees, no delays.</span>
                     </p>
                     <div className="w-full flex items-center justify-center">
                          <Image src='/assets/selltab.svg' alt="selltab" width={274} height={271} className="md:w-[274px] md:h-[271px] w-[80px] h-[80px]" />
@@ -120,7 +131,7 @@ export default function SellTab() {
                          )}
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 md:gap-4 pt-4 md:pt-10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 md:gap-4 pt-4 md:pt-8">
                          <div>
                               <label htmlFor="item" className="block text-sm md:text-base font-normal text-black mb-1.5 md:mb-2.5">
                                    Item
@@ -157,12 +168,43 @@ export default function SellTab() {
                          <div>
                               <label htmlFor="condition" className="flex items-center gap-1 text-sm md:text-base font-normal text-black mb-1.5 md:mb-2.5">
                                    Condition
-                                   <span className="relative group ml-1 inline-block text-gray-400">
-                                        <img src="/assets/conditions.svg" alt="conditions" width="16" height="16" />
-                                        <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 hidden group-hover:block w-max bg-gray-800 text-white text-xs px-2 py-1 rounded shadow-lg">
-                                             Additional info about conditions
-                                        </span>
-                                   </span>
+                                   <div>
+                                        <button
+                                             className="ml-1 text-gray-400"
+                                             onClick={openModal}
+                                        >
+                                             <img
+                                                  src="/assets/conditions.svg"
+                                                  alt="conditions"
+                                                  width="16"
+                                                  height="16"
+                                             />
+                                        </button>
+
+                                        {isModalOpen && (
+                                             <div
+                                                  className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+                                                  onClick={closeModal}
+                                             >
+                                                  <div
+                                                       className="bg-white p-6 rounded-lg shadow-xl max-w-md w-full relative"
+                                                       onClick={(e) => e.stopPropagation()}
+                                                  >
+                                                       <button
+                                                            className="absolute top-2 right-2 text-gray-600 hover:text-gray-900"
+                                                            onClick={closeModal}
+                                                       >
+                                                            ✕
+                                                       </button>
+                                                       <h2 className="text-xl font-bold mb-4">Conditions</h2>
+                                                       <p className="text-gray-700">
+                                                            Add your modal content here. This modal can be closed by clicking the X button
+                                                            or clicking outside the modal area.
+                                                       </p>
+                                                  </div>
+                                             </div>
+                                        )}
+                                   </div>
                               </label>
                               <div className="relative">
                                    <select
@@ -224,7 +266,7 @@ export default function SellTab() {
                          <ImageUploader />
                     </div>
 
-                    <div className="pt-4 md:pt-10">
+                    <div className="pt-4 md:pt-8">
                          <p className="text-sm md:text-base font-normal text-black mb-2">I am happy to be contacted by</p>
                          <div className="flex flex-wrap gap-3 md:gap-4">
                               <label className="inline-flex items-center">
