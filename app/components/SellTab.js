@@ -59,7 +59,7 @@ export default function SellTab() {
      };
 
      return (
-          <div className="flex items-start justify-between lg:flex-row flex-col gap-6 pt-5 md:px-4">
+          <div className="flex items-start justify-between lg:flex-row flex-col gap-6 pt-8 md:pt-12 md:px-4">
                <div className="space-y-4 w-full lg:max-w-[474px]">
                     <h1 className="text-[24px] md:text-4xl leading-[95%] font-semibold md:text-left text-center md:block hidden">Want to sell your watch or jewelry? </h1>
                     <h1 className="text-[24px] md:text-4xl leading-[95%] font-semibold md:text-left text-center block md:hidden">Want to sell your watch?</h1>
