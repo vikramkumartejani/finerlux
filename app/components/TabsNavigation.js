@@ -2,13 +2,13 @@
 
 export default function TabsNavigation({ tabs, activeTab, setActiveTab }) {
      return (
-          <div className="bg-[#E3E8ED] rounded-[30px] px-4 py-1.5 h-[54px] flex items-center justify-between w-full">
-               <div className="flex justify-evenly w-full">
+          <div className="bg-[#E3E8ED] rounded-[30px] px-2 md:px-4 py-1.5 h-[37px] md:h-[54px] flex items-center gap-2 justify-between w-full">
+               <div className="flex md:justify-evenly items-center gap-2 w-full overflow-auto appearance-none">
                     {tabs.map((tab) => (
                          <button
                               key={tab.id}
                               onClick={() => setActiveTab(tab.id)}
-                              className={`px-8 py-2 rounded-[30px] text-lg font-normal transition-colors ${activeTab === tab.id ? "bg-[#017EFE] text-white" : "text-black hover:bg-[#017EFE] hover:text-white"
+                              className={`px-3.5 md:px-8 py-[5px] md:py-2 text-nowrap rounded-[30px] text-sm md:text-lg font-normal transition-colors ${activeTab === tab.id ? "bg-[#017EFE] text-white" : "text-black hover:bg-[#017EFE] hover:text-white"
                                    }`}
                          >
                               {tab.label}

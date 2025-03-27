@@ -38,13 +38,13 @@ export default function Tab() {
 
   return (
     <main className="flex mt-20 flex-col items-center justify-center p-5">
-      <div className="w-full max-w-[1296px] mx-auto bg-white rounded-[30px] p-6 overflow-hidden">
+      <div className="w-full max-w-[1296px] mx-auto bg-white rounded-[20px] md:rounded-[30px] p-2.5 md:p-6 overflow-hidden">
         <TabsNavigation
           tabs={tabs}
           activeTab={activeTab}
           setActiveTab={setActiveTab}
         />
-        <div className="p-6">{renderTabContent()}</div>
+        <div className="">{renderTabContent()}</div>
       </div>
     </main>
   );

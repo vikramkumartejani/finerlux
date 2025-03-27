@@ -25,7 +25,7 @@ const ImageUploader = () => {
           <div>
                <label className="block text-base font-normal text-black mb-2.5">Upload photos of item</label>
                <div
-                    className={`max-h-[191px] min-h-[191px] rounded-[30px] p-4 flex flex-col items-start justify-start bg-[#E3E8ED] `}
+                    className={`h-[165px] md:min-h-[191px] rounded-[20px] md:rounded-[30px] p-3 md:p-4 flex flex-col items-start justify-start bg-[#E3E8ED] `}
                     onDrop={handleDrop}
                     onDragOver={(e) => e.preventDefault()}
                >
@@ -38,25 +38,26 @@ const ImageUploader = () => {
                          onChange={(e) => handleFiles(Array.from(e.target.files))}
                     />
                     {images.length === 0 ? (
-                         <div className="flex items-center w-full justify-center text-center flex-col group">
+                         <div className="flex items-center w-full justify-center text-center flex-col group -mt-0">
                               <label htmlFor="file-upload" className="cursor-pointer">
-                                   <div className="mt-2 relative flex items-center justify-center">
+                                   <div className="h-full relative flex items-center justify-center">
                                         <Image
                                              src='/assets/file-upload.svg'
                                              width={100}
                                              height={100}
                                              alt="file upload"
-                                             className="absolute opacity-100 group-hover:opacity-0 transition-opacity duration-300"
+                                             className="md:w-[100px] md:h-[100px] w-[80px] h-[80px] absolute opacity-100 group-hover:opacity-0 transition-opacity duration-300"
                                         />
+                                        
                                         <Image
                                              src='/assets/file-upload-hover.svg'
                                              width={100}
                                              height={100}
                                              alt="file upload hover"
-                                             className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                             className="md:w-[100px] md:h-[100px] w-[80px] h-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                                         />
                                    </div>
-                                   <p className="mt-4 ml-1 text-base font-normal text-black">
+                                   <p className="ml-1 text-base font-normal text-black">
                                         Drag an image here
                                    </p>
                               </label>
@@ -76,7 +77,7 @@ const ImageUploader = () => {
                                              priority
                                              width={80}
                                              height={80}
-                                             className="h-16 w-16 rounded-lg object-cover"
+                                             className="h-16 w-16 md:h-20 md:w-20 rounded-lg object-cover"
                                         />
                                         {hoveredIndex === index && (
                                              <button
@@ -99,7 +100,7 @@ const ImageUploader = () => {
                               ))}
                               <label
                                    htmlFor="file-upload"
-                                   className="h-16 w-16 flex items-center justify-center bg-white border border-[#828282] hover:border-[#017EFE] rounded-[14px] cursor-pointer group"
+                                   className="h-16 w-16 md:w-20 md:h-20 flex items-center justify-center bg-white border border-[#828282] hover:border-[#017EFE] rounded-[14px] cursor-pointer group"
                               >
                                    <svg
                                         className="text-[#828282] group-hover:text-[#017EFE]"
