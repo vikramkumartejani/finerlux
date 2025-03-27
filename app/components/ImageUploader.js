@@ -25,7 +25,7 @@ const ImageUploader = () => {
           <div>
                <label className="block text-base font-normal text-black mb-2.5">Upload photos of item</label>
                <div
-                    className={` max-h-[191px] min-h-[191px] rounded-[30px] p-4 flex flex-col items-start justify-start bg-[#E3E8ED] `}
+                    className={`max-h-[191px] min-h-[191px] rounded-[30px] p-4 flex flex-col items-start justify-start bg-[#E3E8ED] `}
                     onDrop={handleDrop}
                     onDragOver={(e) => e.preventDefault()}
                >

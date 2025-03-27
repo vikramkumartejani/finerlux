@@ -30,7 +30,7 @@ export default function SellTab() {
                     <Image src='/assets/selltab.svg' alt="selltab" width={274} height={271} />
                </div>
 
-               <div className="space-y-4 w-full max-w-[636px]">
+               <form className="space-y-4 w-full max-w-[636px]">
                     <div className="grid grid-cols-2 gap-4">
                          <div>
                               <label htmlFor="name" className="block text-base font-normal text-black mb-2.5">
@@ -39,6 +39,7 @@ export default function SellTab() {
                               <input
                                    type="text"
                                    id="name"
+                                   required
                                    placeholder="Full Name"
                                    className="w-full px-4 h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border border-transparent focus:border-[#017EFE] transition-colors duration-300"
                               />
@@ -52,6 +53,7 @@ export default function SellTab() {
                               <input
                                    type="email"
                                    id="email"
+                                   required
                                    placeholder="example@mail.com"
                                    className="w-full px-4 h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border border-transparent focus:border-[#017EFE] transition-colors duration-300"
                               />
@@ -65,6 +67,7 @@ export default function SellTab() {
                          <input
                               type="tel"
                               id="phone"
+                              required
                               placeholder="(+44) 123 456 7890"
                               className="w-full px-4 h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border border-transparent focus:border-[#017EFE] transition-colors duration-300"
                          />
@@ -78,6 +81,7 @@ export default function SellTab() {
                               <div className="relative">
                                    <select
                                         id="item"
+                                        required
                                         className="w-full px-4 h-[42px] bg-[#E3E8ED] appearance-none rounded-[30px] placeholder:text-[#828282] text-black outline-none border border-transparent focus:border-[#017EFE] transition-colors duration-300"
                                         defaultValue="Watch"
                                    >
@@ -103,6 +107,7 @@ export default function SellTab() {
                               <div className="relative">
                                    <select
                                         id="condition"
+                                        required
                                         className="w-full px-4 h-[42px] bg-[#E3E8ED] appearance-none rounded-[30px] placeholder:text-[#828282] text-black outline-none border border-transparent focus:border-[#017EFE] transition-colors duration-300"
                                         defaultValue="Good"
                                    >
@@ -134,6 +139,7 @@ export default function SellTab() {
                               </div>
                               <input
                                    type="text"
+                                   required
                                    id="price"
                                    className="w-full px-4 pl-7 h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border border-transparent focus:border-[#017EFE] transition-colors duration-300"
                               />
@@ -144,8 +150,8 @@ export default function SellTab() {
                          <ImageUploader/>
                     </div>
 
-                    <div>
-                         <p className="text-sm font-medium text-gray-700 mb-2">I am happy to be contacted by</p>
+                    <div className="pt-10">
+                         <p className="text-base font-normal text-black mb-2">I am happy to be contacted by</p>
                          <div className="flex flex-wrap gap-4">
                               <label className="inline-flex items-center">
                                    <input
@@ -188,11 +194,11 @@ export default function SellTab() {
 
                     <button
                          type="submit"
-                         className="w-full bg-blue-500 text-white py-3 px-4 rounded-md hover:bg-blue-600 transition-colors"
+                         className="!mt-5 text-base font-medium w-full bg-[#017EFE] hover:bg-[#003D7B] transition-all duration-300 text-white h-[40px] px-4 rounded-[60px]"
                     >
                          Submit
                     </button>
-               </div>
+               </form>
           </div>
      )
 }
