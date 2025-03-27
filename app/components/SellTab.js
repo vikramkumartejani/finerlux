@@ -6,8 +6,6 @@ import ImageUploader from "./ImageUploader"
 import Checkbox from "./Checkbox"
 
 export default function SellTab() {
-     const [isChecked, setIsChecked] = useState(false);
-
      const [checkedItems, setCheckedItems] = useState({
           checkbox1: false,
           checkbox2: false,
@@ -21,21 +19,6 @@ export default function SellTab() {
                [key]: !prev[key],
           }));
      };
-
-
-     const [contactMethods, setContactMethods] = useState({
-          telephone: false,
-          sms: false,
-          email: false,
-          whatsapp: false,
-     })
-
-     const toggleContactMethod = (method) => {
-          setContactMethods((prev) => ({
-               ...prev,
-               [method]: !prev[method],
-          }))
-     }
 
      return (
           <div className="flex items-start justify-between pt-5">
@@ -172,20 +155,16 @@ export default function SellTab() {
                          <p className="text-base font-normal text-black mb-2">I am happy to be contacted by</p>
                          <div className="flex flex-wrap gap-4">
                               <label className="inline-flex items-center">
-                                   <Checkbox checked={checkedItems.checkbox1} onChange={() => handleCheckboxChange("checkbox1")} />
-                                   <span className="ml-2 text-[#828282] text-base font-normal">Telephone</span>
+                                   <Checkbox title="Telephone" checked={checkedItems.checkbox1} onChange={() => handleCheckboxChange("checkbox1")} />
                               </label>
                               <label className="inline-flex items-center">
-                                   <Checkbox checked={checkedItems.checkbox2} onChange={() => handleCheckboxChange("checkbox2")} />
-                                   <span className="ml-2 text-gray-700">SMS</span>
+                                   <Checkbox title="SMS" checked={checkedItems.checkbox2} onChange={() => handleCheckboxChange("checkbox2")} />
                               </label>
                               <label className="inline-flex items-center">
-                                   <Checkbox checked={checkedItems.checkbox3} onChange={() => handleCheckboxChange("checkbox3")} />
-                                   <span className="ml-2 text-gray-700">Email</span>
+                                   <Checkbox title="Email" checked={checkedItems.checkbox3} onChange={() => handleCheckboxChange("checkbox3")} />
                               </label>
                               <label className="inline-flex items-center">
-                                   <Checkbox checked={checkedItems.checkbox4} onChange={() => handleCheckboxChange("checkbox4")} />
-                                   <span className="ml-2 text-gray-700">Whatsapp</span>
+                                   <Checkbox title="Whatsapp" checked={checkedItems.checkbox4} onChange={() => handleCheckboxChange("checkbox4")} />
                               </label>
                          </div>
                     </div>
