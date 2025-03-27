@@ -19,58 +19,65 @@ export default function SellTab() {
      }
 
      return (
-          <div className="grid md:grid-cols-2 gap-8 pt-20">
-               <div className="space-y-4">
-                    <h1 className="text-2xl font-bold">Want to sell your watch or jewelry?</h1>
-                    <p className="text-gray-700">
+          <div className="flex items-start justify-between pt-5">
+               <div className="space-y-4 max-w-[474px]">
+                    <h1 className="text-4xl leading-[95%] font-semibold">Want to sell your watch or jewelry?</h1>
+                    <p className="mt-2 pb-8 text-black text-base font-normal leading-[20px]">
                          Get a fast, fair offer and turn your item into cash instantly. We guarantee transparency and hassle-free
                          transactions—no hidden fees, no delays.
                     </p>
                     <Image src='/assets/selltab.svg' alt="selltab" width={274} height={271} />
                </div>
 
-               <div className="space-y-4">
+               <div className="space-y-4 w-full max-w-[636px]">
                     <div className="grid grid-cols-2 gap-4">
                          <div>
-                              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                              <label htmlFor="name" className="block text-base font-normal text-black mb-2.5">
                                    Name
                               </label>
-                              <input type="text" id="name" placeholder="Full Name" className="w-full px-4 py-2 bg-gray-100 rounded-md" />
+                              <input
+                                   type="text"
+                                   id="name"
+                                   placeholder="Full Name"
+                                   className="w-full px-4 h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border border-transparent focus:border-[#017EFE] transition-colors duration-300"
+                              />
+
+
                          </div>
                          <div>
-                              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                              <label htmlFor="email" className="block text-base font-normal text-black mb-2.5">
                                    Email
                               </label>
                               <input
                                    type="email"
                                    id="email"
                                    placeholder="example@mail.com"
-                                   className="w-full px-4 py-2 bg-gray-100 rounded-md"
+                                   className="w-full px-4 h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border border-transparent focus:border-[#017EFE] transition-colors duration-300"
                               />
                          </div>
                     </div>
 
                     <div>
-                         <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+                         <label htmlFor="phone" className="block text-base font-normal text-black mb-2.5">
                               Phone number
                          </label>
                          <input
                               type="tel"
                               id="phone"
                               placeholder="(+44) 123 456 7890"
-                              className="w-full px-4 py-2 bg-gray-100 rounded-md"
+                              className="w-full px-4 h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border border-transparent focus:border-[#017EFE] transition-colors duration-300"
                          />
                     </div>
 
                     <div className="grid grid-cols-2 gap-4">
                          <div>
-                              <label htmlFor="item" className="block text-sm font-medium text-gray-700 mb-1">
+                              <label htmlFor="item" className="block text-base font-normal text-black mb-2.5">
                                    Item
                               </label>
                               <div className="relative">
                                    <select
                                         id="item"
-                                        className="w-full px-4 py-2 bg-gray-100 rounded-md appearance-none"
+                                        className="w-full px-4 h-[42px] bg-[#E3E8ED] appearance-none rounded-[30px] placeholder:text-[#828282] text-black outline-none border border-transparent focus:border-[#017EFE] transition-colors duration-300"
                                         defaultValue="Watch"
                                    >
                                         <option>Watch</option>
@@ -89,13 +96,13 @@ export default function SellTab() {
                               </div>
                          </div>
                          <div>
-                              <label htmlFor="condition" className="block text-sm font-medium text-gray-700 mb-1">
-                                   Condition <span className="text-gray-400 inline-block ml-1">ⓘ</span>
+                              <label htmlFor="condition" className="flex items-center gap-1 text-base font-normal text-black mb-2.5">
+                                   Condition <span className="text-gray-400 inline-block ml-1"><Image src='/assets/conditions.svg' alt="conditions" width={16} height={16} /></span>
                               </label>
                               <div className="relative">
                                    <select
                                         id="condition"
-                                        className="w-full px-4 py-2 bg-gray-100 rounded-md appearance-none"
+                                        className="w-full px-4 h-[42px] bg-[#E3E8ED] appearance-none rounded-[30px] placeholder:text-[#828282] text-black outline-none border border-transparent focus:border-[#017EFE] transition-colors duration-300"
                                         defaultValue="Good"
                                    >
                                         <option>Excellent</option>
@@ -124,7 +131,11 @@ export default function SellTab() {
                               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                    <span className="text-gray-500">£</span>
                               </div>
-                              <input type="text" id="price" className="w-full pl-8 pr-4 py-2 bg-gray-100 rounded-md" />
+                              <input
+                                   type="text"
+                                   id="price"
+                                   className="w-full px-4 pl-7 h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border border-transparent focus:border-[#017EFE] transition-colors duration-300"
+                              />
                          </div>
                     </div>
 
