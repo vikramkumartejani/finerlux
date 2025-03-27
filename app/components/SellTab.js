@@ -1,5 +1,4 @@
 "use client"
-
 import Image from "next/image"
 import { useState } from "react"
 import ImageUploader from "./ImageUploader"
@@ -13,11 +12,42 @@ export default function SellTab() {
           checkbox4: false,
      });
 
+     const [formErrors, setFormErrors] = useState({
+          name: false,
+          email: false,
+          phone: false,
+          item: false,
+          condition: false,
+          price: false
+     });
+
      const handleCheckboxChange = (key) => {
           setCheckedItems((prev) => ({
                ...prev,
                [key]: !prev[key],
           }));
+     };
+
+     const validateForm = (e) => {
+          e.preventDefault();
+          const form = e.target;
+          const errors = {
+               name: !form.name.value.trim(),
+               email: !form.email.value.trim(),
+               phone: !form.phone.value.trim(),
+               item: !form.item.value,
+               condition: !form.condition.value,
+               price: !form.price.value.trim()
+          };
+
+          setFormErrors(errors);
+
+          // Check if any errors exist
+          const hasErrors = Object.values(errors).some(error => error);
+          if (!hasErrors) {
+               // Form submission logic here
+               console.log('Form submitted successfully');
+          }
      };
 
      return (
@@ -30,8 +60,7 @@ export default function SellTab() {
                     </p>
                     <Image src='/assets/selltab.svg' alt="selltab" width={274} height={271} />
                </div>
-
-               <form className="space-y-4 w-full max-w-[636px]">
+               <form onSubmit={validateForm} className="space-y-4 w-full max-w-[636px]">
                     <div className="grid grid-cols-2 gap-4">
                          <div>
                               <label htmlFor="name" className="block text-base font-normal text-black mb-2.5">
@@ -40,12 +69,16 @@ export default function SellTab() {
                               <input
                                    type="text"
                                    id="name"
-                                   required
+                                   name="name"
                                    placeholder="Full Name"
-                                   className="w-full px-4 h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border border-transparent focus:border-[#017EFE] transition-colors duration-300"
+                                   className={`w-full px-4 h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
+                                   ${formErrors.name
+                                             ? 'border-[#B80000]'
+                                             : 'border-transparent focus:border-[#017EFE]'}`}
                               />
-
-
+                              {formErrors.name && (
+                                   <p className="text-[#B80000] text-sm mt-1">It is mandatory field</p>
+                              )}
                          </div>
                          <div>
                               <label htmlFor="email" className="block text-base font-normal text-black mb-2.5">
@@ -54,13 +87,18 @@ export default function SellTab() {
                               <input
                                    type="email"
                                    id="email"
-                                   required
+                                   name="email"
                                    placeholder="example@mail.com"
-                                   className="w-full px-4 h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border border-transparent focus:border-[#017EFE] transition-colors duration-300"
+                                   className={`w-full px-4 h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
+                                   ${formErrors.email
+                                             ? 'border-[#B80000]'
+                                             : 'border-transparent focus:border-[#017EFE]'}`}
                               />
+                              {formErrors.email && (
+                                   <p className="text-[#B80000] text-sm mt-1">It is mandatory field</p>
+                              )}
                          </div>
                     </div>
-
                     <div>
                          <label htmlFor="phone" className="block text-base font-normal text-black mb-2.5">
                               Phone number
@@ -68,12 +106,17 @@ export default function SellTab() {
                          <input
                               type="tel"
                               id="phone"
-                              required
+                              name="phone"
                               placeholder="(+44) 123 456 7890"
-                              className="w-full px-4 h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border border-transparent focus:border-[#017EFE] transition-colors duration-300"
+                              className={`w-full px-4 h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
+                              ${formErrors.phone
+                                        ? 'border-[#B80000]'
+                                        : 'border-transparent focus:border-[#017EFE]'}`}
                          />
+                         {formErrors.phone && (
+                              <p className="text-[#B80000] text-sm mt-1">It is mandatory field</p>
+                         )}
                     </div>
-
                     <div className="grid grid-cols-2 gap-4 pt-10">
                          <div>
                               <label htmlFor="item" className="block text-base font-normal text-black mb-2.5">
@@ -82,8 +125,11 @@ export default function SellTab() {
                               <div className="relative">
                                    <select
                                         id="item"
-                                        required
-                                        className="w-full px-4 h-[42px] bg-[#E3E8ED] appearance-none rounded-[30px] placeholder:text-[#828282] text-black outline-none border border-transparent focus:border-[#017EFE] transition-colors duration-300"
+                                        name="item"
+                                        className={`w-full px-4 h-[42px] bg-[#E3E8ED] appearance-none rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
+                                        ${formErrors.item
+                                                  ? 'border-red-500 bg-red-50'
+                                                  : 'border-transparent focus:border-[#017EFE]'}`}
                                         defaultValue="Watch"
                                    >
                                         <option>Watch</option>
@@ -100,16 +146,28 @@ export default function SellTab() {
                                         </svg>
                                    </div>
                               </div>
+                              {formErrors.item && (
+                                   <p className="text-red-500 text-sm mt-1">It is mandatory field</p>
+                              )}
                          </div>
                          <div>
                               <label htmlFor="condition" className="flex items-center gap-1 text-base font-normal text-black mb-2.5">
-                                   Condition <span className="text-gray-400 inline-block ml-1"><Image src='/assets/conditions.svg' alt="conditions" width={16} height={16} /></span>
+                                   Condition
+                                   <span className="relative group ml-1 inline-block text-gray-400">
+                                        <img src="/assets/conditions.svg" alt="conditions" width="16" height="16" />
+                                        <span className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 hidden group-hover:block w-max bg-gray-800 text-white text-xs px-2 py-1 rounded shadow-lg">
+                                             Additional info about conditions
+                                        </span>
+                                   </span>
                               </label>
                               <div className="relative">
                                    <select
                                         id="condition"
-                                        required
-                                        className="w-full px-4 h-[42px] bg-[#E3E8ED] appearance-none rounded-[30px] placeholder:text-[#828282] text-black outline-none border border-transparent focus:border-[#017EFE] transition-colors duration-300"
+                                        name="condition"
+                                        className={`w-full px-4 h-[42px] bg-[#E3E8ED] appearance-none rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
+                                        ${formErrors.condition
+                                                  ? 'border-red-500 bg-red-50'
+                                                  : 'border-transparent focus:border-[#017EFE]'}`}
                                         defaultValue="Good"
                                    >
                                         <option>Excellent</option>
@@ -127,30 +185,38 @@ export default function SellTab() {
                                         </svg>
                                    </div>
                               </div>
+                              {formErrors.condition && (
+                                   <p className="text-red-500 text-sm mt-1">It is mandatory field</p>
+                              )}
                          </div>
                     </div>
-
                     <div>
                          <label htmlFor="price" className="block text-base font-normal text-black mb-2.5">
                               Your Price
                          </label>
                          <div className="relative">
-                              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                   <span className="text-gray-500">£</span>
+                              <div className="">
+                                   <div className="absolute top-[9px] left-0 pl-4 flex items-center pointer-events-none">
+                                        <span className="text-gray-500">£</span>
+                                   </div>
+                                   <input
+                                        type="text"
+                                        id="price"
+                                        name="price"
+                                        className={`w-full px-4 pl-7 h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
+                                   ${formErrors.price
+                                                  ? 'border-[#B80000] '
+                                                  : 'border-transparent focus:border-[#017EFE]'}`}
+                                   />
                               </div>
-                              <input
-                                   type="text"
-                                   required
-                                   id="price"
-                                   className="w-full px-4 pl-7 h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border border-transparent focus:border-[#017EFE] transition-colors duration-300"
-                              />
+                              {formErrors.price && (
+                                   <p className="text-[#B80000] text-sm mt-1">It is mandatory field</p>
+                              )}
                          </div>
                     </div>
-
                     <div>
                          <ImageUploader />
                     </div>
-
                     <div className="pt-10">
                          <p className="text-base font-normal text-black mb-2">I am happy to be contacted by</p>
                          <div className="flex flex-wrap gap-4">
@@ -168,7 +234,6 @@ export default function SellTab() {
                               </label>
                          </div>
                     </div>
-
                     <button
                          type="submit"
                          className="!mt-5 text-base font-medium w-full bg-[#017EFE] hover:bg-[#003D7B] transition-all duration-300 text-white h-[40px] px-4 rounded-[60px]"
@@ -179,4 +244,3 @@ export default function SellTab() {
           </div>
      )
 }
-
