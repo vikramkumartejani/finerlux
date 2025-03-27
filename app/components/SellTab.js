@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import { useState } from "react"
+import ImageUploader from "./ImageUploader"
 
 export default function SellTab() {
      const [contactMethods, setContactMethods] = useState({
@@ -69,7 +70,7 @@ export default function SellTab() {
                          />
                     </div>
 
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-2 gap-4 pt-10">
                          <div>
                               <label htmlFor="item" className="block text-base font-normal text-black mb-2.5">
                                    Item
@@ -124,7 +125,7 @@ export default function SellTab() {
                     </div>
 
                     <div>
-                         <label htmlFor="price" className="block text-sm font-medium text-gray-700 mb-1">
+                         <label htmlFor="price" className="block text-base font-normal text-black mb-2.5">
                               Your Price
                          </label>
                          <div className="relative">
@@ -140,18 +141,7 @@ export default function SellTab() {
                     </div>
 
                     <div>
-                         <label className="block text-sm font-medium text-gray-700 mb-1">Upload photos of item</label>
-                         <div className="border-2 border-dashed border-gray-300 rounded-md p-6 flex flex-col items-center justify-center bg-gray-100">
-                              <svg className="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
-                                   <path
-                                        d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4h-8m-12 0H8m12 0a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                   />
-                              </svg>
-                              <p className="mt-1 text-sm text-gray-500">Drag an image here</p>
-                         </div>
+                         <ImageUploader/>
                     </div>
 
                     <div>
