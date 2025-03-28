@@ -51,18 +51,18 @@ const Navbar = () => {
 
                {/* Mobile Menu */}
                <div
-                  className={`absolute top-[38px] left-0 right-0 w-full transition-transform duration-300 ease-in-out ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10 pointer-events-none'
+                  className={`absolute top-[38px] left-0 right-0 w-full transition-transform duration-300 shadow-header rounded-[30px] ease-in-out ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10 pointer-events-none'
                      }`}
                >
                   <div className='bg-white rounded-[30px] py-7 overflow-hidden flex flex-col items-center text-center gap-4'>
                      <ul className='space-y-4'>
                         <li>
-                           <Link href='/' className='text-base font-normal text-black' onClick={toggleMenu}>
+                           <Link href='/services' className='text-base font-normal text-black' onClick={toggleMenu}>
                               Our Services
                            </Link>
                         </li>
                         <li>
-                           <Link href='/services' className='text-base font-normal text-black' onClick={toggleMenu}>
+                           <Link href='/' className='text-base font-normal text-black' onClick={toggleMenu}>
                               Main
                            </Link>
                         </li>
