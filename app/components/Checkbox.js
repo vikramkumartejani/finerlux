@@ -18,38 +18,16 @@ const Checkbox = ({ checked, onChange, title }) => {
                          onMouseLeave={() => setIsHovered(false)}
                     >
                          {checked ? (
-                              <svg
-                                   className="text-[#017EFE]"
-                                   width="30"
-                                   height="11"
-                                   viewBox="0 0 18 11"
-                                   fill="none"
-                                   xmlns="http://www.w3.org/2000/svg"
-                              >
-                                   <path
-                                        d="M1 3.75L7.5 10.25L17 0.75"
-                                        stroke="currentColor"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                   />
+                              <svg className="text-[#017EFE]" width="18" height="11" viewBox="0 0 18 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                   <path d="M1 3.75L7.5 10.25L17 0.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                               </svg>
                          ) : (
                               isHovered && (
-                                   <svg
-                                        className="text-[#828282]"
-                                        width="18"
-                                        height="11"
-                                        viewBox="0 0 18 11"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                   >
-                                        <path
-                                             d="M1 3.75L7.5 10.25L17 0.75"
-                                             stroke="currentColor"
-                                             strokeLinecap="round"
-                                             strokeLinejoin="round"
-                                        />
-                                   </svg>
+                                   <>
+                                        <svg className="text-[#828282]" width="18" height="11" viewBox="0 0 18 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                             <path d="M1 3.75L7.5 10.25L17 0.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                   </>
                               )
                          )}
                     </div>
