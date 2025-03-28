@@ -16,11 +16,25 @@ body{
 }
 
 .scrollbar-hide {
-  overflow: auto; /* Keeps scrolling enabled */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  overflow: auto; 
+  scrollbar-width: none;  
+  -ms-overflow-style: none;  
 }
 
 .scrollbar-hide::-webkit-scrollbar {
-  display: none; /* Chrome, Safari */
+  display: none;  
+}
+
+.social-icons {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.social-icons .social-icons-path {
+  fill: #828282;  
+  transition: fill 0.3s ease-in-out;
+}
+
+.social-icons:hover .social-icons-path {
+  fill: #017EFE;  
 }
