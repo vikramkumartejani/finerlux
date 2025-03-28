@@ -88,7 +88,7 @@ const NewArrivals = () => {
      return (
           <div className="mt-28 w-full pl-5 md:pl-0">
                <div className="max-w-[1296px] mx-auto">
-                    <h2 className="text-4xl font-semibold mb-9">New Arrivals</h2>
+                    <h2 className="text-[24px] md:text-4xl font-semibold mb-6 md:mb-9 sm:text-left text-center">New Arrivals</h2>
                </div>
 
                <div className="w-full overflow-hidden">
@@ -100,8 +100,8 @@ const NewArrivals = () => {
                          wrapperClass="!flex"
                     >
                          {newArrivalsData.map((watch) => (
-                              <SwiperSlide key={watch.id} className="!w-[306px] !max-w-[306px] flex-shrink-0">
-                                   <div className="bg-white rounded-[30px] p-[18px] h-full">
+                              <SwiperSlide key={watch.id} className="w-[207px] max-w-[207px] sm:w-[306px] sm:max-w-[306px] flex-shrink-0">
+                                   <div className="bg-white rounded-[20px] sm:rounded-[30px] p-3 sm:p-[18px] h-full">
                                         <div className="w-full relative">
                                              <Image
                                                   src={watch.imageUrl || "/placeholder.svg"}
@@ -109,40 +109,47 @@ const NewArrivals = () => {
                                                   width={270}
                                                   height={248}
                                                   draggable="false"
+                                                  className="w-full sm:w-[270px] sm:h-[248px]"
                                              />
                                              {watch.discount > 0 && (
-                                                  <div className="bg-[#60FF7D] rounded-[13px] p-2.5 absolute w-fit top-0 left-0">
-                                                       <h2 className="text-black text-sm font-normal">-{watch.discount}%</h2>
+                                                  <div className="bg-[#60FF7D] rounded-lg sm:rounded-[13px] p-2 sm:p-2.5 absolute w-fit top-0 left-0">
+                                                       <h2 className="text-black text-xs sm:text-sm font-normal">-{watch.discount}%</h2>
                                                   </div>
                                              )}
                                         </div>
-                                        <div className="mt-[18px]">
-                                             <h3 className="text-black font-normal text-base">{watch.brand}</h3>
-                                             <h2 className="text-black font-semibold text-[24px]">{watch.model}</h2>
-                                             <p className="text-black text-base font-normal">{watch.reference}</p>
+                                        <div className="mt-3 sm:mt-[18px] sm:text-left text-center">
+                                             <h3 className="text-black font-normal text-sm md:text-base">{watch.brand}</h3>
+                                             <h2 className="text-black font-semibold text-[18px] sm:text-[24px]">{watch.model}</h2>
+                                             <p className="text-black text-sm md:text-base font-normal">{watch.reference}</p>
                                         </div>
-                                        <div className="mt-[18px] w-fit bg-[#ECF0F3] p-2.5 rounded-xl">
-                                             <h3 className="text-[#000000] text-sm font-normal">Year {watch.year}</h3>
-                                             <div className="mt-2 flex items-center gap-3">
-                                                  <h3 className="flex items-center gap-2 text-black text-sm">
-                                                       Papers {watch.condition.includes("Papers") ? <Right /> : <Cross />}
-                                                  </h3>
-                                                  <h3 className="flex items-center gap-2 text-black text-sm">
-                                                       Box {watch.condition.includes("Box") ? <Right /> : <Cross />}
-                                                  </h3>
+                                        <div className="w-full flex items-center justify-center sm:justify-start">
+                                             <div className="mt-3 sm:mt-[18px] w-fit bg-[#ECF0F3] p-2.5 rounded-xl">
+                                                  <h3 className="text-[#000000] text-xs sm:text-sm font-normal sm:text-left text-center">Year {watch.year}</h3>
+                                                  <div className="mt-2 flex items-center gap-2 sm:gap-3">
+                                                       <h3 className="flex items-center gap-1 sm:gap-2 text-black text-xs sm:text-sm">
+                                                            Papers {watch.condition.includes("Papers") ? <Right /> : <Cross />}
+                                                       </h3>
+                                                       <h3 className="flex items-center gap-1 sm:gap-2 text-black text-xs sm:text-sm">
+                                                            Box {watch.condition.includes("Box") ? <Right /> : <Cross />}
+                                                       </h3>
+                                                  </div>
                                              </div>
                                         </div>
-                                        <div className="mt-[18px] flex items-center gap-4">
-                                             <h3 className={`text-[24px] font-semibold ${watch.discount > 0 ? "text-[#017EFE]" : "text-black"}`}>
+                                        <div className="mt-3 sm:mt-[18px] flex items-center sm:justify-start justify-center gap-2 sm:gap-4">
+                                             <h3 className={`text-[18px] sm:text-[24px] font-semibold ${watch.discount > 0 ? "text-[#017EFE]" : "text-black"}`}>
                                                   {watch.price}$
                                              </h3>
                                              {watch.discount > 0 && (
-                                                  <del className="text-[#828282] text-[16px] font-normal">{watch.originalPrice}$</del>
+                                                  <del className="text-[#828282] text-sm sm:text-[16px] font-normal">{watch.originalPrice}$</del>
                                              )}
                                         </div>
-                                        <button className="bg-[#017EFE] hover:bg-[#003D7B] transition-all duration-300 mt-[18px] h-[39px] rounded-[60px] flex items-center justify-center px-10 text-white font-medium text-base w-fit">
-                                             Contact
-                                        </button>
+                                        <div className="flex items-center justify-center sm:justify-start">
+                                             <button className="bg-[#017EFE] hover:bg-[#003D7B] transition-all duration-300 mt-4 sm:mt-[18px] h-[39px] rounded-[60px] flex items-center justify-center leading-none px-10 text-white font-medium text-base w-fit">
+                                                  <h3 className="sm:block hidden">Contact</h3>
+                                                  <h3 className="sm:hidden block">Buy</h3>
+                                             </button>
+                                        </div>
+
                                    </div>
                               </SwiperSlide>
                          ))}
