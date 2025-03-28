@@ -14,3 +14,13 @@
 body{
   background: #ECF0F3;
 }
+
+.scrollbar-hide {
+  overflow: auto; /* Keeps scrolling enabled */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
