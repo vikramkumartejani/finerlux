@@ -184,7 +184,7 @@ export default function PartExchangeTab() {
                                                        onClick={closeModal}
                                                   >
                                                        <div
-                                                            className="bg-white p-4 md:p-6 overflow-auto scrollbar-hide rounded-lg !mx-5 shadow-xl max-w-3xl w-full absolute md:relative top-[10%] md:top-0"
+                                                            className="bg-white p-4 md:p-6 overflow-auto scrollbar-hide rounded-[30px] !mx-5 shadow-xl max-w-3xl w-full absolute md:relative top-[10%] md:top-0"
                                                             onClick={(e) => e.stopPropagation()}
                                                        >
                                                             <ConditionsModal />
