@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div>
       <NewArrivals/>
-      <WithUsYouCan/>
+      {/* <WithUsYouCan/> */}
       <Tab />
     </div>
   );
