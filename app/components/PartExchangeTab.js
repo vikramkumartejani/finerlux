@@ -4,6 +4,7 @@ import Image from "next/image"
 import { useState } from "react"
 import ImageUploader from "./ImageUploader"
 import Checkbox from "./Checkbox"
+import ConditionsModal from "./ConditionsModal"
 
 export default function PartExchangeTab() {
      const [checkedItems, setCheckedItems] = useState({
@@ -177,25 +178,17 @@ export default function PartExchangeTab() {
                                         </button>
 
                                         {isModalOpen && (
-                                             <div
-                                                  className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
-                                                  onClick={closeModal}
-                                             >
+                                             <div className="bg-black bg-opacity-50 top-0 fixed inset-0 z-50">
                                                   <div
-                                                       className="bg-white p-6 rounded-lg shadow-xl max-w-md w-full relative"
-                                                       onClick={(e) => e.stopPropagation()}
+                                                       className="fixed top-0 inset-0 mx-4 mb-4 z-50 flex items-center justify-center !overflow-auto scrollbar-hide"
+                                                       onClick={closeModal}
                                                   >
-                                                       <button
-                                                            className="absolute top-2 right-2 text-gray-600 hover:text-gray-900"
-                                                            onClick={closeModal}
+                                                       <div
+                                                            className="bg-white p-4 md:p-6 overflow-auto scrollbar-hide rounded-lg !mx-5 shadow-xl max-w-3xl w-full absolute md:relative top-[10%] md:top-0"
+                                                            onClick={(e) => e.stopPropagation()}
                                                        >
-                                                            ✕
-                                                       </button>
-                                                       <h2 className="text-xl font-bold mb-4">Conditions</h2>
-                                                       <p className="text-gray-700">
-                                                            Add your modal content here. This modal can be closed by clicking the X button
-                                                            or clicking outside the modal area.
-                                                       </p>
+                                                            <ConditionsModal />
+                                                       </div>
                                                   </div>
                                              </div>
                                         )}
