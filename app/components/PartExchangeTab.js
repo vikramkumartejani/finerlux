@@ -165,7 +165,7 @@ export default function PartExchangeTab() {
                               <label htmlFor="condition" className="flex items-center gap-1 text-sm md:text-base font-normal text-black mb-1.5 md:mb-2.5">
                                    Condition
                                    <div>
-                                        <button
+                                        <div
                                              className="ml-1 text-gray-400"
                                              onClick={openModal}
                                         >
@@ -175,7 +175,7 @@ export default function PartExchangeTab() {
                                                   width="16"
                                                   height="16"
                                              />
-                                        </button>
+                                        </div>
 
                                         {isModalOpen && (
                                              <div className="bg-black bg-opacity-50 top-0 fixed inset-0 z-50">
