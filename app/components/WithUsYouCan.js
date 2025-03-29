@@ -1,7 +1,14 @@
+"use client"
 import Image from 'next/image'
 import React from 'react'
+import CustomDropdown from './CustomDropdown';
 
 const WithUsYouCan = () => {
+     const conditionOptions = ["Excellent", "Good", "Fair", "Poor"];
+
+     const handleChange = (selected) => {
+          console.log("Selected option:", selected);
+     };
      return (
           <div className='px-5 w-full'>
                <div className='mt-[60px] max-w-[1296px] mx-auto w-full'>
@@ -17,7 +24,7 @@ const WithUsYouCan = () => {
                                         <div className='absolute -right-2.5 sm:right-1 bottom-0'>
                                              <Image src='/assets/with-us-sell.svg' alt='sell' width={215} height={219} className='sm:w-[215px] sm:h-[219px] w-[150px] h-[154px]' />
                                         </div>
-                                   </div>    
+                                   </div>
 
                                    <div className='bg-white rounded-[20px] sm:rounded-[30px] w-full xl:max-w-[526px] pl-[24px] pt-[24px] relative h-[167px] sm:h-[206px] overflow-hidden'>
                                         <div className='max-w-[184px] sm:max-w-[300px] lg:max-w-[250px] xl:max-w-[271px]'>
@@ -64,6 +71,19 @@ const WithUsYouCan = () => {
                               <Image src='/assets/authenticateTab.svg' alt='sell' width={192} height={245} className='xl:w-[192px] xl:h-[245px] w-[120px] h-[153px] sm:w-[150px] sm:h-[170px] absolute lg:static right-1 sm:right-4' />
                          </div>
                     </div>
+               <div>
+                    for testing in mac:
+                    <div className="mb-4">
+                         <label className="block mb-2 text-sm font-medium text-gray-700">
+                              Condition
+                         </label>
+                         <CustomDropdown
+                              options={conditionOptions}
+                              defaultValue="Good"
+                              onChange={handleChange}
+                         />
+                    </div>
+               </div>
                </div>
           </div>
      )
