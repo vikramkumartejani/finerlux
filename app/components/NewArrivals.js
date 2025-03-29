@@ -117,34 +117,34 @@ const NewArrivals = () => {
                                                   </div>
                                              )}
                                         </div>
-                                        <div className="mt-3 sm:mt-[18px] sm:text-left text-center">
-                                             <h3 className="text-black font-normal text-sm md:text-base">{watch.brand}</h3>
-                                             <h2 className="text-black font-semibold text-[18px] sm:text-[24px]">{watch.model}</h2>
-                                             <p className="text-black text-sm md:text-base font-normal">{watch.reference}</p>
+                                        <div className="mt-3 sm:mt-[12px] space-y-3 sm:text-left text-center">
+                                             <h3 className="text-black font-normal leading-none text-sm md:text-[16px]">{watch.brand}</h3>
+                                             <h2 className="text-black font-semibold leading-none text-[18px] sm:text-[24px]">{watch.model}</h2>
+                                             <p className="text-black text-sm leading-none md:text-[16px] font-normal">{watch.reference}</p>
                                         </div>
                                         <div className="w-full flex items-center justify-center sm:justify-start">
-                                             <div className="mt-3 sm:mt-[18px] w-fit bg-[#ECF0F3] p-2.5 rounded-xl">
-                                                  <h3 className="text-[#000000] text-xs sm:text-sm font-normal sm:text-left text-center">Year {watch.year}</h3>
-                                                  <div className="mt-2 flex items-center gap-2 sm:gap-3">
-                                                       <h3 className="flex items-center gap-1 sm:gap-2 text-black text-xs sm:text-sm">
+                                             <div className="mt-[12px] w-fit bg-[#ECF0F3] p-[9px] rounded-xl">
+                                                  <h3 className="text-[#000000] text-xs sm:text-[14px] font-normal leading-none sm:text-left text-center">Year {watch.year}</h3>
+                                                  <div className="mt-3 flex items-center gap-2 sm:gap-3">
+                                                       <h3 className="flex items-center gap-1 sm:gap-2 text-black text-xs sm:text-[14px] leading-none">
                                                             Papers {watch.condition.includes("Papers") ? <Right /> : <Cross />}
                                                        </h3>
-                                                       <h3 className="flex items-center gap-1 sm:gap-2 text-black text-xs sm:text-sm">
+                                                       <h3 className="flex items-center gap-1 sm:gap-2 text-black text-xs sm:text-[14px] leading-none">
                                                             Box {watch.condition.includes("Box") ? <Right /> : <Cross />}
                                                        </h3>
                                                   </div>
                                              </div>
                                         </div>
-                                        <div className="mt-3 sm:mt-[18px] flex items-center sm:justify-start justify-center gap-2 sm:gap-4">
-                                             <h3 className={`text-[18px] sm:text-[24px] font-semibold ${watch.discount > 0 ? "text-[#017EFE]" : "text-black"}`}>
+                                        <div className="my-[12px] flex items-center sm:justify-start justify-center gap-2 sm:gap-[18px]">
+                                             <h3 className={`text-[18px] leading-none sm:text-[24px] font-semibold ${watch.discount > 0 ? "text-[#017EFE]" : "text-black"}`}>
                                                   {watch.price}$
                                              </h3>
                                              {watch.discount > 0 && (
-                                                  <del className="text-[#828282] text-sm sm:text-[16px] font-normal">{watch.originalPrice}$</del>
+                                                  <del className="text-[#828282] text-sm sm:text-[16px] leading-none font-normal">{watch.originalPrice}$</del>
                                              )}
                                         </div>
                                         <div className="flex items-center justify-center sm:justify-start">
-                                             <button className="bg-[#017EFE] hover:bg-[#003D7B] transition-all duration-300 mt-4 sm:mt-[18px] h-[39px] rounded-[60px] flex items-center justify-center leading-none px-10 text-white font-medium text-base w-fit">
+                                             <button className="bg-[#017EFE] hover:bg-[#003D7B] transition-all duration-300 h-[39px] rounded-[60px] flex items-center justify-center px-10 text-white font-medium text-[16px] leading-none w-fit">
                                                   <h3 className="sm:block hidden">Contact</h3>
                                                   <h3 className="sm:hidden block">Buy</h3>
                                              </button>
