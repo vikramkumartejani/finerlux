@@ -156,7 +156,7 @@ const NewArrivals = () => {
                     </Swiper>
                </div>
 
-               <div className="grid grid-cols-2 gap-3">
+               <div className="sm:hidden grid grid-cols-2 gap-3">
                     {newArrivalsData.map((watch) => (
                          <SwiperSlide key={watch.id} className="">
                               <div className="bg-white rounded-[20px] sm:rounded-[30px] p-3 sm:p-[18px] h-full">
