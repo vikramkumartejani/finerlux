@@ -160,7 +160,7 @@ const NewArrivals = () => {
                     {newArrivalsData.map((watch) => (
                          <SwiperSlide key={watch.id} className="">
                               <div className="bg-white rounded-[20px] sm:rounded-[30px] p-3 h-full">
-                                   <div className="w-full relative">
+                                   <div className="w-full relative flex items-center justify-center">
                                         <Image
                                              src={watch.imageUrl || "/placeholder.svg"}
                                              alt={`${watch.brand} ${watch.model}`}
