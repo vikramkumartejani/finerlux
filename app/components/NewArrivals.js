@@ -86,7 +86,7 @@ const newArrivalsData = [
 
 const NewArrivals = () => {
      return (
-          <div className="mt-[60px] w-full pl-5 md:pl-0">
+          <div className="mt-[60px] w-full px-5 md:px-0">
                <div className="max-w-[1296px] mx-auto">
                     <h2 className="text-[24px] md:text-4xl font-semibold leading-[34px] mb-6 md:mb-9">New Arrivals</h2>
                </div>
