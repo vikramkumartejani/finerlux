@@ -71,19 +71,6 @@ const WithUsYouCan = () => {
                               <Image src='/assets/authenticateTab.svg' alt='sell' width={192} height={245} className='xl:w-[192px] xl:h-[245px] w-[120px] h-[153px] sm:w-[150px] sm:h-[170px] absolute lg:static right-1 sm:right-4' />
                          </div>
                     </div>
-               <div>
-                    for testing in mac:
-                    <div className="mb-4">
-                         <label className="block mb-2 text-sm font-medium text-gray-700">
-                              Condition
-                         </label>
-                         <CustomDropdown
-                              options={conditionOptions}
-                              defaultValue="Good"
-                              onChange={handleChange}
-                         />
-                    </div>
-               </div>
                </div>
           </div>
      )
