@@ -14,8 +14,8 @@ export const Content = () => {
                <p className='text-[14px] md:text-[18px] font-normal leading-[100%] md:leading-[114.99999999999999%] mt-3 md:mt-0'>We buy, sell, and source luxury timepieces and jewelry that help customers save time and enjoy more of what they love.</p>
                <div className='px-10 md:px-0 mt-3 md:mt-[24px] flex items-center flex-wrap justify-center gap-3 md:gap-6'>
                     <button className='bg-[#017EFE] w-fit px-8 md:px-10 rounded-[60px] text-white text-[12px] md:text-[16px] font-medium h-[35px] md:h-[39px] transition duration-300 hover:bg-[#003D7B]'>Buy</button>
-                    <button className='bg-[#017EFE] w-fit  px-8 md:px-10 rounded-[60px] text-white text-[12px] md:text-[16px] font-medium h-[35px] md:h-[39px] transition duration-300 hover:bg-[#003D7B]'>Sell</button>
-                    <button className='w-fit  px-8 md:px-10 rounded-[60px] text-[#017EFE] text-[12px] md:text-[16px] font-medium h-[35px] md:h-[39px] transition duration-300 hover:text-white hover:bg-[#017EFE] border-2 border-[#017EFE]'>Learn more</button>
+                    <button className='bg-[#017EFE] w-fit px-8 md:px-10 rounded-[60px] text-white text-[12px] md:text-[16px] font-medium h-[35px] md:h-[39px] transition duration-300 hover:bg-[#003D7B]'>Sell</button>
+                    <button className='w-fit px-8 md:px-10 rounded-[60px] text-[#017EFE] text-[12px] md:text-[16px] font-medium h-[35px] md:h-[39px] transition duration-300 hover:text-white hover:bg-[#017EFE] border-2 border-[#017EFE]'>Learn more</button>
                </div>
           </div>
      )
@@ -43,7 +43,6 @@ const Hero = () => {
                          />
                     </div>
 
-                    {/* Live Chat Button */}
                     <LiveChatButton />
                </div>
 
