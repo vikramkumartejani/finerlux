@@ -60,15 +60,14 @@ export default function SellTab() {
      };
 
      return (
-          <div className="flex items-start justify-between lg:flex-row flex-col gap-6 pt-8 md:pt-12 md:px-4">
-               <div className="space-y-4 w-full lg:max-w-[474px]">
-                    <h1 className="text-4xl leading-[95%] font-semibold md:text-left text-center md:block hidden">Want to sell your watch or jewelry? </h1>
-                    <h1 className="text-[24px] leading-[95%] font-semibold md:text-left text-center block md:hidden">Want to sell your watch?</h1>
-                    <p className="mt-2 pb-2 md:pb-8 text-black text-sm md:text-base font-normal leading-[20px] md:text-left text-center">
+          <div className="flex items-start justify-between lg:flex-row flex-col gap-6 pt-6 md:pt-12 md:px-4">
+               <div className="space-y-3 md:space-y-4 w-full lg:max-w-[474px]">
+                    <h1 className="text-[24px] md:text-4xl leading-[95%] font-semibold md:text-left text-center">Want to sell your watch or jewelry? </h1>
+                    <p className="md:pb-8 text-black text-sm md:text-base font-normal leading-[20px] md:text-left text-center">
                          Get a fast, fair offer and turn your item into cash instantly. <span className="md:block hidden">We guarantee transparency and hassle-free
                               transactions—no hidden fees, no delays.</span>
                     </p>
-                    <div className="w-full flex items-center justify-center md:items-start md:justify-start">
+                    <div className="w-full hidden md:flex items-center justify-center md:items-start md:justify-start">
                          <Image src='/assets/selltab.svg' alt="selltab" width={274} height={271} className="md:w-[274px] md:h-[271px] w-[80px] h-[80px]" />
                     </div>
                </div>

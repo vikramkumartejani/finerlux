@@ -44,13 +44,13 @@ export default function BuyTab() {
      };
 
      return (
-          <div className="flex items-start justify-between lg:flex-row flex-col gap-6 pt-8 md:pt-12 md:px-4">
-               <div className="space-y-4 w-full lg:max-w-[474px]">
+          <div className="flex items-start justify-between lg:flex-row flex-col gap-6 pt-6 md:pt-12 md:px-4">
+               <div className="space-y-3 md:space-y-4 w-full lg:max-w-[474px]">
                     <h1 className="text-[24px] md:text-4xl leading-[95%] font-semibold md:text-left text-center">Want to Buy a Luxury Watch? </h1>
-                    <p className="mt-2 pb-2 md:pb-8 text-black text-sm md:text-base font-normal leading-[20px] md:text-left text-center">
+                    <p className="md:pb-8 text-black text-sm md:text-base font-normal leading-[20px] md:text-left text-center">
                          Explore our handpicked collection of premium timepieces and rare finds. From vintage classics to modern icons, discover the perfect addition to your collection.
                     </p>
-                    <div className="w-full flex items-center justify-center md:items-start md:justify-start">
+                    <div className="w-full hidden md:flex items-center justify-center md:items-start md:justify-start">
                          <Image src='/assets/buytab.svg' alt="buy" width={224} height={277} className="md:w-[223px] md:h-[277px] w-[80px] h-[80px]" />
                     </div>
                </div>

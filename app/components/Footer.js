@@ -11,7 +11,7 @@ const Footer = () => {
 
 
                {/* Content */}
-               <div className="relative z-10 pt-[50px] !pb-0 w-full mx-auto max-w-full">
+               <div className="relative z-10 pt-[95px] md:pt-[46px] !pb-0 w-full mx-auto max-w-full">
                     <div className='flex items-center justify-center ml-10 md:ml-20'>
                          <Image src='/assets/footer-image.svg' alt='footer' width={121} height={210} className='md:w-[121px] md:h-[210px] w-[94px] h-[164px]' />
                     </div>

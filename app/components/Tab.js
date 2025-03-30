@@ -37,7 +37,7 @@ export default function Tab() {
   };
 
   return (
-    <main className="flex mt-[24px] flex-col items-center justify-center p-5">
+    <main className="flex md:mt-[24px] flex-col items-center justify-center px-5 py-3 md:p-5">
       <div className="w-full max-w-[1296px] mx-auto bg-white rounded-[20px] md:rounded-[30px] p-2.5 md:p-6 overflow-hidden">
         <TabsNavigation
           tabs={tabs}

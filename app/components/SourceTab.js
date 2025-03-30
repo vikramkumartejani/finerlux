@@ -45,13 +45,13 @@ export default function SourceTab() {
      };
 
      return (
-          <div className="flex items-start justify-between lg:flex-row flex-col gap-6 pt-8 md:pt-12 md:px-4">
-               <div className="space-y-4 w-full lg:max-w-[474px]">
+          <div className="flex items-start justify-between lg:flex-row flex-col gap-6 pt-6 md:pt-12 md:px-4">
+               <div className="space-y-3 md:space-y-4 w-full lg:max-w-[474px]">
                     <h1 className="text-[24px] md:text-4xl leading-[95%] font-semibold md:text-left text-center">Want Us to Source a Specific Item?</h1>
-                    <p className="mt-2 pb-2 md:pb-8 text-black text-sm md:text-base font-normal leading-[20px] md:text-left text-center">
+                    <p className="md:pb-8 text-black text-sm md:text-base font-normal leading-[20px] md:text-left text-center">
                          Can’t find it elsewhere? Share your wishlist, and we’ll scour our global network to deliver your dream item directly to you.
                     </p>
-                    <div className="w-full flex items-center justify-center md:items-start md:justify-start">
+                    <div className="w-full hidden md:flex items-center justify-center md:items-start md:justify-start">
                          <Image src='/assets/sourcetab.svg' alt="source" width={247} height={307} className="md:w-[247px] md:h-[307px] w-[80px] h-[80px]" />
                     </div>
                </div>

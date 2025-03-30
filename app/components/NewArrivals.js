@@ -86,7 +86,7 @@ const newArrivalsData = [
 
 const NewArrivals = () => {
      return (
-          <div className="mt-[60px] w-full px-[9px] sm:px-5 md:px-0">
+          <div className="mt-[24px] md:mt-[48px] w-full px-[9px] sm:px-5 md:px-0">
                <div className="max-w-[1296px] mx-auto">
                     <h2 className="text-[24px] md:text-4xl font-semibold leading-[34px] mb-6 md:mb-9 px-[11px]">New Arrivals</h2>
                </div>
@@ -202,7 +202,7 @@ const NewArrivals = () => {
                                         )}
                                    </div>
                                    <div className="flex items-center justify-start">
-                                        <button className="bg-[#017EFE] hover:bg-[#003D7B] transition-all duration-300 h-[39px] rounded-[60px] flex items-center justify-center px-10 text-white font-medium text-[16px] leading-none w-fit">
+                                        <button className="bg-[#017EFE] hover:bg-[#003D7B] transition-all duration-300 h-[35px] rounded-[60px] flex items-center justify-center px-10 text-white font-medium text-[12px] leading-[100%] w-fit">
                                              <h3 className="sm:block hidden">Contact</h3>
                                              <h3 className="sm:hidden block">Buy</h3>
                                         </button>
