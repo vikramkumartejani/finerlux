@@ -1,7 +1,6 @@
 "use client"
 import Image from 'next/image'
 import React from 'react'
-import CustomDropdown from './CustomDropdown';
 
 const WithUsYouCan = () => {
      const conditionOptions = ["Excellent", "Good", "Fair", "Poor"];
