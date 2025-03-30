@@ -88,7 +88,7 @@ const NewArrivals = () => {
      return (
           <div className="mt-[24px] md:mt-[48px] w-full px-[9px] sm:px-5 md:px-0">
                <div className="max-w-[1296px] mx-auto">
-                    <h2 className="text-[24px] md:text-4xl font-semibold leading-[34px] mb-6 md:mb-9 px-[11px]">New Arrivals</h2>
+                    <h2 className="text-[22px] md:text-4xl font-semibold leading-[34px] mb-3 md:mb-9 px-[11px]">New Arrivals</h2>
                </div>
 
                <div className="w-full overflow-hidden sm:block hidden">

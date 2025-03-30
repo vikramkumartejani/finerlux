@@ -6,7 +6,7 @@ const WithUsYouCan = () => {
      return (
           <div className='px-5 w-full'>
                <div className='mt-[24px] md:mt-[48px] max-w-[1296px] mx-auto w-full'>
-                    <h2 className="text-[24px] md:text-[36px] font-semibold !leading-[95%] mb-3 md:mb-9">With Us You Can</h2>
+                    <h2 className="text-[22px] md:text-[36px] font-semibold !leading-[95%] mb-3 md:mb-9">With Us You Can</h2>
                     <div className='w-full flex xl:flex-row flex-col items-start gap-3 sm:gap-6'>
                          <div className='w-full flex flex-col items-start gap-3 sm:gap-6'>
                               <div className='w-full flex items-center lg:flex-row flex-col gap-3 sm:gap-6'>
