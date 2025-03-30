@@ -3,11 +3,6 @@ import Image from 'next/image'
 import React from 'react'
 
 const WithUsYouCan = () => {
-     const conditionOptions = ["Excellent", "Good", "Fair", "Poor"];
-
-     const handleChange = (selected) => {
-          console.log("Selected option:", selected);
-     };
      return (
           <div className='px-5 w-full'>
                <div className='mt-[60px] max-w-[1296px] mx-auto w-full'>
