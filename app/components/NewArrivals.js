@@ -97,7 +97,7 @@ const NewArrivals = () => {
                          slidesPerView="auto"
                          modules={[Autoplay]}
                          className="mySwiper"
-                         wrapperClass="!flex"
+                         // wrapperClass="!flex"
                     >
                          {newArrivalsData.map((watch) => (
                               <SwiperSlide key={watch.id} className="w-[207px] max-w-[207px] sm:w-[284px] sm:max-w-[284px] flex-shrink-0">
