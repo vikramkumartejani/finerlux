@@ -1,11 +1,24 @@
+"use client";
+import React, { useState, useEffect } from "react";
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
 import Instagram from '../SvgIcons/Instagram'
 import Whatsapp from '../SvgIcons/Whatsapp'
 import Telegram from '../SvgIcons/Telegram'
+import { useTranslation } from "react-i18next";
+import LanguageDropdown from "./LanguageDropdown";
 
 const Footer = () => {
+     const { t } = useTranslation();
+     const [currentLang, setCurrentLang] = useState("en");
+
+     useEffect(() => {
+          const storedLang = localStorage.getItem("selectedLanguage");
+          const langFromPath = window.location.pathname.split("/")[1];
+          const finalLang = storedLang || (langFromPath === "de" ? "de" : "en")
+          setCurrentLang(finalLang);
+     }, []);
+
      return (
           <div className="w-full">
 
@@ -66,8 +79,8 @@ const Footer = () => {
                                                        className='w-full lg:w-[306px] px-4 focus:border-[#017EFE] text-base min-h-[33px] md:h-[42px] bg-white appearance-none rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300'
                                                   >
                                                        <option>GBP</option>
-                                                       <option>PKR</option>
                                                        <option>USD</option>
+                                                       <option>EUR</option>
                                                   </select>
                                                   <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                                                        <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -78,25 +91,7 @@ const Footer = () => {
                                         </div>
 
                                         <div className='w-full mt-3 md:mt-6'>
-                                             <label htmlFor="language" className="block text-sm md:text-base font-normal text-black mb-1.5 md:mb-3">
-                                                  Language
-                                             </label>
-                                             <div className="relative w-full">
-                                                  <select
-                                                       id="language"
-                                                       name="language"
-                                                       className='w-full lg:w-[306px] px-4 focus:border-[#017EFE] text-base min-h-[33px] md:h-[42px] bg-white appearance-none rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300'
-                                                  >
-                                                       <option>English</option>
-                                                       <option>URDU</option>
-                                                       <option>HINDI</option>
-                                                  </select>
-                                                  <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                                       <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M1 4L7.5 12L14 4" stroke="#828282" strokeLinecap="round" strokeLinejoin="round" />
-                                                       </svg>
-                                                  </div>
-                                             </div>
+                                             <LanguageDropdown />
                                         </div>
 
                                         <div className='mt-6 flex items-center gap-4 md:gap-[30px]'>
@@ -106,6 +101,7 @@ const Footer = () => {
                                         </div>
                                    </div>
                               </div>
+
                               <h2 className='lg:pb-11 mt-12 lg:mt-[95px] text-center text-[#000000] text-[14px] md:text-[18px] font-normal'>
                                    All rights reserved
                               </h2>

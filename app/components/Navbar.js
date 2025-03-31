@@ -1,9 +1,22 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import i18n from "i18next";
+
+import { useTranslation } from 'react-i18next';
 
 const Navbar = () => {
+   const { t } = useTranslation();
+   const [currentLang, setCurrentLang] = useState("en");
+
+   useEffect(() => {
+      const storedLang = localStorage.getItem("selectedLanguage");
+      const langFromPath = window.location.pathname.split("/")[1];
+      const finalLang = storedLang || (langFromPath === "de" ? "de" : "en");
+      setCurrentLang(finalLang);
+   }, []);
+
    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
    const toggleMenu = () => {
@@ -16,8 +29,8 @@ const Navbar = () => {
             {/* Desktop Navigation */}
             <div className='hidden md:flex items-center justify-between w-full'>
                <div className='flex items-center gap-6'>
-                  <Link href='/' className='px-3 py-1.5 text-black text-base font-normal'>Main</Link>
-                  <Link href='/services' className='px-3 py-1.5 text-black text-base font-normal'>Our Services</Link>
+                  <Link href={`/${currentLang}`} className='px-3 py-1.5 text-black text-base font-normal'>Main</Link>
+                  <Link href={`/${currentLang}/services`} className='px-3 py-1.5 text-black text-base font-normal'>Our Services</Link>
                </div>
 
                <div className='absolute left-1/2 transform -translate-x-1/2'>
