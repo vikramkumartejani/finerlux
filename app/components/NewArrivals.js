@@ -102,7 +102,7 @@ const NewArrivals = () => {
                                                   alt={`${watch.brand} ${watch.model} - Back View`}
                                                   draggable="false"
                                                   loading="lazy"
-                                                  className="w-full h-full rounded-[20px] !object-contain !aspect-square transition-opacity duration-500 opacity-0 group-hover:opacity-100 absolute top-0 left-0"
+                                                  className="w-[204px] h-[248px] rounded-[20px] !object-cover transition-opacity duration-500 opacity-0 group-hover:opacity-100 absolute top-0 left-0"
                                              />
                                              {watch.discount > 0 && (
                                                   <div className="bg-[#60FF7D] rounded-lg sm:rounded-[13px] p-2 sm:py-[10px] px-[9px] absolute w-fit top-0 left-0">
