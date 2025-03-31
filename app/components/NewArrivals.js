@@ -20,7 +20,7 @@ const newArrivalsData = [
           discount: 5,
           price: 8700,
           originalPrice: 9140,
-          imageUrl: "/assets/watch.svg",
+          imageUrl: "/assets/watch1.png",
      },
      {
           id: 2,
@@ -32,7 +32,7 @@ const newArrivalsData = [
           discount: 0,
           price: 9140,
           originalPrice: 9140,
-          imageUrl: "/assets/watch.svg",
+          imageUrl: "/assets/watch2.png",
      },
      {
           id: 3,
@@ -44,7 +44,7 @@ const newArrivalsData = [
           discount: 17,
           price: 8700,
           originalPrice: 9140,
-          imageUrl: "/assets/watch.svg",
+          imageUrl: "/assets/watch3.png",
      },
      {
           id: 4,
@@ -56,7 +56,7 @@ const newArrivalsData = [
           discount: 0,
           price: 9140,
           originalPrice: 9140,
-          imageUrl: "/assets/watch.svg",
+          imageUrl: "/assets/watch4.png",
      },
      {
           id: 5,
@@ -68,7 +68,7 @@ const newArrivalsData = [
           discount: 16,
           price: 8700,
           originalPrice: 9140,
-          imageUrl: "/assets/watch.svg",
+          imageUrl: "/assets/watch5.png",
      },
      {
           id: 6,
@@ -80,7 +80,7 @@ const newArrivalsData = [
           discount: 0,
           price: 9140,
           originalPrice: 9140,
-          imageUrl: "/assets/watch.svg",
+          imageUrl: "/assets/watch6.png",
      },
 ]
 
@@ -97,7 +97,6 @@ const NewArrivals = () => {
                          slidesPerView="auto"
                          modules={[Autoplay]}
                          className="mySwiper"
-                    // wrapperClass="!flex"
                     >
                          {newArrivalsData.map((watch) => (
                               <SwiperSlide key={watch.id} className="w-[207px] max-w-[207px] sm:w-[284px] sm:max-w-[284px] flex-shrink-0">
@@ -160,14 +159,15 @@ const NewArrivals = () => {
                     {newArrivalsData.map((watch) => (
                          <SwiperSlide key={watch.id} className="">
                               <div className="bg-white rounded-[20px] sm:rounded-[30px] p-3 h-full">
-                                   <div className="w-full relative flex items-center justify-center">
+                                   <div className="w-full relative flex items-center justify-center object-contain">
                                         <Image
                                              src={watch.imageUrl || "/placeholder.svg"}
                                              alt={`${watch.brand} ${watch.model}`}
                                              width={248}
                                              height={248}
                                              draggable="false"
-                                             className="w-[141px] h-[168px]"
+                                             priority
+                                             className="w-auto h-[168px] !bg-contain object-contain"
                                         />
                                         {watch.discount > 0 && (
                                              <div className="bg-[#60FF7D] rounded-lg sm:rounded-[13px] p-2 sm:p-2.5 absolute w-fit top-0 left-0">
