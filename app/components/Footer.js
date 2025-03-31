@@ -21,11 +21,9 @@ const Footer = () => {
 
      return (
           <div className="w-full">
-
-
                {/* Content */}
                <div className="relative z-10 pt-[95px] md:pt-[46px] !pb-0 w-full mx-auto max-w-full">
-                    <div className='flex items-center justify-center ml-10 md:ml-20'>
+                    <div className='flex items-center justify-center ml-10 md:ml-20 mb-[25px]'>
                          <Image src='/assets/footer-image.svg' alt='footer' width={121} height={210} className='md:w-[121px] md:h-[210px] w-[94px] h-[164px]' />
                     </div>
                     <div className="relative max-w-[1120px] w-full mx-auto h-full">
@@ -40,9 +38,9 @@ const Footer = () => {
                               className="lg:hidden absolute inset-0 z-10 w-full h-full bg-no-repeat bg-cover"
                               style={{ backgroundImage: "url('/assets/footer-bg-mobile.svg')", }}
                          />
-                         <div className="px-5 w-full relative pt-10 top-0 z-50 left-0 h-full flex flex-col items-center">
+                         <div className="px-5 w-full relative top-0 z-50 left-0 h-full flex flex-col items-center">
                               <h2 className='text-[#000000] max-w-[603px] text-[32px] md:text-[40px] leading-[95%] font-semibold text-center'>
-                                   We help watch collectors do more of what they love.
+                                   {t("footer.headline")}
                               </h2>
 
                               <div className='mt-12 lg:mt-[83px] w-full max-w-[1100px] mx-auto gap-8 grid grid-cols-1 sm:grid-cols-2 lg:flex items-start justify-between'>
@@ -103,10 +101,11 @@ const Footer = () => {
                               </div>
 
                               <h2 className='lg:pb-11 mt-12 lg:mt-[95px] text-center text-[#000000] text-[14px] md:text-[18px] font-normal'>
-                                   All rights reserved
+                                   {t("footer.rights")}
                               </h2>
+
                               <h2 className='pb-6 pt-[15px] md:pb-11 text-center text-[#000000] text-[14px] font-normal lg:hidden block'>
-                                   Website design by Toxarolik
+                                   {t("footer.designBy")}
                               </h2>
                          </div>
                     </div>
