@@ -102,13 +102,13 @@ const NewArrivals = () => {
                               <SwiperSlide key={watch.id} className="w-[207px] max-w-[207px] sm:w-[284px] sm:max-w-[284px] flex-shrink-0">
                                    <div className="bg-white rounded-[20px] sm:rounded-[30px] p-3 sm:p-[18px] h-full">
                                         <div className="w-full relative">
-                                             <Image
+                                             <img
                                                   src={watch.imageUrl || "/placeholder.svg"}
                                                   alt={`${watch.brand} ${watch.model}`}
                                                   width={248}
                                                   height={248}
                                                   draggable="false"
-                                                  className="w-full sm:w-[248px] sm:h-[248px]"
+                                                  className="w-full sm:w-[248px] sm:h-[248px] object-contain"
                                              />
                                              {watch.discount > 0 && (
                                                   <div className="bg-[#60FF7D] rounded-lg sm:rounded-[13px] p-2 sm:p-2.5 absolute w-fit top-0 left-0">
@@ -160,13 +160,13 @@ const NewArrivals = () => {
                          <SwiperSlide key={watch.id} className="">
                               <div className="bg-white rounded-[20px] sm:rounded-[30px] p-3 h-full">
                                    <div className="w-full relative flex items-center justify-center object-contain">
-                                        <Image
+                                        <img
                                              src={watch.imageUrl || "/placeholder.svg"}
                                              alt={`${watch.brand} ${watch.model}`}
-                                             width={248}
-                                             height={248}
+                                             // width={248}
+                                             // height={248}
                                              draggable="false"
-                                             priority
+                                             // priority
                                              className="w-auto h-[168px] !bg-contain object-contain"
                                         />
                                         {watch.discount > 0 && (
