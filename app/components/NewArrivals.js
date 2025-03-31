@@ -93,7 +93,7 @@ const NewArrivals = () => {
                                                   alt={`${watch.brand} ${watch.model}`}
                                                   draggable="false"
                                                   loading="lazy"
-                                                  className="w-full h-full !object-contain rounded-[20px] !aspect-square transition-opacity duration-500 group-hover:opacity-0 absolute top-0 left-0"
+                                                  className="w-full h-full !object-cover rounded-[20px] !aspect-square transition-opacity duration-500 group-hover:opacity-0 absolute top-0 left-0"
                                              />
 
                                              {/* Backside image (shown on hover) */}
