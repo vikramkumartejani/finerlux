@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import i18n from "../../i18n";
+import i18n, { initI18n } from "../../i18n";
 import { usePathname } from "next/navigation";
 
 const languages = [
@@ -10,6 +10,7 @@ const languages = [
 
 const LanguageDropdown = () => {
      const [currentLang, setCurrentLang] = useState(languages[0]);
+     const [isI18nReady, setIsI18nReady] = useState(false);
      const pathname = usePathname();
 
      useEffect(() => {
@@ -18,11 +19,15 @@ const LanguageDropdown = () => {
                const selectedLang = languages.find((lang) => lang.code === savedLang) || languages[0];
                setCurrentLang(selectedLang);
 
-               if (i18n.isInitialized) {
-                    i18n.changeLanguage(selectedLang.code);
-               } else {
-                    console.warn("i18n is not initialized yet.");
-               }
+               // Initialize i18n asynchronously
+               initI18n()
+                    .then(() => {
+                         i18n.changeLanguage(selectedLang.code);
+                         setIsI18nReady(true);
+                    })
+                    .catch(err => {
+                         console.error("Failed to initialize i18n:", err);
+                    });
           }
      }, []);
 
@@ -33,8 +38,8 @@ const LanguageDropdown = () => {
                setCurrentLang(selectedLang);
                if (typeof window !== "undefined") {
                     localStorage.setItem("selectedLanguage", lng);
-                    const newPath = lng === "en" ? "/en" : "/ru";
-                    window.history.pushState({}, "", newPath);
+                    const newPath = `/${lng}`;
+                    window.location.href = newPath; // Full page reload to ensure proper language switch
                }
           } else {
                console.warn("i18n is not initialized, cannot change language.");
