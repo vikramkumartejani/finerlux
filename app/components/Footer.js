@@ -15,7 +15,7 @@ const Footer = () => {
      useEffect(() => {
           const storedLang = localStorage.getItem("selectedLanguage");
           const langFromPath = window.location.pathname.split("/")[1];
-          const finalLang = storedLang || (langFromPath === "de" ? "de" : "en")
+          const finalLang = storedLang || (langFromPath === "ru" ? "ru" : "en")
           setCurrentLang(finalLang);
      }, []);
 

@@ -16,7 +16,7 @@ const LanguagePage = () => {
                if (typeof window !== "undefined") {
                     const pathLang = window.location.pathname.split("/")[1];
                     const storedLang = localStorage.getItem("selectedLanguage");
-                    return pathLang === "de" ? "de" : storedLang || "en";
+                    return pathLang === "ru" ? "ru" : storedLang || "en";
                }
                return "en";
           };
@@ -44,7 +44,7 @@ const LanguagePage = () => {
 
 export const getStaticPaths = async () => {
      return {
-          paths: [{ params: { lang: "en" } }, { params: { lang: "de" } }],
+          paths: [{ params: { lang: "en" } }, { params: { lang: "ru" } }],
           fallback: false,
      };
 };
