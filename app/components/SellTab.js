@@ -167,7 +167,7 @@ export default function SellTab() {
                                    Condition
                                    <div>
                                         <div
-                                             className="ml-1 text-gray-400"
+                                             className="ml-1 text-gray-400 cursor-pointer"
                                              onClick={openModal}
                                         >
                                              <img

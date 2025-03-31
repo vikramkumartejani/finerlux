@@ -28,11 +28,11 @@ const Footer = () => {
                               style={{ backgroundImage: "url('/assets/footer-bg-mobile.svg')", }}
                          />
                          <div className="px-5 w-full relative pt-10 top-0 z-50 left-0 h-full flex flex-col items-center">
-                              <h2 className='text-[#000000] text-[32px] md:text-[40px] leading-[95%] font-semibold text-center'>
+                              <h2 className='text-[#000000] max-w-[603px] text-[32px] md:text-[40px] leading-[95%] font-semibold text-center'>
                                    We help watch collectors do more of what they love.
                               </h2>
 
-                              <div className='mt-12 lg:mt-[110px] w-full max-w-[1100px] mx-auto gap-8 grid grid-cols-1 sm:grid-cols-2 lg:flex items-start justify-between'>
+                              <div className='mt-12 lg:mt-[83px] w-full max-w-[1100px] mx-auto gap-8 grid grid-cols-1 sm:grid-cols-2 lg:flex items-start justify-between'>
                                    <ul className='lg:w-[240px]'>
                                         <li className='text-black text-[18px] md:text-[24px] font-semibold mb-3 lg:mb-6'>Contacts</li>
                                         <li className='text-black text-[14px] md:text-[18px] font-normal mb-[12px] lg:mb-[18px]'>Hatton Garden, London</li>
