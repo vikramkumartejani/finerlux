@@ -10,11 +10,11 @@ import BuyTab from "./BuyTab";
 
 export default function Tab() {
   const [activeTab, setActiveTab] = useState("sell");
-
+  
   const tabs = [
     { id: "buy", label: "Buy" },
-    { id: "part-exchange", label: "Part Exchange" },
     { id: "sell", label: "Sell" },
+    { id: "part-exchange", label: "Part Exchange" },
     { id: "source", label: "Source" },
     { id: "authenticate", label: "Authenticate" },
   ];

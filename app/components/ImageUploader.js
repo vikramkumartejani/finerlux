@@ -23,7 +23,7 @@ const ImageUploader = () => {
 
      return (
           <div>
-               <label className="block text-base font-normal text-black mb-2.5">Upload photos of item</label>
+               <label className="block text-base font-normal text-black mb-2 md:mb-3">Upload photos of item</label>
                <div
                     className={`h-[165px] md:min-h-[191px] rounded-[20px] md:rounded-[30px] p-3 md:p-4 flex flex-col items-start justify-start bg-[#E3E8ED] `}
                     onDrop={handleDrop}

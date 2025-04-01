@@ -72,10 +72,11 @@ export default function SellTab() {
                     </div>
                </div>
 
-               <form onSubmit={validateForm} className="space-y-2.5 md:space-y-4 min-w-full lg:min-w-[500px] xl:min-w-[636px]">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 md:gap-4">
+               <form onSubmit={validateForm} className="space-y-2.5 md:space-y-6 min-w-full lg:min-w-[500px] xl:min-w-[636px]">
+                    {/* Name & Email */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 md:gap-6">
                          <div>
-                              <label htmlFor="name" className="block text-sm md:text-base font-normal text-black mb-1.5 md:mb-2.5">
+                              <label htmlFor="name" className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3">
                                    Name
                               </label>
                               <input
@@ -93,7 +94,7 @@ export default function SellTab() {
                               )}
                          </div>
                          <div>
-                              <label htmlFor="email" className="block text-sm md:text-base font-normal text-black mb-1.5 md:mb-2.5">
+                              <label htmlFor="email" className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3">
                                    Email
                               </label>
                               <input
@@ -110,30 +111,32 @@ export default function SellTab() {
                                    <p className="text-[#B80000] text-sm mt-1">It is mandatory field</p>
                               )}
                          </div>
-                    </div>
 
-                    <div>
-                         <label htmlFor="phone" className="block text-sm md:text-base font-normal text-black mb-1.5 md:mb-2.5">
-                              Phone number
-                         </label>
-                         <input
-                              type="tel"
-                              id="phone"
-                              name="phone"
-                              placeholder="(+44) 123 456 7890"
-                              className={`w-full px-4 text-base min-h-[33px] md:h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                              ${formErrors.phone
-                                        ? 'border-[#B80000]'
-                                        : 'border-transparent focus:border-[#017EFE]'}`}
-                         />
-                         {formErrors.phone && (
-                              <p className="text-[#B80000] text-sm mt-1">It is mandatory field</p>
-                         )}
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 md:gap-4 pt-4 md:pt-8">
+                         {/* Phone Number */}
                          <div>
-                              <label htmlFor="item" className="block text-sm md:text-base font-normal text-black mb-1.5 md:mb-2.5">
+                              <label htmlFor="phone" className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3">
+                                   Phone number
+                              </label>
+                              <input
+                                   type="tel"
+                                   id="phone"
+                                   name="phone"
+                                   placeholder="(+44) 123 456 7890"
+                                   className={`w-full px-4 text-base min-h-[33px] md:h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
+                              ${formErrors.phone
+                                             ? 'border-[#B80000]'
+                                             : 'border-transparent focus:border-[#017EFE]'}`}
+                              />
+                              {formErrors.phone && (
+                                   <p className="text-[#B80000] text-sm mt-1">It is mandatory field</p>
+                              )}
+                         </div>
+                    </div>
+
+                    {/* Condition & Item */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 md:gap-6 pt-4 md:pt-6">
+                         <div>
+                              <label htmlFor="item" className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3">
                                    Item
                               </label>
                               <div className="relative">
@@ -163,7 +166,7 @@ export default function SellTab() {
                          </div>
 
                          <div>
-                              <label htmlFor="condition" className="flex items-center gap-1 text-sm md:text-base font-normal text-black mb-1.5 md:mb-2.5">
+                              <label htmlFor="condition" className="flex items-center gap-1 text-sm md:text-base font-normal text-black mb-2 md:mb-3">
                                    Condition
                                    <div>
                                         <div
@@ -242,39 +245,42 @@ export default function SellTab() {
                                    <p className="text-red-500 text-sm mt-1">It is mandatory field</p>
                               )}
                          </div>
-                    </div>
 
-                    <div>
-                         <label htmlFor="price" className="block text-sm md:text-base font-normal text-black mb-1.5 md:mb-2.5">
-                              Your Price
-                         </label>
-                         <div className="relative">
-                              <div className="">
-                                   <div className="absolute top-[6px] md:top-[9px] left-0 pl-4 flex items-center pointer-events-none">
-                                        <span className="text-gray-500">£</span>
-                                   </div>
-                                   <input
-                                        type="text"
-                                        id="price"
-                                        name="price"
-                                        className={`w-full px-4 pl-7 text-base min-h-[36px] md:h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
+                         {/* Price */}
+                         <div>
+                              <label htmlFor="price" className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3">
+                                   Your Price
+                              </label>
+                              <div className="relative">
+                                   <div className=" group">
+                                        <div className="absolute top-[6px] md:top-[9px] left-0 pl-4 flex items-center pointer-events-none">
+                                             <span className="text-[#828282] text-[18px] !leading-[22px] group-hover:text-black">£</span>
+                                        </div>
+                                        <input
+                                             type="text"
+                                             id="price"
+                                             name="price"
+                                             className={`w-full px-4 pl-7 text-base min-h-[36px] md:h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
                                    ${formErrors.price
-                                                  ? 'border-[#B80000] '
-                                                  : 'border-transparent focus:border-[#017EFE]'}`}
-                                   />
+                                                       ? 'border-[#B80000] '
+                                                       : 'border-transparent focus:border-[#017EFE] group-hover:border-[#017EFE]'}`}
+                                        />
+                                   </div>
+                                   {formErrors.price && (
+                                        <p className="text-[#B80000] text-sm mt-1">It is mandatory field</p>
+                                   )}
                               </div>
-                              {formErrors.price && (
-                                   <p className="text-[#B80000] text-sm mt-1">It is mandatory field</p>
-                              )}
                          </div>
                     </div>
 
-                    <div className="pt-3 md:pt-0">
+                    {/* Image Upload */}
+                    <div className="pt-[14px] md:pt-6">
                          <ImageUploader />
                     </div>
 
-                    <div className="pt-4 md:pt-8">
-                         <p className="text-sm md:text-base font-normal text-black mb-2">I am happy to be contacted by</p>
+                    {/* Social Media */}
+                    <div className="pt-[14px] md:pt-6 pb-[14px] md:pb-0">
+                         <p className="text-sm md:text-base font-normal text-black mb-3">I am happy to be contacted by</p>
                          <div className="flex flex-wrap gap-3 md:gap-4">
                               <label className="inline-flex items-center">
                                    <Checkbox title="Telephone" checked={checkedItems.checkbox1} onChange={() => handleCheckboxChange("checkbox1")} />
@@ -291,9 +297,10 @@ export default function SellTab() {
                          </div>
                     </div>
 
+                    {/* button */}
                     <button
                          type="submit"
-                         className="!mt-5 text-base font-medium w-full bg-[#017EFE] hover:bg-[#003D7B] transition-all duration-300 text-white h-[35px] md:h-[40px] px-4 rounded-[60px]"
+                         className="text-base font-medium w-full bg-[#017EFE] hover:bg-[#003D7B] transition-all duration-300 text-white h-[35px] md:h-[40px] px-4 rounded-[60px]"
                     >
                          Submit
                     </button>
