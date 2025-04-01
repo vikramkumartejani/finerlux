@@ -2,8 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import i18n from "i18next";
-
 import { useTranslation } from 'react-i18next';
 
 const Navbar = () => {
@@ -29,8 +27,8 @@ const Navbar = () => {
             {/* Desktop Navigation */}
             <div className='hidden md:flex items-center justify-between w-full'>
                <div className='flex items-center gap-6'>
-                  <Link href={`/${currentLang}`} className='px-3 py-1.5 text-black text-base font-normal'>Main</Link>
-                  <Link href={`/${currentLang}/services`} className='px-3 py-1.5 text-black text-base font-normal'>Our Services</Link>
+                  <Link href={`/${currentLang}`} className='px-3 py-1.5 text-black text-base font-normal'>{t("navbar.main")}</Link>
+                  <Link href={`/${currentLang}/services`} className='px-3 py-1.5 text-black text-base font-normal'>{t("navbar.ourServices")}</Link>
                </div>
 
                <div className='absolute left-1/2 transform -translate-x-1/2'>
@@ -38,7 +36,7 @@ const Navbar = () => {
                </div>
 
                <div className='flex items-center gap-6 lg:gap-[48px]'>
-                  <button className='text-black text-base font-normal'>Chat</button>
+                  <button className='text-black text-base font-normal'>{t("navbar.chat")}</button>
                   <Link href='tel:+441234567890' className='flex items-center text-black text-base font-normal'>
                      <span className='mr-2'>Need help?</span> +44 123 456 7890
                   </Link>
@@ -71,12 +69,12 @@ const Navbar = () => {
                      <ul className='space-y-4'>
                         <li>
                            <Link href='/services' className='text-base font-normal text-black' onClick={toggleMenu}>
-                              Our Services
+                              {t("navbar.ourServices")}
                            </Link>
                         </li>
                         <li>
                            <Link href='/' className='text-base font-normal text-black' onClick={toggleMenu}>
-                              Main
+                              {t("navbar.main")}
                            </Link>
                         </li>
                      </ul>

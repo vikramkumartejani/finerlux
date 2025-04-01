@@ -1,19 +1,8 @@
 {
-     "header": {
-          "logo": {
-               "alt": "Logo"
-          },
-          "menu": {
-               "home": "Home",
-               "keyFeatures": "Key Features",
-               "whyChooseUs": "Why Choose Us?",
-               "faq": "FAQ",
-               "contactUs": "Contact Us"
-          },
-          "mobileMenu": {
-               "open": "menu",
-               "close": "close menu"
-          }
+     "navbar": {
+          "main": "Main",
+          "ourServices": "Our Services",
+          "chat": "Chat"
      },
      "hero":{
           "title": "We help watch collectors do more of what they love.",
