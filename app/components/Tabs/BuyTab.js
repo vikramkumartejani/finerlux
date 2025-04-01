@@ -1,10 +1,9 @@
 "use client"
 import Image from "next/image"
 import { useState } from "react"
-import Checkbox from "./Checkbox"
-import ImageUploader from "./ImageUploader";
+import Checkbox from "../Checkbox"
 
-export default function AuthenticateTab() {
+export default function BuyTab() {
      const [checkedItems, setCheckedItems] = useState({
           checkbox1: false,
           checkbox2: false,
@@ -47,15 +46,14 @@ export default function AuthenticateTab() {
      return (
           <div className="flex items-start justify-between lg:flex-row flex-col gap-6 pt-6 md:pt-12 md:px-4">
                <div className="space-y-3 md:space-y-4 w-full lg:max-w-[474px]">
-                    <h1 className="text-[24px] md:text-4xl leading-[95%] font-semibold md:text-left text-center">Want to Authenticate Your Item?</h1>
+                    <h1 className="text-[24px] md:text-4xl leading-[95%] font-semibold md:text-left text-center">Want to Buy a Luxury Watch? </h1>
                     <p className="md:pb-8 text-black text-sm md:text-base font-normal leading-[20px] md:text-left text-center">
-                         Ensure confidence in your purchase or sale with our expert verification service. Trusted by collectors worldwide for accuracy and reliability.
+                         Explore our handpicked collection of premium timepieces and rare finds. From vintage classics to modern icons, discover the perfect addition to your collection.
                     </p>
                     <div className="w-full hidden md:flex items-center justify-center md:items-start md:justify-start">
-                         <Image src='/assets/authenticateTab.svg' alt="buy" width={252} height={321} className="md:w-[252px] md:h-[321px] w-[80px] h-[80px]" />
+                         <Image src='/assets/buytab.svg' alt="buy" width={224} height={277} className="md:w-[223px] md:h-[277px] w-[80px] h-[80px]" />
                     </div>
                </div>
-
                <form onSubmit={validateForm} className="space-y-2.5 md:space-y-6 min-w-full lg:min-w-[500px] xl:min-w-[636px]">
                     {/* Name & Email */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 md:gap-6">
@@ -119,22 +117,19 @@ export default function AuthenticateTab() {
 
                     {/* Image Upload */}
                     <div className="pt-[14px] md:pt-6">
-                         <ImageUploader />
-                         <div className="pt-[14px] md:pt-6">
-                              <label htmlFor="description" className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3">
-                                   Description
-                              </label>
-                              <textarea
-                                   id="description"
-                                   name="description"
-                                   placeholder="Enter your description"
-                                   className={`w-full px-4 py-2.5 h-[160px] text-base bg-[#E3E8ED] rounded-[20px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
+                         <label htmlFor="description" className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3">
+                              Description
+                         </label>
+                         <textarea
+                              id="description"
+                              name="description"
+                              placeholder="Enter your description"
+                              className={`w-full px-4 py-2.5 h-[160px] text-base bg-[#E3E8ED] rounded-[20px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
                               ${formErrors.description ? 'border-[#B80000]' : 'border-transparent focus:border-[#017EFE]'}`}
-                              />
-                              {formErrors.description && (
-                                   <p className="text-[#B80000] text-sm mt-1">It is mandatory field</p>
-                              )}
-                         </div>
+                         />
+                         {formErrors.description && (
+                              <p className="text-[#B80000] text-sm mt-1">It is mandatory field</p>
+                         )}
                     </div>
 
                     {/* Social Media */}
@@ -167,4 +162,3 @@ export default function AuthenticateTab() {
           </div>
      )
 }
-

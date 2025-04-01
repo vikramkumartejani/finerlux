@@ -1,8 +1,8 @@
 "use client"
 import Image from "next/image"
 import { useState } from "react"
-import ImageUploader from "./ImageUploader"
-import Checkbox from "./Checkbox"
+import ImageUploader from "../ImageUploader"
+import Checkbox from "../Checkbox"
 import ConditionsModal from "./ConditionsModal"
 
 export default function SellTab() {

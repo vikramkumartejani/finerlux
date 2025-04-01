@@ -1,8 +1,8 @@
 "use client"
 import Image from "next/image"
 import { useState } from "react"
-import Checkbox from "./Checkbox"
-import ImageUploader from "./ImageUploader";
+import Checkbox from "../Checkbox"
+import ImageUploader from "../ImageUploader";
 
 export default function SourceTab() {
      const [checkedItems, setCheckedItems] = useState({

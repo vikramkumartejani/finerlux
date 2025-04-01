@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import Hero from "../components/Hero";
-import Tab from "../components/Tab";
+import Tab from "../components/Tabs/Tab";
 
 import { useTranslation } from "react-i18next";
 import { I18nextProvider } from "react-i18next";
