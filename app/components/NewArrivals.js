@@ -130,10 +130,10 @@ const NewArrivals = () => {
                                         </div>
                                         <div className="mb-[11px] mt-[8px] sm:my-[12px] flex items-center justify-start gap-2 sm:gap-[18px]">
                                              <h3 className={`text-[16px] sm:text-[24px] sm:!leading-[29px] !leading-[19px] font-semibold ${watch.discount > 0 ? "text-[#017EFE]" : "text-black"}`}>
-                                                  {watch.price}$
+                                                  {watch.price}£
                                              </h3>
                                              {watch.discount > 0 && (
-                                                  <del className="text-[#828282] text-xs sm:text-[16px] sm:!leading-[19px] leading-none font-normal">{watch.originalPrice}$</del>
+                                                  <del className="text-[#828282] text-xs sm:text-[16px] sm:!leading-[19px] leading-none font-normal">{watch.originalPrice}£</del>
                                              )}
                                         </div>
                                         <div className="flex items-center justify-start">
