@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 import TabsNavigation from "./TabsNavigation";
 import SellTab from "./SellTab";
@@ -7,16 +5,19 @@ import AuthenticateTab from "./AuthenticateTab";
 import SourceTab from "./SourceTab";
 import PartExchangeTab from "./PartExchangeTab";
 import BuyTab from "./BuyTab";
+import { useTranslation } from 'react-i18next';
 
 export default function Tab() {
+  const { t } = useTranslation();
+
   const [activeTab, setActiveTab] = useState("sell");
-  
+
   const tabs = [
-    { id: "sell", label: "Sell" },
-    { id: "buy", label: "Buy" },
-    { id: "part-exchange", label: "Part Exchange" },
-    { id: "source", label: "Source" },
-    { id: "authenticate", label: "Authenticate" },
+    { id: "sell", label: t("tab.sell") },
+    { id: "buy", label: t("tab.buy") },
+    { id: "part-exchange", label: t("tab.partExchange") },
+    { id: "source", label: t("tab.source") },
+    { id: "authenticate", label: t("tab.authenticate") },
   ];
 
   const renderTabContent = () => {
@@ -44,7 +45,7 @@ export default function Tab() {
           activeTab={activeTab}
           setActiveTab={setActiveTab}
         />
-        <div className="">{renderTabContent()}</div>
+        <div>{renderTabContent()}</div>
       </div>
     </main>
   );

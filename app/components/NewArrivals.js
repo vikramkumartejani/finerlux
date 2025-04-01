@@ -1,14 +1,8 @@
 "use client"
-import { Swiper, SwiperSlide } from "swiper/react"
-import { Autoplay } from "swiper/modules"
-import "swiper/css"
-import "swiper/css/free-mode"
-import "swiper/css/mousewheel"
-import Image from "next/image"
 import Cross from "../SvgIcons/Cross"
 import Right from "../SvgIcons/Right"
+import { useTranslation } from 'react-i18next';
 
-// Import watch data
 const newArrivalsData = [
      {
           id: 1,
@@ -78,10 +72,11 @@ const newArrivalsData = [
 ]
 
 const NewArrivals = () => {
+     const { t } = useTranslation();
      return (
-          <div className=" px-[9px] sm:px-5">
+          <div className="px-[9px] sm:px-5">
                <div className="mt-[24px] md:mt-[48px] w-full max-w-[1296px] mx-auto">
-                    <h2 className="text-[22px] md:text-4xl font-semibold leading-[34px] mb-3 md:mb-9">New Arrivals</h2>
+                    <h2 className="pl-[11px] sm:pl-0 text-[22px] md:text-[36px] font-semibold !leading-[34px] mb-3 md:mb-6">{t("newArrivals.title")}</h2>
 
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-6">
                          {newArrivalsData.map((watch) => (
@@ -102,7 +97,7 @@ const NewArrivals = () => {
                                                   alt={`${watch.brand} ${watch.model} - Back View`}
                                                   draggable="false"
                                                   loading="lazy"
-                                                  className="w-[204px] h-[248px] rounded-[20px] !object-cover transition-opacity duration-500 opacity-0 group-hover:opacity-100 absolute top-0 left-0"
+                                                  className="w-full sm:w-[204px] h-[168px] sm:h-[248px] rounded-[20px] !object-cover transition-opacity duration-500 opacity-0 group-hover:opacity-100 absolute top-0 left-0"
                                              />
                                              {watch.discount > 0 && (
                                                   <div className="bg-[#60FF7D] rounded-lg sm:rounded-[13px] p-2 sm:py-[10px] px-[9px] absolute w-fit top-0 left-0">
@@ -117,13 +112,13 @@ const NewArrivals = () => {
                                         </div>
                                         <div className="mt-[8px] sm:mt-[12px] w-full flex items-center justify-start">
                                              <div className="w-fit bg-[#ECF0F3] p-[8px] sm:p-[9px] rounded-xl">
-                                                  <h3 className="text-[#000000] text-[10px] sm:text-[14px] font-normal !leading-[7px] sm:!leading-[10px]">Year {watch.year}</h3>
+                                                  <h3 className="text-[#000000] text-[10px] sm:text-[14px] font-normal !leading-[7px] sm:!leading-[10px]">{t("newArrivals.year")} {watch.year}</h3>
                                                   <div className="mt-[8px] sm:mt-[12px] flex items-center gap-3">
                                                        <h3 className="flex items-center gap-2 text-black text-[10px] sm:text-[14px] sm:!leading-[10px] !leading-[7px]">
-                                                            Box {watch.condition.includes("Box") ? <Right /> : <Cross />}
+                                                            {t("newArrivals.box")} {watch.condition.includes("Box") ? <Right /> : <Cross />}
                                                        </h3>
                                                        <h3 className="flex items-center gap-2 text-black text-[10px] sm:text-[14px] sm:!leading-[10px] !leading-[7px]">
-                                                            Papers {watch.condition.includes("Papers") ? <Right /> : <Cross />}
+                                                            {t("newArrivals.papers")} {watch.condition.includes("Papers") ? <Right /> : <Cross />}
                                                        </h3>
                                                   </div>
                                              </div>
@@ -138,7 +133,7 @@ const NewArrivals = () => {
                                         </div>
                                         <div className="flex items-center justify-start">
                                              <button className="bg-[#017EFE] hover:bg-[#003D7B] transition-all duration-300 h-[35px] sm:h-[39px] rounded-[60px] flex items-center justify-center px-10 text-white font-medium text-[12px] sm:text-[16px] sm:!leading-[19px] leading-[100%] w-fit">
-                                                  Buy
+                                                  {t("newArrivals.buy")}
                                              </button>
                                         </div>
 

@@ -15,6 +15,50 @@
                "close": "close menu"
           }
      },
+     "hero":{
+          "title": "We help watch collectors do more of what they love.",
+          "description": "We buy, sell, and source luxury timepieces and jewelry that help customers save time and enjoy more of what they love.",
+          "buyBtn": "Buy",
+          "sellBtn": "Sell",
+          "learnMoreBtn": "Learn more"
+     },
+     "newArrivals":{
+          "title": "New Arrivals",
+          "year": "Year",
+          "box": "Box",
+          "papers": "Papers",
+          "buy": "Buy"
+     },
+     "withUsYouCan": {
+          "title": "With Us You Can",
+          "sell": {
+               "title": "Sell",
+               "description": "Sell to us with confidence. Instant payment on the spot—via direct bank transfer, cash or crypto."
+          },
+          "buy": {
+               "title": "Buy",
+               "description": "Shop authentic luxury watches and fine jewelry. Only authenticated pieces, sourced with care and guaranteed for quality."
+          },
+          "partExchange": {
+               "title": "Part Exchange",
+               "description": "Trade your luxury watch or jewelry for something new. Fair valuations, instant offers, and secure transactions with trusted experts."
+          },
+          "source": {
+               "title": "Source",
+               "description": "We help you find rare watches and jewelry from luxury brands. Personalized service to find the perfect piece."
+          },
+          "authenticate": {
+               "title": "Authenticate",
+               "description": "Ensure your watch or jewelry is 100% authentic. Expert verification, detailed assessments, and certification for guaranteed authenticity."
+          }
+     },
+     "tab":{
+          "sell": "Sell",
+          "buy": "Buy",
+          "partExchange": "Part Exchange",
+          "source": "Source",
+          "authenticate": "Authenticate"
+     },
      "footer": {
           "headline": "We help watch collectors do more of what they love.",
           "contacts": {
@@ -41,6 +85,7 @@
                "usd": "USD",
                "eur": "EUR"
           },
+          "Language": "Language",
           "rights": "All rights reserved",
           "designBy": "Website design by Toxarolik"
      }
