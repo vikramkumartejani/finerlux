@@ -5,8 +5,10 @@ import { useState } from "react"
 import ImageUploader from "../ImageUploader"
 import Checkbox from "../Checkbox"
 import ConditionsModal from "./ConditionsModal"
+import { useTranslation } from 'react-i18next';
 
 export default function PartExchangeTab() {
+     const { t } = useTranslation();
      const [checkedItems, setCheckedItems] = useState({
           checkbox1: false,
           checkbox2: false,
@@ -62,11 +64,11 @@ export default function PartExchangeTab() {
 
      return (
           <div className="flex items-start justify-between lg:flex-row flex-col gap-6 pt-6 md:pt-12 md:px-4">
-               <div className="space-y-3 md:space-y-4 w-full lg:max-w-[474px]">
-                    <h1 className="text-[24px] md:text-4xl leading-[95%] font-semibold md:text-left text-center"> Want to Part Exchange for an Upgrade?</h1>
-                    <p className="md:pb-8 text-black text-sm md:text-base font-normal leading-[20px] md:text-left text-center">
-                         Trade your current watch for something new! Enjoy flexible exchange terms and a seamless process—maximize value without the hassle.
-                    </p>
+               <div className="space-y-3 md:space-y-4 w-full lg:max-w-[482px] px-2">
+                    <h1 className="md:block hidden text-[24px] md:text-4xl leading-[95%] font-semibold md:text-left text-center">{t("tab.titlePartExchangeOne")}</h1>
+                    <h1 className="block md:hidden text-[24px] md:text-4xl leading-[95%] font-semibold md:text-left text-center">{t("tab.titlePartExchangeTwo")}</h1>
+                    <p className="md:block hidden md:pb-8 text-black text-sm md:text-base font-normal leading-[20px] md:text-left text-center">{t("tab.descPartExchangeOne")}</p>
+                    <p className="block md:hidden md:pb-8 text-black text-sm md:text-base font-normal leading-[20px] md:text-left text-center">{t("tab.descPartExchangeTwo")}</p>
                     <div className="w-full hidden md:flex items-center justify-center md:items-start md:justify-start">
                          <Image src='/assets/part-exchange.svg' alt="part-exchange" width={288} height={256} className="md:w-[288px] md:h-[256px] w-[80px] h-[80px]" />
                     </div>

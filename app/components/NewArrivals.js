@@ -88,7 +88,7 @@ const NewArrivals = () => {
                                                   alt={`${watch.brand} ${watch.model}`}
                                                   draggable="false"
                                                   loading="lazy"
-                                                  className="w-full h-full !object-cover rounded-[20px] !aspect-square transition-opacity duration-500 group-hover:opacity-0 absolute top-0 left-0"
+                                                  className="w-full h-full !object-cover rounded-[20px] !aspect-square opacity-100 group-hover:opacity-0 absolute top-0 left-0"
                                              />
 
                                              {/* Backside image (shown on hover) */}
@@ -97,14 +97,16 @@ const NewArrivals = () => {
                                                   alt={`${watch.brand} ${watch.model} - Back View`}
                                                   draggable="false"
                                                   loading="lazy"
-                                                  className="w-full sm:w-[204px] h-[168px] sm:h-[248px] rounded-[20px] !object-cover transition-opacity duration-500 opacity-0 group-hover:opacity-100 absolute top-0 left-0"
+                                                  className="w-full sm:w-[204px] h-[168px] sm:h-[248px] rounded-[20px] !object-cover opacity-0 group-hover:opacity-100 absolute top-0 left-0"
                                              />
+
                                              {watch.discount > 0 && (
                                                   <div className="bg-[#60FF7D] rounded-lg sm:rounded-[13px] p-2 sm:py-[10px] px-[9px] absolute w-fit top-0 left-0">
                                                        <h2 className="text-black text-xs sm:text-[14px] leading-[17px] font-normal">-{watch.discount}%</h2>
                                                   </div>
                                              )}
                                         </div>
+
                                         <div className="mt-[8px] sm:mt-[12px] space-y-1.5 sm:space-y-3">
                                              <h3 className="text-black font-normal !leading-[9px] sm:!leading-[12px] text-xs sm:text-[16px]">{watch.brand}</h3>
                                              <h2 className="text-black font-semibold !leading-[10px] sm:!leading-[15px] text-[14px] sm:text-[20px]">{watch.model}</h2>

@@ -3,8 +3,10 @@ import Image from "next/image"
 import { useState } from "react"
 import Checkbox from "../Checkbox"
 import ImageUploader from "../ImageUploader";
+import { useTranslation } from 'react-i18next';
 
 export default function SourceTab() {
+     const { t } = useTranslation();
      const [checkedItems, setCheckedItems] = useState({
           checkbox1: false,
           checkbox2: false,
@@ -46,11 +48,11 @@ export default function SourceTab() {
 
      return (
           <div className="flex items-start justify-between lg:flex-row flex-col gap-6 pt-6 md:pt-12 md:px-4">
-               <div className="space-y-3 md:space-y-4 w-full lg:max-w-[474px]">
-                    <h1 className="text-[24px] md:text-4xl leading-[95%] font-semibold md:text-left text-center">Want Us to Source a Specific Item?</h1>
-                    <p className="md:pb-8 text-black text-sm md:text-base font-normal leading-[20px] md:text-left text-center">
-                         Can’t find it elsewhere? Share your wishlist, and we’ll scour our global network to deliver your dream item directly to you.
-                    </p>
+               <div className="space-y-3 md:space-y-4 w-full lg:max-w-[482px] px-2">
+                    <h1 className="md:block hidden text-[24px] md:text-4xl leading-[95%] font-semibold md:text-left text-center">{t("tab.titleSourceOne")}</h1>
+                    <h1 className="block md:hidden text-[24px] md:text-4xl leading-[95%] font-semibold md:text-left text-center">{t("tab.titleSourceTwo")}</h1>
+                    <p className="md:block hidden md:pb-8 text-black text-sm md:text-base font-normal leading-[20px] md:text-left text-center">{t("tab.descSourceOne")}</p>
+                    <p className="block md:hidden md:pb-8 text-black text-sm md:text-base font-normal leading-[20px] md:text-left text-center">{t("tab.descSourceTwo")}</p>
                     <div className="w-full hidden md:flex items-center justify-center md:items-start md:justify-start">
                          <Image src='/assets/sourcetab.svg' alt="source" width={247} height={307} className="md:w-[247px] md:h-[307px] w-[80px] h-[80px]" />
                     </div>

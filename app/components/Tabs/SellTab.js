@@ -4,8 +4,10 @@ import { useState } from "react"
 import ImageUploader from "../ImageUploader"
 import Checkbox from "../Checkbox"
 import ConditionsModal from "./ConditionsModal"
+import { useTranslation } from 'react-i18next';
 
 export default function SellTab() {
+     const { t } = useTranslation();
      const [checkedItems, setCheckedItems] = useState({
           checkbox1: false,
           checkbox2: false,
@@ -61,12 +63,11 @@ export default function SellTab() {
 
      return (
           <div className="flex items-start justify-between lg:flex-row flex-col gap-6 pt-6 md:pt-12 md:px-4">
-               <div className="space-y-3 md:space-y-4 w-full lg:max-w-[474px]">
-                    <h1 className="text-[24px] md:text-4xl leading-[95%] font-semibold md:text-left text-center">Want to sell your watch or jewelry? </h1>
-                    <p className="md:pb-8 text-black text-sm md:text-base font-normal leading-[20px] md:text-left text-center">
-                         Get a fast, fair offer and turn your item into cash instantly. <span className="md:block hidden">We guarantee transparency and hassle-free
-                              transactions—no hidden fees, no delays.</span>
-                    </p>
+               <div className="space-y-3 md:space-y-4 w-full lg:max-w-[482px] px-2">
+                    <h1 className="md:block hidden text-[24px] md:text-4xl leading-[95%] font-semibold md:text-left text-center">{t("tab.titleSellOne")}</h1>
+                    <p className="md:block hidden md:pb-8 text-black text-sm md:text-base font-normal leading-[20px] md:text-left text-center">{t("tab.descSellOne")}</p>
+                    <h1 className="block md:hidden text-[24px] md:text-4xl leading-[95%] font-semibold md:text-left text-center">{t("tab.titleSellTwo")}</h1>
+                    <p className="block md:hidden md:pb-8 text-black text-sm md:text-base font-normal leading-[20px] md:text-left text-center">{t("tab.descSellTwo")}</p>
                     <div className="w-full hidden md:flex items-center justify-center md:items-start md:justify-start">
                          <Image src='/assets/selltab.svg' alt="selltab" width={274} height={271} className="md:w-[274px] md:h-[271px] w-[80px] h-[80px]" />
                     </div>
