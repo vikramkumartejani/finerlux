@@ -22,23 +22,23 @@
           "title": "With Us You Can",
           "sell": {
                "title": "Sell",
-               "description": "Sell to us with confidence. Instant payment on the spot—via direct bank transfer, cash or crypto."
+               "description": "Sell to us with confidence. Instant payment on the spot — via direct bank transfer, cash or crypto."
           },
           "buy": {
                "title": "Buy",
-               "description": "Shop authentic luxury watches and fine jewelry. Only authenticated pieces, sourced with care and guaranteed for quality."
+               "description": "Shop authentic luxury watches and fine jewellery. Only authenticated pieces, sourced with care and guaranteed for quality."
           },
           "partExchange": {
                "title": "Part Exchange",
-               "description": "Trade your luxury watch or jewelry for something new. Fair valuations, instant offers, and secure transactions with trusted experts."
+               "description": "Trade your luxury watch or jewellery for another luxury piece. Fair valuations, instant offers, and secure transactions with trusted experts."
           },
           "source": {
                "title": "Source",
-               "description": "We help you find rare watches and jewelry from luxury brands. Personalized service to find the perfect piece."
+               "description": "We help you find rare watches and jewellery from luxury brands. Personalised service to find the perfect piece."
           },
           "authenticate": {
                "title": "Authenticate",
-               "description": "Ensure your watch or jewelry is 100% authentic. Expert verification, detailed assessments, and certification for guaranteed authenticity."
+               "description": "Ensure your watch or jewellery is 100% authentic. Expert verification, detailed assessments, and certification for guaranteed authenticity."
           }
      },
      "tab":{

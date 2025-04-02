@@ -61,7 +61,7 @@ const WithUsYouCan = () => {
                     </div>
 
                     <div className='bg-white rounded-[20px] sm:rounded-[30px] w-full lg:w-1/2 xl:max-w-[306px] xl:min-w-[306px] overflow-hidden pl-[24px] lg:pl-[24px] pr-[20px] pt-[24px] pb-2.5 h-[201px] lg:h-fit xl:h-[436px] flex xl:flex-col flex-row justify-between relative'>
-                        <div className='xl:max-w-full max-w-[170px] sm:max-w-full'>
+                        <div className='xl:max-w-[240px] max-w-[170px] sm:max-w-full'>
                             <h2 className='text-black text-[18px] sm:text-[24px] font-semibold !leading-[29px] mb-3 sm:mb-[18px]'>{t("withUsYouCan.authenticate.title")}</h2>
                             <p className='text-black text-[14px] sm:text-[16px] font-normal !leading-[120%] mb-[15px]'>{t("withUsYouCan.authenticate.description")}</p>
                         </div>
