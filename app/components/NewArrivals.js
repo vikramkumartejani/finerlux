@@ -14,8 +14,8 @@ const newArrivalsData = [
           discount: 5,
           price: 8700,
           originalPrice: 9140,
-          imageUrl: "/assets/watch1.png",
-          backsideImageUrl: "/assets/watch1-backside.png",
+          imageUrl: "/assets/rolex-gmt-master-2-126710blnr-bruce-wayne-cover.webp",
+          backsideImageUrl: "/assets/rolex-gmt-master-2-126710blnr-bruce-wayne-closeup.webp",
      },
      {
           id: 2,
@@ -27,8 +27,8 @@ const newArrivalsData = [
           discount: 17,
           price: 8700,
           originalPrice: 9140,
-          imageUrl: "/assets/watch6.png",
-          backsideImageUrl: "/assets/watch6-backside.png",
+          imageUrl: "/assets/rolex-gmt-master-2-126720vtnr-sprite-cover.webp",
+          backsideImageUrl: "/assets/rolex-gmt-master-2-126720vtnr-sprite-closeup.webp",
      },
      {
           id: 3,
@@ -40,8 +40,8 @@ const newArrivalsData = [
           discount: 0,
           price: 9140,
           originalPrice: 9140,
-          imageUrl: "/assets/watch4.png",
-          backsideImageUrl: "/assets/watch4-backside.png",
+          imageUrl: "/assets/rolex-gmt-master-2-126711chnr-rootbeer-cover.webp",
+          backsideImageUrl: "/assets/rolex-gmt-master-2-126711chnr-rootbeer-closeup.webp",
      },
      {
           id: 4,
@@ -53,8 +53,8 @@ const newArrivalsData = [
           discount: 16,
           price: 8700,
           originalPrice: 9140,
-          imageUrl: "/assets/watch5.png",
-          backsideImageUrl: "/assets/watch5-backside.png",
+          imageUrl: "/assets/rolex-gmt-master-2-126710blro-pepsi-cover.webp",
+          backsideImageUrl: "/assets/rolex-gmt-master-2-126710blro-pepsi-close.webp",
      },
      {
           id: 5,
@@ -66,8 +66,8 @@ const newArrivalsData = [
           discount: 0,
           price: 9140,
           originalPrice: 9140,
-          imageUrl: "/assets/watch3.png",
-          backsideImageUrl: "/assets/watch3-backside.png",
+          imageUrl: "/assets/rolex-gmt-master-2-126710blnr-batgirl-cover.webp",
+          backsideImageUrl: "/assets/rolex-gmt-master-2-126710blnr-batgirl-closeup.webp",
      },
 ]
 
