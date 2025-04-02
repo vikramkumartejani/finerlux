@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import i18n, { initI18n } from "../../i18n";
 import { usePathname } from "next/navigation";
+import { useTranslation } from 'react-i18next';
 
 const languages = [
      { code: "en", name: "English" },
@@ -9,6 +10,7 @@ const languages = [
 ];
 
 const LanguageDropdown = () => {
+     const { t } = useTranslation();
      const [currentLang, setCurrentLang] = useState(languages[0]);
      const [isI18nReady, setIsI18nReady] = useState(false);
      const pathname = usePathname();
@@ -39,7 +41,7 @@ const LanguageDropdown = () => {
                if (typeof window !== "undefined") {
                     localStorage.setItem("selectedLanguage", lng);
                     const newPath = `/${lng}`;
-                    window.location.href = newPath; // Full page reload to ensure proper language switch
+                    window.location.href = newPath; 
                }
           } else {
                console.warn("i18n is not initialized, cannot change language.");
@@ -48,8 +50,8 @@ const LanguageDropdown = () => {
 
      return (
           <>
-               <label htmlFor="language" className="block text-sm md:text-base font-normal text-black mb-1.5 md:mb-3">
-                    Language
+               <label htmlFor="language" className="block text-sm md:text-[16px] font-normal text-black mb-1.5 md:mb-3 !leading-[22px]">
+               {t("footer.language")}
                </label>
                <div className="relative w-full">
                     <select

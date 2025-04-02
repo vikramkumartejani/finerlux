@@ -19,9 +19,9 @@ const Footer = () => {
 
      // Use a fallback text until translation is ready
      const fallbackTranslation = {
-          "footer.headline": "Quality diamonds and precious gems",
-          "footer.rights": "© 2023 FinerLux. All rights reserved",
-          "footer.designBy": "Design by Studio"
+          "footer.headline": "We help watch collectors do more of what they love.",
+          "footer.rights": "All rights reserved",
+          "footer.designBy": "Website design by Toxarolik"
      };
 
      const { t, ready } = useTranslation();
@@ -65,30 +65,30 @@ const Footer = () => {
                               </h2>
                               <div className='mt-12 lg:mt-[83px] w-full max-w-[1100px] mx-auto gap-8 grid grid-cols-1 sm:grid-cols-2 lg:flex items-start justify-between'>
                                    <ul className='lg:w-[240px]'>
-                                        <li className='text-black text-[18px] md:text-[24px] font-semibold mb-3 lg:mb-6'>Contacts</li>
-                                        <li className='text-black text-[14px] md:text-[18px] font-normal mb-[12px] lg:mb-[18px]'>Hatton Garden, London</li>
-                                        <li className='text-black text-[14px] md:text-[18px] font-normal mb-[12px] lg:mb-[18px]'>info@finerlux.com</li>
-                                        <li className='text-black text-[14px] md:text-[18px] font-normal'>+44 123 456 7890</li>
+                                        <li className='text-black text-[18px] md:text-[24px] font-semibold mb-3 lg:mb-6 !leading-[29px]'>{t("footer.contacts.title")}</li>
+                                        <li className='text-black text-[14px] md:text-[18px] font-normal mb-[12px] lg:mb-[18px] !leading-[22px]'>Hatton Garden, London</li>
+                                        <li className='text-black text-[14px] md:text-[18px] font-normal mb-[12px] lg:mb-[18px] !leading-[22px]'>info@finerlux.com</li>
+                                        <li className='text-black text-[14px] md:text-[18px] font-normal !leading-[22px]'>+44 123 456 7890</li>
                                    </ul>
 
                                    <ul className='lg:w-[140px]'>
-                                        <li className='text-black text-[18px] md:text-[24px] font-semibold mb-3 lg:mb-6'>Services</li>
-                                        <li className='text-black text-[14px] md:text-[18px] font-normal mb-[12px] lg:mb-[18px]'>Part exchange</li>
-                                        <li className='text-black text-[14px] md:text-[18px] font-normal mb-[12px] lg:mb-[18px]'>Authenticate</li>
-                                        <li className='text-black text-[14px] md:text-[18px] font-normal mb-[12px] lg:mb-[18px]'>Source</li>
-                                        <li className='text-black text-[14px] md:text-[18px] font-normal'>Buy/Sell</li>
+                                        <li className='text-black text-[18px] md:text-[24px] font-semibold mb-3 lg:mb-6 !leading-[29px]'>{t("footer.services.title")}</li>
+                                        <li className='text-black text-[14px] md:text-[18px] font-normal mb-[12px] lg:mb-[18px] !leading-[22px]'>{t("footer.services.partExchange")}</li>
+                                        <li className='text-black text-[14px] md:text-[18px] font-normal mb-[12px] lg:mb-[18px] !leading-[22px]'>{t("footer.services.authenticate")}</li>
+                                        <li className='text-black text-[14px] md:text-[18px] font-normal mb-[12px] lg:mb-[18px] !leading-[22px]'>{t("footer.services.source")}</li>
+                                        <li className='text-black text-[14px] md:text-[18px] font-normal !leading-[22px]'>{t("footer.services.buySell")}</li>
                                    </ul>
 
                                    <ul className='lg:w-[240px]'>
-                                        <li className='text-black text-[18px] md:text-[24px] font-semibold mb-3 lg:mb-6'>Privacy</li>
-                                        <li className='text-black text-[14px] md:text-[18px] font-normal mb-[12px] lg:mb-[18px]'>Terms & Conditions</li>
-                                        <li className='text-black text-[14px] md:text-[18px] font-normal'>Privacy policy</li>
+                                        <li className='text-black text-[18px] md:text-[24px] font-semibold mb-3 lg:mb-6 !leading-[29px]'>{t("footer.privacy.title")}</li>
+                                        <li className='text-black text-[14px] md:text-[18px] font-normal mb-[12px] lg:mb-[18px] !leading-[22px]'>Terms & Conditions</li>
+                                        <li className='text-black text-[14px] md:text-[18px] font-normal !leading-[22px]'>Privacy policy</li>
                                    </ul>
 
                                    <div className='lg:max-w-[306px]'>
                                         <div className='w-full'>
-                                             <label htmlFor="currency" className="block text-sm md:text-base font-normal text-black mb-1.5 md:mb-3">
-                                                  Currency
+                                             <label htmlFor="currency" className="block text-sm md:text-[16px] font-normal text-black mb-1.5 md:mb-3 !leading-[19px]">
+                                             {t("footer.currencyLabel")}
                                              </label>
                                              <div className="relative w-full">
                                                   <select

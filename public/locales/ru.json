@@ -71,10 +71,7 @@
      "footer": {
           "headline": "Мы помогаем коллекционерам заниматься тем что они любят",
           "contacts": {
-               "title": "Контакты",
-               "address": "Хаттон Гарден, Лондон",
-               "email": "info@finerlux.com",
-               "phone": "+44 123 456 7890"
+               "title": "Контакты"
           },
           "services": {
                "title": "Услуги",
@@ -84,18 +81,11 @@
                "buySell": "Покупка/Продажа"
           },
           "privacy": {
-               "title": "Конфиденциальность",
-               "terms": "Условия и положения",
-               "policy": "Политика конфиденциальности"
+               "title": "Приватность"
           },
           "currencyLabel": "Валюта",
-          "currencyOptions": {
-               "gbp": "Фунт стерлингов (GBP)",
-               "usd": "Доллар США (USD)",
-               "eur": "Евро (EUR)"
-          },
-          "Language": "Язык",
-          "rights": "Все права защищены",
-          "designBy": "Дизайн сайта от Toxarolik"
+          "language": "Язык",
+          "rights": "All rights reserved",
+          "designBy": "Website design by Toxarolik"
      }
 }

@@ -71,11 +71,9 @@
      "footer": {
           "headline": "We help watch collectors do more of what they love.",
           "contacts": {
-               "title": "Contacts",
-               "address": "Hatton Garden, London",
-               "email": "info@finerlux.com",
-               "phone": "+44 123 456 7890"
+               "title": "Contacts"
           },
+         
           "services": {
                "title": "Services",
                "partExchange": "Part exchange",
@@ -84,17 +82,10 @@
                "buySell": "Buy/Sell"
           },
           "privacy": {
-               "title": "Privacy",
-               "terms": "Terms & Conditions",
-               "policy": "Privacy policy"
+               "title": "Privacy"
           },
           "currencyLabel": "Currency",
-          "currencyOptions": {
-               "gbp": "GBP",
-               "usd": "USD",
-               "eur": "EUR"
-          },
-          "Language": "Language",
+          "language": "Language",
           "rights": "All rights reserved",
           "designBy": "Website design by Toxarolik"
      }
