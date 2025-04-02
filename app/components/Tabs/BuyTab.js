@@ -1,8 +1,9 @@
 "use client"
 import Image from "next/image"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Checkbox from "../Checkbox"
 import { useTranslation } from 'react-i18next';
+import emailjs from '@emailjs/browser';
 
 export default function BuyTab() {
      const { t } = useTranslation();
@@ -12,13 +13,28 @@ export default function BuyTab() {
           checkbox3: false,
           checkbox4: false,
      });
-
      const [formErrors, setFormErrors] = useState({
           name: false,
           email: false,
           phone: false,
           description: false,
      });
+     const [isSubmitting, setIsSubmitting] = useState(false);
+     const [submitStatus, setSubmitStatus] = useState(null);
+
+     useEffect(() => {
+          emailjs.init("0rv38QLal2gWRPuD8");
+     }, []);
+
+     useEffect(() => {
+          if (submitStatus === 'success') {
+               const timer = setTimeout(() => {
+                    setSubmitStatus(null);
+               }, 5000);
+
+               return () => clearTimeout(timer);
+          }
+     }, [submitStatus]);
 
      const handleCheckboxChange = (key) => {
           setCheckedItems((prev) => ({
@@ -27,7 +43,7 @@ export default function BuyTab() {
           }));
      };
 
-     const validateForm = (e) => {
+     const validateForm = async (e) => {
           e.preventDefault();
           const form = e.target;
           const errors = {
@@ -36,12 +52,47 @@ export default function BuyTab() {
                phone: !form.phone.value.trim(),
                description: !form.description.value.trim(),
           };
-
           setFormErrors(errors);
-
           const hasErrors = Object.values(errors).some(error => error);
+
           if (!hasErrors) {
-               console.log('Form submitted successfully');
+               setIsSubmitting(true);
+
+               const contactPreferences = [];
+               if (checkedItems.checkbox1) contactPreferences.push("Telephone");
+               if (checkedItems.checkbox2) contactPreferences.push("SMS");
+               if (checkedItems.checkbox3) contactPreferences.push("Email");
+               if (checkedItems.checkbox4) contactPreferences.push("WhatsApp");
+
+               const templateParams = {
+                    name: form.name.value,
+                    email: form.email.value,
+                    phone: form.phone.value,
+                    description: form.description.value,
+                    contact_preferences: contactPreferences.join(", ") || "None specified"
+               };
+
+               try {
+                    await emailjs.send(
+                         'service_2hai2nx',
+                         'template_gsqnh0e',
+                         templateParams
+                    );
+
+                    setSubmitStatus('success');
+                    form.reset();
+                    setCheckedItems({
+                         checkbox1: false,
+                         checkbox2: false,
+                         checkbox3: false,
+                         checkbox4: false,
+                    });
+               } catch (error) {
+                    console.error('Error sending email:', error);
+                    setSubmitStatus('error');
+               } finally {
+                    setIsSubmitting(false);
+               }
           }
      };
 
@@ -95,7 +146,6 @@ export default function BuyTab() {
                                    <p className="text-[#B80000] text-sm mt-1">It is mandatory field</p>
                               )}
                          </div>
-
                          {/* Phone Number */}
                          <div>
                               <label htmlFor="phone" className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3">
@@ -116,8 +166,7 @@ export default function BuyTab() {
                               )}
                          </div>
                     </div>
-
-                    {/* Image Upload */}
+                    {/* Description */}
                     <div className="pt-[14px] md:pt-6">
                          <label htmlFor="description" className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3">
                               Description
@@ -133,8 +182,7 @@ export default function BuyTab() {
                               <p className="text-[#B80000] text-sm mt-1">It is mandatory field</p>
                          )}
                     </div>
-
-                    {/* Social Media */}
+                    {/* Contact Preferences */}
                     <div className="pt-[14px] md:pt-6 pb-[14px] md:pb-0">
                          <p className="text-sm md:text-base font-normal text-black mb-3">I am happy to be contacted by</p>
                          <div className="flex flex-wrap gap-3 md:gap-4">
@@ -152,13 +200,24 @@ export default function BuyTab() {
                               </label>
                          </div>
                     </div>
-
-                    {/* button */}
+                    {/* Status message */}
+                    {submitStatus === 'success' && (
+                         <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded">
+                              Form submitted successfully! We'll get back to you soon.
+                         </div>
+                    )}
+                    {submitStatus === 'error' && (
+                         <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+                              There was an error submitting the form. Please try again later.
+                         </div>
+                    )}
+                    {/* Button */}
                     <button
                          type="submit"
-                         className="text-base font-medium w-full bg-[#017EFE] hover:bg-[#003D7B] transition-all duration-300 text-white h-[35px] md:h-[40px] px-4 rounded-[60px]"
+                         disabled={isSubmitting}
+                         className={`text-base font-medium w-full ${isSubmitting ? 'bg-gray-400' : 'bg-[#017EFE] hover:bg-[#003D7B]'} transition-all duration-300 text-white h-[35px] md:h-[40px] px-4 rounded-[60px] flex items-center justify-center`}
                     >
-                         Submit
+                         {isSubmitting ? 'Submitting...' : 'Submit'}
                     </button>
                </form>
           </div>
