@@ -50,7 +50,7 @@ const Hero = () => {
 
                     <div className='w-5/6 h-full -ml-10'>
                          <img
-                              src="/assets/hero-watch.png"
+                              src="/assets/hero-watch.webp"
                               alt="Rolex GMT-Master II"
                               className="relative z-10 h-full"
                          />
@@ -66,7 +66,7 @@ const Hero = () => {
                               <img src='/assets/mobile.svg' alt='mobil' className='w-full h-full' />
                          </div>
                          <div className=' absolute z-40 flex items-end justify-end right-2 top-0 h-full'>
-                              <img src="/assets/hero-watch.png" alt='kmg' className='w-full h-full bg-contain' />
+                              <img src="/assets/hero-watch.webp" alt='hero-watch' className='w-full h-full bg-contain' />
                          </div>
                          <LiveChatButton />
                     </div>
