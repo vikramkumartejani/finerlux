@@ -1,7 +1,6 @@
-
 "use client"
 import Image from "next/image"
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import ImageUploader from "../ImageUploader"
 import Checkbox from "../Checkbox"
 import ConditionsModal from "./ConditionsModal"
@@ -9,6 +8,8 @@ import { useTranslation } from 'react-i18next';
 
 export default function PartExchangeTab() {
      const { t } = useTranslation();
+     const modalRef = useRef(null);
+
      const [checkedItems, setCheckedItems] = useState({
           checkbox1: false,
           checkbox2: false,
@@ -54,13 +55,38 @@ export default function PartExchangeTab() {
 
      const [isModalOpen, setIsModalOpen] = useState(false);
 
-     const openModal = () => {
+     const openModal = (e) => {
+          e.preventDefault();
+          e.stopPropagation();
           setIsModalOpen(true);
      };
 
      const closeModal = () => {
           setIsModalOpen(false);
      };
+
+     useEffect(() => {
+          const handleClickOutside = (event) => {
+               if (isModalOpen && modalRef.current && !modalRef.current.contains(event.target)) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    closeModal();
+               }
+          };
+
+          if (isModalOpen) {
+               document.addEventListener('mousedown', handleClickOutside, true);
+               document.addEventListener('click', handleClickOutside, true);
+
+               // document.body.style.overflow = 'hidden';
+          }
+
+          return () => {
+               document.removeEventListener('mousedown', handleClickOutside, true);
+               document.removeEventListener('click', handleClickOutside, true);
+               document.body.style.overflow = 'auto';
+          };
+     }, [isModalOpen]);
 
      return (
           <div className="flex items-start justify-between lg:flex-row flex-col gap-6 pt-6 md:pt-12 md:px-4">
@@ -150,6 +176,7 @@ export default function PartExchangeTab() {
                                                   ? 'border-red-500 bg-red-50'
                                                   : 'border-transparent focus:border-[#017EFE]'}`}
                                         defaultValue="Watch"
+                                        disabled={isModalOpen}
                                    >
                                         <option>Watch</option>
                                         <option>Jewelry</option>
@@ -157,9 +184,8 @@ export default function PartExchangeTab() {
                                    </select>
                                    <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                                         <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                             <path d="M1 4L7.5 12L14 4" stroke="#828282" stroke-linecap="round" stroke-linejoin="round" />
+                                             <path d="M1 4L7.5 12L14 4" stroke="#828282" strokeLinecap="round" strokeLinejoin="round" />
                                         </svg>
-
                                    </div>
                               </div>
                               {formErrors.item && (
@@ -187,16 +213,24 @@ export default function PartExchangeTab() {
                                              <div className="bg-black bg-opacity-50 top-0 fixed inset-0 z-50">
                                                   <div
                                                        className="fixed top-0 inset-0 mx-4 mb-4 z-50 rounded-[30px] flex items-center justify-center !overflow-auto scrollbar-hide"
-                                                       onClick={closeModal}
+                                                       onClick={(e) => {
+                                                            e.preventDefault();
+                                                            e.stopPropagation();
+                                                            closeModal();
+                                                       }}
                                                   >
-
                                                        <div
+                                                            ref={modalRef}
                                                             className="bg-white p-4 md:p-6 overflow-auto scrollbar-hide rounded-[30px] !mx-5 shadow-xl max-w-3xl w-full absolute md:relative top-4 md:top-0"
                                                             onClick={(e) => e.stopPropagation()}
                                                        >
                                                             <button
                                                                  className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
-                                                                 onClick={closeModal}
+                                                                 onClick={(e) => {
+                                                                      e.preventDefault();
+                                                                      e.stopPropagation();
+                                                                      closeModal();
+                                                                 }}
                                                                  aria-label="Close modal"
                                                             >
                                                                  <svg
@@ -230,6 +264,7 @@ export default function PartExchangeTab() {
                                                   ? 'border-red-500 bg-red-50'
                                                   : 'border-transparent focus:border-[#017EFE]'}`}
                                         defaultValue="Good"
+                                        disabled={isModalOpen}
                                    >
                                         <option>New</option>
                                         <option>Unworn</option>
@@ -240,9 +275,8 @@ export default function PartExchangeTab() {
                                    </select>
                                    <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                                         <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                             <path d="M1 4L7.5 12L14 4" stroke="#828282" stroke-linecap="round" stroke-linejoin="round" />
+                                             <path d="M1 4L7.5 12L14 4" stroke="#828282" strokeLinecap="round" strokeLinejoin="round" />
                                         </svg>
-
                                    </div>
                               </div>
                               {formErrors.condition && (
@@ -256,7 +290,7 @@ export default function PartExchangeTab() {
                                    Your Price
                               </label>
                               <div className="relative">
-                                   <div className=" group">
+                                   <div className="group">
                                         <div className="absolute top-[6px] md:top-[9px] left-0 pl-4 flex items-center pointer-events-none">
                                              <span className="text-[#828282] text-[18px] !leading-[22px] group-hover:text-black">£</span>
                                         </div>
@@ -268,6 +302,7 @@ export default function PartExchangeTab() {
                                                  ${formErrors.price
                                                        ? 'border-[#B80000] '
                                                        : 'border-transparent focus:border-[#017EFE] group-hover:border-[#017EFE]'}`}
+                                             disabled={isModalOpen}
                                         />
                                    </div>
                                    {formErrors.price && (
@@ -279,7 +314,7 @@ export default function PartExchangeTab() {
 
                     {/* Image Upload & Description */}
                     <div className="pt-[14px] md:pt-6">
-                         <ImageUploader />
+                         <ImageUploader disabled={isModalOpen} />
 
                          <div className="pt-4 md:pt-6">
                               <label htmlFor="description" className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3">
@@ -291,6 +326,7 @@ export default function PartExchangeTab() {
                                    placeholder="Enter your description"
                                    className={`w-full px-4 py-2.5 h-[160px] text-base bg-[#E3E8ED] rounded-[20px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
                               ${formErrors.description ? 'border-[#B80000]' : 'border-transparent focus:border-[#017EFE]'}`}
+                                   disabled={isModalOpen}
                               />
                               {formErrors.description && (
                                    <p className="text-[#B80000] text-sm mt-1">It is mandatory field</p>
@@ -303,16 +339,16 @@ export default function PartExchangeTab() {
                          <p className="text-sm md:text-base font-normal text-black mb-3">I am happy to be contacted by</p>
                          <div className="flex flex-wrap gap-3 md:gap-4">
                               <label className="inline-flex items-center">
-                                   <Checkbox title="Telephone" checked={checkedItems.checkbox1} onChange={() => handleCheckboxChange("checkbox1")} />
+                                   <Checkbox title="Telephone" checked={checkedItems.checkbox1} onChange={() => handleCheckboxChange("checkbox1")} disabled={isModalOpen} />
                               </label>
                               <label className="inline-flex items-center">
-                                   <Checkbox title="SMS" checked={checkedItems.checkbox2} onChange={() => handleCheckboxChange("checkbox2")} />
+                                   <Checkbox title="SMS" checked={checkedItems.checkbox2} onChange={() => handleCheckboxChange("checkbox2")} disabled={isModalOpen} />
                               </label>
                               <label className="inline-flex items-center">
-                                   <Checkbox title="Email" checked={checkedItems.checkbox3} onChange={() => handleCheckboxChange("checkbox3")} />
+                                   <Checkbox title="Email" checked={checkedItems.checkbox3} onChange={() => handleCheckboxChange("checkbox3")} disabled={isModalOpen} />
                               </label>
                               <label className="inline-flex items-center">
-                                   <Checkbox title="Whatsapp" checked={checkedItems.checkbox4} onChange={() => handleCheckboxChange("checkbox4")} />
+                                   <Checkbox title="Whatsapp" checked={checkedItems.checkbox4} onChange={() => handleCheckboxChange("checkbox4")} disabled={isModalOpen} />
                               </label>
                          </div>
                     </div>
@@ -321,6 +357,7 @@ export default function PartExchangeTab() {
                     <button
                          type="submit"
                          className="text-base font-medium w-full bg-[#017EFE] hover:bg-[#003D7B] transition-all duration-300 text-white h-[35px] md:h-[40px] px-4 rounded-[60px]"
+                         disabled={isModalOpen}
                     >
                          Submit
                     </button>
