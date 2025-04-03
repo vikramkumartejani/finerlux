@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image"
-import { useState } from "react"
+import { useState, useRef } from "react"
 import ImageUploader from "../ImageUploader"
 import Checkbox from "../Checkbox"
 import ConditionsModal from "./ConditionsModal"
@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 
 export default function SellTab() {
      const { t } = useTranslation();
+     const modalRef = useRef(null);
      const [checkedItems, setCheckedItems] = useState({
           checkbox1: false,
           checkbox2: false,
@@ -53,12 +54,21 @@ export default function SellTab() {
 
      const [isModalOpen, setIsModalOpen] = useState(false);
 
-     const openModal = () => {
+     const openModal = (e) => {
+          e.stopPropagation(); // Prevent event from bubbling up
           setIsModalOpen(true);
      };
 
      const closeModal = () => {
           setIsModalOpen(false);
+     };
+
+     const handleModalBackdropClick = (e) => {
+          // Only close if clicking directly on the backdrop, not on modal content
+          if (modalRef.current && !modalRef.current.contains(e.target)) {
+               closeModal();
+               e.stopPropagation(); // Prevent triggering other click events
+          }
      };
 
      return (
@@ -149,6 +159,7 @@ export default function SellTab() {
                                                   ? 'border-[#B80000]  bg-red-50'
                                                   : 'border-transparent focus:border-[#017EFE]'}`}
                                         defaultValue="Watch"
+                                        disabled={isModalOpen}
                                    >
                                         <option>Watch</option>
                                         <option>Jewelry</option>
@@ -156,9 +167,8 @@ export default function SellTab() {
                                    </select>
                                    <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                                         <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                             <path d="M1 4L7.5 12L14 4" stroke="#828282" stroke-linecap="round" stroke-linejoin="round" />
+                                             <path d="M1 4L7.5 12L14 4" stroke="#828282" strokeLinecap="round" strokeLinejoin="round" />
                                         </svg>
-
                                    </div>
                               </div>
                               {formErrors.item && (
@@ -183,19 +193,21 @@ export default function SellTab() {
                                         </div>
 
                                         {isModalOpen && (
-                                             <div className="bg-black bg-opacity-50 top-0 fixed inset-0 z-[9999]">
+                                             <div className="bg-black bg-opacity-50 top-0 fixed inset-0 z-[9999]" onClick={handleModalBackdropClick}>
                                                   <div
                                                        className="fixed top-0 inset-0 mx-4 mb-4 !z-[10000] flex items-center rounded-[30px] justify-center !overflow-auto scrollbar-hide"
-                                                       onClick={closeModal}
                                                   >
-
                                                        <div
+                                                            ref={modalRef}
                                                             className="bg-white p-4 md:p-6 overflow-auto scrollbar-hide rounded-[30px] !mx-5 shadow-xl max-w-3xl w-full absolute md:relative top-4 md:top-0"
                                                             onClick={(e) => e.stopPropagation()}
                                                        >
                                                             <button
                                                                  className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
-                                                                 onClick={closeModal}
+                                                                 onClick={(e) => {
+                                                                      e.stopPropagation();
+                                                                      closeModal();
+                                                                 }}
                                                                  aria-label="Close modal"
                                                             >
                                                                  <svg
@@ -229,11 +241,7 @@ export default function SellTab() {
                                                   ? 'border-[#B80000] bg-red-50'
                                                   : 'border-transparent focus:border-[#017EFE]'}`}
                                         defaultValue="Good"
-                                        onClick={(e) => {
-                                             if (isModalOpen) {
-                                                  e.preventDefault();
-                                             }
-                                        }}
+                                        disabled={isModalOpen}
                                    >
                                         <option>New</option>
                                         <option>Unworn</option>
@@ -244,9 +252,8 @@ export default function SellTab() {
                                    </select>
                                    <div className="absolute inset-y-0 right-0 flex items-center pr-3 ">
                                         <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                             <path d="M1 4L7.5 12L14 4" stroke="#828282" stroke-linecap="round" stroke-linejoin="round" />
+                                             <path d="M1 4L7.5 12L14 4" stroke="#828282" strokeLinecap="round" strokeLinejoin="round" />
                                         </svg>
-
                                    </div>
                               </div>
                               {formErrors.condition && (
@@ -272,6 +279,7 @@ export default function SellTab() {
                                    ${formErrors.price
                                                        ? 'border-[#B80000] '
                                                        : 'border-transparent focus:border-[#017EFE] group-hover:border-[#017EFE]'}`}
+                                             disabled={isModalOpen}
                                         />
                                    </div>
                                    {formErrors.price && (
@@ -283,7 +291,7 @@ export default function SellTab() {
 
                     {/* Image Upload */}
                     <div className="pt-[14px] md:pt-6">
-                         <ImageUploader />
+                         <ImageUploader disabled={isModalOpen} />
                     </div>
 
                     {/* Social Media */}
@@ -291,16 +299,16 @@ export default function SellTab() {
                          <p className="text-sm md:text-base font-normal text-black mb-3">I am happy to be contacted by</p>
                          <div className="flex flex-wrap gap-3 md:gap-4">
                               <label className="inline-flex items-center">
-                                   <Checkbox title="Telephone" checked={checkedItems.checkbox1} onChange={() => handleCheckboxChange("checkbox1")} />
+                                   <Checkbox title="Telephone" checked={checkedItems.checkbox1} onChange={() => handleCheckboxChange("checkbox1")} disabled={isModalOpen} />
                               </label>
                               <label className="inline-flex items-center">
-                                   <Checkbox title="SMS" checked={checkedItems.checkbox2} onChange={() => handleCheckboxChange("checkbox2")} />
+                                   <Checkbox title="SMS" checked={checkedItems.checkbox2} onChange={() => handleCheckboxChange("checkbox2")} disabled={isModalOpen} />
                               </label>
                               <label className="inline-flex items-center">
-                                   <Checkbox title="Email" checked={checkedItems.checkbox3} onChange={() => handleCheckboxChange("checkbox3")} />
+                                   <Checkbox title="Email" checked={checkedItems.checkbox3} onChange={() => handleCheckboxChange("checkbox3")} disabled={isModalOpen} />
                               </label>
                               <label className="inline-flex items-center">
-                                   <Checkbox title="Whatsapp" checked={checkedItems.checkbox4} onChange={() => handleCheckboxChange("checkbox4")} />
+                                   <Checkbox title="Whatsapp" checked={checkedItems.checkbox4} onChange={() => handleCheckboxChange("checkbox4")} disabled={isModalOpen} />
                               </label>
                          </div>
                     </div>
@@ -309,6 +317,7 @@ export default function SellTab() {
                     <button
                          type="submit"
                          className="text-base font-medium w-full bg-[#017EFE] hover:bg-[#003D7B] transition-all duration-300 text-white h-[35px] md:h-[40px] px-4 rounded-[60px]"
+                         disabled={isModalOpen}
                     >
                          Submit
                     </button>
