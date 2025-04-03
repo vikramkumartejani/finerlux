@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image"
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import ImageUploader from "../ImageUploader"
 import Checkbox from "../Checkbox"
 import ConditionsModal from "./ConditionsModal"
@@ -55,7 +55,8 @@ export default function SellTab() {
      const [isModalOpen, setIsModalOpen] = useState(false);
 
      const openModal = (e) => {
-          e.stopPropagation(); // Prevent event from bubbling up
+          e.preventDefault();
+          e.stopPropagation();
           setIsModalOpen(true);
      };
 
@@ -63,13 +64,28 @@ export default function SellTab() {
           setIsModalOpen(false);
      };
 
-     const handleModalBackdropClick = (e) => {
-          // Only close if clicking directly on the backdrop, not on modal content
-          if (modalRef.current && !modalRef.current.contains(e.target)) {
-               closeModal();
-               e.stopPropagation(); // Prevent triggering other click events
-          }
-     };
+       useEffect(() => {
+               const handleClickOutside = (event) => {
+                    if (isModalOpen && modalRef.current && !modalRef.current.contains(event.target)) {
+                         event.preventDefault();
+                         event.stopPropagation();
+                         closeModal();
+                    }
+               };
+     
+               if (isModalOpen) {
+                    document.addEventListener('mousedown', handleClickOutside, true);
+                    document.addEventListener('click', handleClickOutside, true);
+     
+                    // document.body.style.overflow = 'hidden';
+               }
+     
+               return () => {
+                    document.removeEventListener('mousedown', handleClickOutside, true);
+                    document.removeEventListener('click', handleClickOutside, true);
+                    document.body.style.overflow = 'auto';
+               };
+          }, [isModalOpen]);
 
      return (
           <div className="flex items-start justify-between lg:flex-row flex-col gap-6 pt-6 md:pt-12 md:px-4">
@@ -193,9 +209,14 @@ export default function SellTab() {
                                         </div>
 
                                         {isModalOpen && (
-                                             <div className="bg-black bg-opacity-50 top-0 fixed inset-0 z-[9999]" onClick={handleModalBackdropClick}>
+                                             <div className="bg-black bg-opacity-50 top-0 fixed inset-0 z-50">
                                                   <div
-                                                       className="fixed top-0 inset-0 mx-4 mb-4 !z-[10000] flex items-center rounded-[30px] justify-center !overflow-auto scrollbar-hide"
+                                                       className="fixed top-0 inset-0 mx-4 mb-4 z-50 rounded-[30px] flex items-center justify-center !overflow-auto scrollbar-hide"
+                                                       onClick={(e) => {
+                                                            e.preventDefault();
+                                                            e.stopPropagation();
+                                                            closeModal();
+                                                       }}
                                                   >
                                                        <div
                                                             ref={modalRef}
@@ -205,6 +226,7 @@ export default function SellTab() {
                                                             <button
                                                                  className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
                                                                  onClick={(e) => {
+                                                                      e.preventDefault();
                                                                       e.stopPropagation();
                                                                       closeModal();
                                                                  }}
@@ -232,13 +254,13 @@ export default function SellTab() {
                                         )}
                                    </div>
                               </label>
-                              <div className="relative">
+                                <div className="relative">
                                    <select
                                         id="condition"
                                         name="condition"
                                         className={`w-full px-4 text-base min-h-[33px] md:h-[42px] bg-[#E3E8ED] appearance-none rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                                        ${formErrors.condition
-                                                  ? 'border-[#B80000] bg-red-50'
+                                                      ${formErrors.condition
+                                                  ? 'border-red-500 bg-red-50'
                                                   : 'border-transparent focus:border-[#017EFE]'}`}
                                         defaultValue="Good"
                                         disabled={isModalOpen}
@@ -250,7 +272,7 @@ export default function SellTab() {
                                         <option>Fair</option>
                                         <option>Incomplete</option>
                                    </select>
-                                   <div className="absolute inset-y-0 right-0 flex items-center pr-3 ">
+                                   <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                                         <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                              <path d="M1 4L7.5 12L14 4" stroke="#828282" strokeLinecap="round" strokeLinejoin="round" />
                                         </svg>
