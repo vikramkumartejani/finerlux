@@ -146,7 +146,7 @@ export default function SellTab() {
                                         name="item"
                                         className={`w-full px-4 text-base min-h-[33px] md:h-[42px] bg-[#E3E8ED] appearance-none rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
                                         ${formErrors.item
-                                                  ? 'border-red-500 bg-red-50'
+                                                  ? 'border-[#B80000]  bg-red-50'
                                                   : 'border-transparent focus:border-[#017EFE]'}`}
                                         defaultValue="Watch"
                                    >
@@ -162,7 +162,7 @@ export default function SellTab() {
                                    </div>
                               </div>
                               {formErrors.item && (
-                                   <p className="text-red-500 text-sm mt-1">It is mandatory field</p>
+                                   <p className="text-[#B80000] text-sm mt-1">It is mandatory field</p>
                               )}
                          </div>
 
@@ -224,11 +224,16 @@ export default function SellTab() {
                                    <select
                                         id="condition"
                                         name="condition"
-                                        className={`w-full px-4 text-base cursor-pointer min-h-[33px] md:h-[42px] bg-[#E3E8ED] appearance-none rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
+                                        className={`w-full px-4 text-base min-h-[33px] md:h-[42px] bg-[#E3E8ED] appearance-none rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
                                         ${formErrors.condition
-                                                  ? 'border-red-500 bg-red-50'
+                                                  ? 'border-[#B80000] bg-red-50'
                                                   : 'border-transparent focus:border-[#017EFE]'}`}
                                         defaultValue="Good"
+                                        onClick={(e) => {
+                                             if (isModalOpen) {
+                                                  e.preventDefault();
+                                             }
+                                        }}
                                    >
                                         <option>New</option>
                                         <option>Unworn</option>
@@ -245,7 +250,7 @@ export default function SellTab() {
                                    </div>
                               </div>
                               {formErrors.condition && (
-                                   <p className="text-red-500 text-sm mt-1">It is mandatory field</p>
+                                   <p className="text-[#B80000] text-sm mt-1">It is mandatory field</p>
                               )}
                          </div>
 
