@@ -53,6 +53,7 @@ const Hero = () => {
                               src="/assets/hero-watch.webp"
                               alt="Rolex GMT-Master II"
                               className="relative z-10 h-full"
+                              loading='lazy'
                          />
                     </div>
 
