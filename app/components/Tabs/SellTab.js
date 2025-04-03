@@ -183,9 +183,9 @@ export default function SellTab() {
                                         </div>
 
                                         {isModalOpen && (
-                                             <div className="bg-black bg-opacity-50 top-0 fixed inset-0 z-50">
+                                             <div className="bg-black bg-opacity-50 top-0 fixed inset-0 z-[9999]">
                                                   <div
-                                                       className="fixed top-0 inset-0 mx-4 mb-4 !z-50 flex items-center rounded-[30px] justify-center !overflow-auto scrollbar-hide"
+                                                       className="fixed top-0 inset-0 mx-4 mb-4 !z-[10000] flex items-center rounded-[30px] justify-center !overflow-auto scrollbar-hide"
                                                        onClick={closeModal}
                                                   >
 
@@ -224,7 +224,7 @@ export default function SellTab() {
                                    <select
                                         id="condition"
                                         name="condition"
-                                        className={`w-full px-4 text-base min-h-[33px] md:h-[42px] bg-[#E3E8ED] appearance-none rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
+                                        className={`w-full px-4 text-base cursor-pointer min-h-[33px] md:h-[42px] bg-[#E3E8ED] appearance-none rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
                                         ${formErrors.condition
                                                   ? 'border-red-500 bg-red-50'
                                                   : 'border-transparent focus:border-[#017EFE]'}`}
@@ -237,7 +237,7 @@ export default function SellTab() {
                                         <option>Fair</option>
                                         <option>Incomplete</option>
                                    </select>
-                                   <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                   <div className="absolute inset-y-0 right-0 flex items-center pr-3 ">
                                         <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                              <path d="M1 4L7.5 12L14 4" stroke="#828282" stroke-linecap="round" stroke-linejoin="round" />
                                         </svg>

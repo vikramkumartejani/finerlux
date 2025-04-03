@@ -186,12 +186,12 @@ export default function PartExchangeTab() {
                                         {isModalOpen && (
                                              <div className="bg-black bg-opacity-50 top-0 fixed inset-0 z-50">
                                                   <div
-                                                       className="fixed top-0 inset-0 mx-4 mb-4 z-50 flex items-center justify-center !overflow-auto scrollbar-hide"
+                                                       className="fixed top-0 inset-0 mx-4 mb-4 z-50 rounded-[30px] flex items-center justify-center !overflow-auto scrollbar-hide"
                                                        onClick={closeModal}
                                                   >
 
                                                        <div
-                                                            className="bg-white p-4 md:p-6 overflow-auto scrollbar-hide rounded-[30px] !mx-5 shadow-xl max-w-3xl w-full absolute md:relative top-[10%] md:top-0"
+                                                            className="bg-white p-4 md:p-6 overflow-auto scrollbar-hide rounded-[30px] !mx-5 shadow-xl max-w-3xl w-full absolute md:relative top-4 md:top-0"
                                                             onClick={(e) => e.stopPropagation()}
                                                        >
                                                             <button
@@ -231,10 +231,12 @@ export default function PartExchangeTab() {
                                                   : 'border-transparent focus:border-[#017EFE]'}`}
                                         defaultValue="Good"
                                    >
-                                        <option>Excellent</option>
+                                        <option>New</option>
+                                        <option>Unworn</option>
+                                        <option>Very Good</option>
                                         <option>Good</option>
                                         <option>Fair</option>
-                                        <option>Poor</option>
+                                        <option>Incomplete</option>
                                    </select>
                                    <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                                         <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
