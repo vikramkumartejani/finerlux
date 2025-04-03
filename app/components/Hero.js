@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image';
 import Link from 'next/link';
 import React, {useEffect, useState} from 'react';
 import { useTranslation } from 'react-i18next';
@@ -40,7 +41,7 @@ const Hero = () => {
                <div className="max-w-[1360px] w-full mx-auto bg-white hidden md:flex items-center justify-between rounded-[45px] h-[622px] relative overflow-hidden">
                     {/* Background Image */}
                     <div className="absolute inset-0 bg-no-repeat bg-top -mt-8 -ml-6 bg-auto"
-                         style={{ backgroundImage: "url('/assets/hero-bg-logo.png')" }}>
+                         style={{ backgroundImage: 'url("/assets/hero-bg-logo.png")' }}>
                     </div>
                     <div className='w-full pl-8 pt-[100px] lg:pt-[135px]'>
                          <h1 className='max-w-[500px] text-[40px] !leading-[95%] font-semibold'>{t("hero.title")}</h1>
@@ -48,11 +49,13 @@ const Hero = () => {
 
                     <Content />
 
-                    <div className='w-5/6 h-full -ml-10'>
-                         <img
+                    <div className='w-5/6 h-full -ml-28'>
+                         <Image
                               src="/assets/hero-watch.webp"
                               alt="Rolex GMT-Master II"
-                              className="relative z-10 h-full"
+                              className="relative z-10 h-full !object-contain"
+                              width={500}
+                              height={500}
                               loading='lazy'
                          />
                     </div>
@@ -64,10 +67,10 @@ const Hero = () => {
                <div className='md:hidden block'>
                     <div className='h-[265px] w-full bg-white rounded-[30px] relative flex items-end justify-end'>
                          <div className='w-full h-full'>
-                              <img src='/assets/mobile.svg' alt='mobil' className='w-full h-full' />
+                              <Image src='/assets/mobile.svg' alt='mobil' className='w-full h-full !object-contain' width={500} height={500} />
                          </div>
-                         <div className=' absolute z-40 flex items-end justify-end right-2 top-0 h-full'>
-                              <img src="/assets/hero-watch.webp" alt='hero-watch' className='h-full !bg-contain' />
+                         <div className='absolute z-40 flex items-end justify-end right-2 top-0 h-full w-fit'>
+                              <Image src="/assets/hero-watch.webp" alt='hero-watch' width={500} height={500} className='h-full !bg-contain w-fit' />
                          </div>
                          <LiveChatButton />
                     </div>
