@@ -60,7 +60,7 @@ const Navbar = () => {
                         className={`absolute transition-all duration-300 ${isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-3'
                            }`}
                      >
-                        <Image src='/assets/finerlux-logo.svg' alt='finerlux-logo' width={94} height={24} />
+                        <Image src='/assets/finerlux-logo.svg' alt='finerlux-logo' width={104} height={24} />
                      </div>
                   </div>
                </div>
