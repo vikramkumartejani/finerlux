@@ -14,8 +14,8 @@ const newArrivalsData = [
           discount: 0,
           price: "15,150",
           originalPrice: "15,150",
-          imageUrl: "/assets/rolex-gmt-master-2-126710blnr-bruce-wayne-cover.webp",
-          backsideImageUrl: "/assets/rolex-gmt-master-2-126710blnr-bruce-wayne-closeup.webp",
+          imageUrl: "/assets/rolex-daytona-116500ln-panda-cover.webp",
+          backsideImageUrl: "/assets/rolex-daytona-116500ln-panda-closeup.webp",
      },
      {
           id: 2,
