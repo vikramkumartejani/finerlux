@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 export const LiveChatButton = () => {
      return (
-          <button className="absolute right-1 md:right-[45px] z-50 -bottom-4 md:bottom-[168px] rounded-[30px] h-[41px] md:h-[47px] w-[95px] md:w-[118px] text-sm md:text-base font-normal md:font-medium bg-[#60FF7D] text-black">
+          <button className="absolute right-1 md:right-[45px] z-40 -bottom-4 md:bottom-[168px] rounded-[30px] h-[41px] md:h-[47px] w-[95px] md:w-[118px] text-sm md:text-base font-normal md:font-medium bg-[#60FF7D] text-black">
                Live Chat
           </button>
      )

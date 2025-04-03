@@ -7,15 +7,32 @@ import { useTranslation } from 'react-i18next';
 const Navbar = () => {
    const { t } = useTranslation();
    const [currentLang, setCurrentLang] = useState("en");
+   const [isScrolled, setIsScrolled] = useState(false);
+   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
    useEffect(() => {
       const storedLang = localStorage.getItem("selectedLanguage");
       const langFromPath = window.location.pathname.split("/")[1];
       const finalLang = storedLang || (langFromPath === "ru" ? "ru" : "en");
       setCurrentLang(finalLang);
-   }, []);
 
-   const [isMenuOpen, setIsMenuOpen] = useState(false);
+      // Add scroll event listener
+      const handleScroll = () => {
+         const scrollPosition = window.scrollY;
+         if (scrollPosition > 20) {
+            setIsScrolled(true);
+         } else {
+            setIsScrolled(false);
+         }
+      };
+
+      window.addEventListener('scroll', handleScroll);
+
+      // Cleanup
+      return () => {
+         window.removeEventListener('scroll', handleScroll);
+      };
+   }, []);
 
    const toggleMenu = () => {
       setIsMenuOpen((prev) => !prev);
@@ -31,8 +48,21 @@ const Navbar = () => {
                   <Link href={`/${currentLang}/services`} className='px-3 py-1.5 text-black text-base font-normal'>{t("navbar.ourServices")}</Link>
                </div>
 
-               <div className='absolute left-1/2 transform -translate-x-1/2'>
-                  <Image src='/assets/logo.svg' alt='Company Logo' width={31} height={40} priority />
+               <div className='absolute left-1/2 transform -translate-x-1/2 h-10 flex items-center justify-center'>
+                  <div className='relative w-24 h-10 flex items-center justify-center'>
+                     <div
+                        className={`absolute transition-all duration-300 ${isScrolled ? 'opacity-0 translate-y-3' : 'opacity-100 translate-y-0'
+                           }`}
+                     >
+                        <Image src='/assets/logo.svg' alt='Company Logo' width={31} height={40} priority className='ml-6' />
+                     </div>
+                     <div
+                        className={`absolute transition-all duration-300 ${isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-3'
+                           }`}
+                     >
+                        <Image src='/assets/finerlux-logo.svg' alt='finerlux-logo' width={94} height={24} />
+                     </div>
+                  </div>
                </div>
 
                <div className='flex items-center gap-6 lg:gap-[48px]'>
@@ -54,7 +84,20 @@ const Navbar = () => {
                   />
                </button>
 
-               <Image src='/assets/finerlux-logo.svg' alt='finerlux-logo' width={94} height={24} />
+               <div className='relative w-24 h-8 flex items-center justify-center'>
+                  <div
+                     className={`absolute transition-all duration-300 ${isScrolled ? 'opacity-0 translate-y-3' : 'opacity-100 translate-y-0'
+                        }`}
+                  >
+                     <Image src='/assets/logo.svg' alt='Company Logo' width={31} height={40} />
+                  </div>
+                  <div
+                     className={`absolute transition-all duration-300 ${isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-3'
+                        }`}
+                  >
+                     <Image src='/assets/finerlux-logo.svg' alt='finerlux-logo' width={94} height={24} />
+                  </div>
+               </div>
 
                <button>
                   <Image src='/assets/chat-icon.svg' alt='chat' width={26} height={26} />
@@ -62,7 +105,7 @@ const Navbar = () => {
 
                {/* Mobile Menu */}
                <div
-                  className={`absolute top-[38px] left-0 right-0 w-full transition-transform duration-300 shadow-header rounded-[30px] ease-in-out ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10 pointer-events-none'
+                  className={`absolute top-[38px] z-50 left-0 right-0 w-full transition-transform duration-300 shadow-header rounded-[30px] ease-in-out ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10 pointer-events-none'
                      }`}
                >
                   <div className='bg-white rounded-[30px] py-7 overflow-hidden flex flex-col items-center text-center gap-4'>

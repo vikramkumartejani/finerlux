@@ -16,7 +16,7 @@ body{
   background: #ECF0F3;
 }
 
-.scrollbar-hide {
+.scrollbar-hide { 
   overflow: auto; 
   scrollbar-width: none;  
   -ms-overflow-style: none;  
