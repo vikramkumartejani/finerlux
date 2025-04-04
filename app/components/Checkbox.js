@@ -19,13 +19,13 @@ const Checkbox = ({ checked, onChange, title }) => {
                     >
                          {checked ? (
                               <svg className="text-[#017EFE]" width="18" height="11" viewBox="0 0 18 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                   <path d="M1 3.75L7.5 10.25L17 0.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                   <path d="M1 3.75L7.5 10.25L17 0.75" stroke="currentColor" stroke-width="1.5" strokeLinecap="round" strokeLinejoin="round" />
                               </svg>
                          ) : (
                               isHovered && (
                                    <>
                                         <svg className="text-[#828282]" width="18" height="11" viewBox="0 0 18 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                             <path d="M1 3.75L7.5 10.25L17 0.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                             <path d="M1 3.75L7.5 10.25L17 0.75" stroke="currentColor" stroke-width="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                         </svg>
                                    </>
                               )
