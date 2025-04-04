@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image';
 import Link from 'next/link';
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 export const LiveChatButton = () => {
@@ -40,9 +40,14 @@ const Hero = () => {
           <div className="px-5 mt-[35px]">
                <div className="max-w-[1360px] w-full mx-auto bg-white hidden md:flex items-center justify-between rounded-[45px] h-[622px] relative overflow-hidden">
                     {/* Background Image */}
-                    <div className="absolute inset-0 bg-no-repeat bg-top -mt-8 -ml-6 bg-auto"
-                         style={{ backgroundImage: 'url("/assets/hero-bg-logo.png")' }}>
-                    </div>
+                    <div
+                         className="absolute inset-0 object-cover bg-no-repeat bg-center pt-20 opacity-15"
+                         style={{
+                              backgroundImage: "url('/assets/finerlux-rabbit-full-logo-blue.svg')",
+                              backgroundSize: "65%",
+                         }}
+                    ></div>
+
                     <div className='w-full pl-8 pt-[100px] lg:pt-[135px]'>
                          <h1 className='max-w-[500px] text-[40px] !leading-[95%] font-semibold'>{t("hero.title")}</h1>
                     </div>
