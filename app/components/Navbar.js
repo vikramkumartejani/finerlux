@@ -84,7 +84,7 @@ const Navbar = () => {
                 }`}
               >
                 <Image
-                  src="/assets/finerlux-logo.svg"
+                  src="/assets/scroll-logo.svg"
                   alt="finerlux-logo"
                   width={104}
                   height={24}
