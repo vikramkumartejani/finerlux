@@ -23,8 +23,14 @@ export default function PartExchangeTab() {
           phone: false,
           item: false,
           condition: false,
-          description: false,
+          price: false,
+          description: false
      });
+
+     const [isModalOpen, setIsModalOpen] = useState(false);
+     const [isSubmitting, setIsSubmitting] = useState(false);
+     const [submitStatus, setSubmitStatus] = useState(null);
+     const [uploadedImages, setUploadedImages] = useState([]);
 
      const handleCheckboxChange = (key) => {
           setCheckedItems((prev) => ({
@@ -33,31 +39,11 @@ export default function PartExchangeTab() {
           }));
      };
 
-     const validateForm = (e) => {
-          e.preventDefault();
-          const form = e.target;
-          const errors = {
-               name: !form.name.value.trim(),
-               email: !form.email.value.trim(),
-               phone: !form.phone.value.trim(),
-               item: !form.item.value,
-               condition: !form.condition.value,
-               description: !form.description.value,
-          };
-
-          setFormErrors(errors);
-
-          const hasErrors = Object.values(errors).some(error => error);
-          if (!hasErrors) {
-               console.log('Form submitted successfully');
-          }
+     const handleImagesChange = (files) => {
+          setUploadedImages(files);
      };
 
-     const [isModalOpen, setIsModalOpen] = useState(false);
-
-     const openModal = (e) => {
-          e.preventDefault();
-          e.stopPropagation();
+     const openModal = () => {
           setIsModalOpen(true);
      };
 
@@ -67,26 +53,99 @@ export default function PartExchangeTab() {
 
      useEffect(() => {
           const handleClickOutside = (event) => {
-               if (isModalOpen && modalRef.current && !modalRef.current.contains(event.target)) {
-                    event.preventDefault();
-                    event.stopPropagation();
+               if (modalRef.current && !modalRef.current.contains(event.target)) {
                     closeModal();
                }
           };
 
           if (isModalOpen) {
-               document.addEventListener('mousedown', handleClickOutside, true);
-               document.addEventListener('click', handleClickOutside, true);
-
-               // document.body.style.overflow = 'hidden';
+               document.addEventListener("mousedown", handleClickOutside);
+          } else {
+               document.removeEventListener("mousedown", handleClickOutside);
           }
 
           return () => {
-               document.removeEventListener('mousedown', handleClickOutside, true);
-               document.removeEventListener('click', handleClickOutside, true);
-               document.body.style.overflow = 'auto';
+               document.removeEventListener("mousedown", handleClickOutside);
           };
      }, [isModalOpen]);
+
+     const validateForm = async (e) => {
+          e.preventDefault();
+          const form = e.target;
+          const errors = {
+               name: !form.name.value.trim(),
+               email: !form.email.value.trim(),
+               phone: !form.phone.value.trim(),
+               item: !form.item.value.trim(),
+               condition: !form.condition.value.trim(),
+               price: !form.price.value.trim(),
+               description: !form.description.value.trim()
+          };
+
+          setFormErrors(errors);
+
+          if (Object.values(errors).some(Boolean)) {
+               return;
+          }
+
+          // Form is valid, proceed with submission
+          setIsSubmitting(true);
+          
+          try {
+               const formData = new FormData();
+               
+               // Add form fields
+               formData.append('name', form.name.value);
+               formData.append('email', form.email.value);
+               formData.append('phone', form.phone.value);
+               formData.append('item', form.item.value);
+               formData.append('condition', form.condition.value);
+               formData.append('price', form.price.value);
+               formData.append('description', form.description.value);
+               formData.append('formType', 'Part Exchange');
+               
+               // Add contact preferences
+               formData.append('telephone', checkedItems.checkbox1);
+               formData.append('sms', checkedItems.checkbox2);
+               formData.append('emailContact', checkedItems.checkbox3);
+               formData.append('whatsapp', checkedItems.checkbox4);
+               
+               // Add images if any
+               if (uploadedImages.length > 0) {
+                    uploadedImages.forEach((file, index) => {
+                         formData.append('images', file);
+                    });
+               }
+               
+               // Submit the form
+               const response = await fetch('/api/submit-form', {
+                    method: 'POST',
+                    body: formData,
+               });
+               
+               const result = await response.json();
+               
+               if (result.success) {
+                    setSubmitStatus('success');
+                    // Reset form
+                    form.reset();
+                    setCheckedItems({
+                         checkbox1: false,
+                         checkbox2: false,
+                         checkbox3: false,
+                         checkbox4: false,
+                    });
+                    setUploadedImages([]);
+               } else {
+                    setSubmitStatus('error');
+               }
+          } catch (error) {
+               console.error('Error submitting form:', error);
+               setSubmitStatus('error');
+          } finally {
+               setIsSubmitting(false);
+          }
+     };
 
      return (
           <div className="flex items-start justify-between lg:flex-row flex-col gap-6 pt-6 md:pt-12 md:px-4">
@@ -99,6 +158,22 @@ export default function PartExchangeTab() {
                          <Image src='/assets/part-exchange.svg' alt="part-exchange" width={288} height={256} className="md:w-[288px] md:h-[256px] w-[80px] h-[80px]" />
                     </div>
                </div>
+
+               {isModalOpen && (
+                    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+                         <div ref={modalRef} className="bg-white rounded-[20px] p-6 max-w-md w-full max-h-[80vh] overflow-y-auto">
+                              <div className="flex justify-between items-center mb-4">
+                                   <h2 className="text-xl font-bold">Conditions</h2>
+                                   <button onClick={closeModal} className="text-gray-500 hover:text-gray-700">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                             <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                        </svg>
+                                   </button>
+                              </div>
+                              <ConditionsModal />
+                         </div>
+                    </div>
+               )}
 
                <form onSubmit={validateForm} className="space-y-2.5 md:space-y-6 min-w-full lg:min-w-[500px] xl:min-w-[636px]">
                     {/* Name & Email */}
@@ -314,7 +389,7 @@ export default function PartExchangeTab() {
 
                     {/* Image Upload & Description */}
                     <div className="pt-[14px] md:pt-6">
-                         <ImageUploader disabled={isModalOpen} />
+                         <ImageUploader disabled={isModalOpen} onImagesChange={handleImagesChange} />
 
                          <div className="pt-4 md:pt-6">
                               <label htmlFor="description" className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3">
@@ -333,6 +408,18 @@ export default function PartExchangeTab() {
                               )}
                          </div>
                     </div>
+
+                    {/* Status message */}
+                    {submitStatus === 'success' && (
+                         <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded">
+                              Form submitted successfully! We'll get back to you soon.
+                         </div>
+                    )}
+                    {submitStatus === 'error' && (
+                         <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+                              There was an error submitting the form. Please try again later.
+                         </div>
+                    )}
 
                     {/* Social Media */}
                     <div className="pt-[14px] md:pt-6 pb-[14px] md:pb-0">
@@ -357,9 +444,9 @@ export default function PartExchangeTab() {
                     <button
                          type="submit"
                          className="text-base font-medium w-full bg-[#017EFE] hover:bg-[#003D7B] transition-all duration-300 text-white h-[35px] md:h-[40px] px-4 rounded-[60px]"
-                         disabled={isModalOpen}
+                         disabled={isModalOpen || isSubmitting}
                     >
-                         Submit
+                         {isSubmitting ? 'Submitting...' : 'Submit'}
                     </button>
                </form>
           </div>

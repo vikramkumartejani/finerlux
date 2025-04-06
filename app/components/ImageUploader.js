@@ -1,24 +1,50 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
-const ImageUploader = () => {
+const ImageUploader = ({ onImagesChange, disabled }) => {
      const [images, setImages] = useState([]);
      const [hoveredIndex, setHoveredIndex] = useState(null);
+     const fileInputRef = useRef(null);
 
      const handleDrop = (event) => {
           event.preventDefault();
+          if (disabled) return;
           const files = Array.from(event.dataTransfer.files);
           handleFiles(files);
      };
 
      const handleFiles = (files) => {
           const imageFiles = files.filter((file) => file.type.startsWith("image/"));
-          const newImages = imageFiles.map((file) => URL.createObjectURL(file));
-          setImages((prev) => [...prev, ...newImages]);
+          const newImageFiles = [...images];
+          
+          imageFiles.forEach(file => {
+               // Create a preview URL for display
+               const previewUrl = URL.createObjectURL(file);
+               newImageFiles.push({
+                    file,
+                    preview: previewUrl
+               });
+          });
+          
+          setImages(newImageFiles);
+          
+          // Pass the actual file objects to the parent component
+          if (onImagesChange) {
+               onImagesChange(newImageFiles.map(img => img.file));
+          }
      };
 
      const handleRemove = (index) => {
-          setImages((prev) => prev.filter((_, i) => i !== index));
+          const updatedImages = [...images];
+          // Revoke the object URL to avoid memory leaks
+          URL.revokeObjectURL(updatedImages[index].preview);
+          updatedImages.splice(index, 1);
+          setImages(updatedImages);
+          
+          // Pass the updated file objects to the parent component
+          if (onImagesChange) {
+               onImagesChange(updatedImages.map(img => img.file));
+          }
      };
 
      return (
@@ -33,63 +59,55 @@ const ImageUploader = () => {
                          type="file"
                          className="hidden"
                          id="file-upload"
+                         ref={fileInputRef}
                          multiple
                          accept="image/*"
                          onChange={(e) => handleFiles(Array.from(e.target.files))}
+                         disabled={disabled}
                     />
                     {images.length === 0 ? (
-                         <div className="flex items-center w-full justify-center text-center flex-col group -mt-0">
-                              <label htmlFor="file-upload" className="cursor-pointer">
-                                   <div className="h-full relative flex items-center justify-center">
-                                        <Image
-                                             src='/assets/file-upload.svg'
-                                             width={100}
-                                             height={100}
-                                             alt="file upload"
-                                             className="md:w-[100px] md:h-[100px] w-[80px] h-[80px] absolute opacity-100 group-hover:opacity-0 transition-opacity duration-300"
-                                        />
-                                        
-                                        <Image
-                                             src='/assets/file-upload-hover.svg'
-                                             width={100}
-                                             height={100}
-                                             alt="file upload hover"
-                                             className="md:w-[100px] md:h-[100px] w-[80px] h-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                                        />
-                                   </div>
-                                   <p className="ml-1 text-base font-normal text-black">
-                                        Drag an image here
-                                   </p>
-                              </label>
+                         <div className="w-full h-full flex flex-col items-center justify-center">
+                              <div
+                                   className="w-[100px] h-[100px] cursor-pointer group"
+                                   onClick={() => !disabled && fileInputRef.current.click()}
+                              >
+                                   <Image
+                                        src="/assets/file-upload.svg"
+                                        alt="upload"
+                                        width={100}
+                                        height={100}
+                                        className="group-hover:hidden"
+                                   />
+                                   <Image
+                                        src="/assets/file-upload-hover.svg"
+                                        alt="upload"
+                                        width={100}
+                                        height={100}
+                                        className="hidden group-hover:block"
+                                   />
+                              </div>
+                              <p className="text-[#828282] text-sm md:text-base font-normal mt-2">
+                                   Drag and drop files here or click to upload
+                              </p>
                          </div>
                     ) : (
-                         <div className="flex items-start w-full gap-3">
-                              {images.map((src, index) => (
+                         <div className="w-full h-full flex flex-wrap gap-2 md:gap-3 overflow-y-auto scrollbar-hide">
+                              {images.map((image, index) => (
                                    <div
                                         key={index}
-                                        className="relative group"
+                                        className="relative h-16 w-16 md:w-20 md:h-20"
                                         onMouseEnter={() => setHoveredIndex(index)}
                                         onMouseLeave={() => setHoveredIndex(null)}
                                    >
                                         <Image
-                                             src={src}
-                                             alt="preview"
-                                             priority
-                                             width={80}
-                                             height={80}
-                                             className="h-16 w-16 md:h-20 md:w-20 rounded-lg object-cover"
+                                             src={image.preview}
+                                             alt={`uploaded-${index}`}
+                                             fill
+                                             className="object-cover rounded-[14px]"
                                         />
-                                        {hoveredIndex === index && (
+                                        {(hoveredIndex === index || window.innerWidth < 768) && (
                                              <button
-                                                  className="
-                                                       h-[24px] w-[24px] 
-                                                       absolute flex items-center justify-center 
-                                                       -top-2 -right-2 
-                                                       bg-white text-[#828282] hover:text-[#B80000] 
-                                                       transition-all duration-300 
-                                                       border border-[#828282] hover:border-[#B80000] 
-                                                       text-sm rounded-md
-                                                       animate-fadeIn
+                                                  className="absolute -top-2 -right-2 bg-white rounded-full w-5 h-5 flex items-center justify-center text-xs shadow-md hover:bg-red-100 transition-colors duration-200
                                                   "
                                                   onClick={() => handleRemove(index)}
                                              >

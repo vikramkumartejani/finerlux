@@ -1,16 +1,46 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TabsNavigation from "./TabsNavigation";
 import SellTab from "./SellTab";
 import AuthenticateTab from "./AuthenticateTab";
 import SourceTab from "./SourceTab";
 import PartExchangeTab from "./PartExchangeTab";
 import BuyTab from "./BuyTab";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 export default function Tab() {
   const { t } = useTranslation();
 
-  const [activeTab, setActiveTab] = useState("sell");
+  const [activeTab, setActiveTab] = useState("buy");
+
+  // Check for stored active tab on mount and when storage changes
+  useEffect(() => {
+    // Function to check sessionStorage and update tab
+    const checkSessionStorageForTab = () => {
+      if (typeof window !== "undefined") {
+        try {
+          const tabParam = sessionStorage.getItem("setActiveHomeTab");
+          if (tabParam) {
+            console.log("Setting active tab to:", tabParam);
+            setActiveTab(tabParam);
+            sessionStorage.removeItem("setActiveHomeTab");
+          }
+        } catch (err) {
+          console.error("Error checking sessionStorage:", err);
+        }
+      }
+    };
+
+    // Check on initial mount
+    checkSessionStorageForTab();
+
+    // Set up an interval to periodically check storage
+    // This helps ensure we catch tab changes even if events are missed
+    const interval = setInterval(checkSessionStorageForTab, 500);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
 
   const tabs = [
     { id: "sell", label: t("tab.sell") },
@@ -33,12 +63,16 @@ export default function Tab() {
       case "authenticate":
         return <AuthenticateTab />;
       default:
-        return <SellTab />;
+        return <BuyTab />;
     }
   };
 
   return (
-    <main className="flex mt-[12px] md:mt-[32px] flex-col items-center justify-center px-5">
+    <main
+      id="homeFormSection"
+      data-active-tab={activeTab}
+      className="flex mt-[12px] md:mt-[32px] flex-col items-center justify-center px-5"
+    >
       <div className="w-full max-w-[1296px] mx-auto bg-white rounded-[20px] md:rounded-[30px] p-2.5 md:p-6 overflow-hidden">
         <TabsNavigation
           tabs={tabs}

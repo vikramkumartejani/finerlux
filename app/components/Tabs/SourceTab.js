@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Checkbox from "../Checkbox"
 import ImageUploader from "../ImageUploader";
 import { useTranslation } from 'react-i18next';
@@ -13,13 +13,14 @@ export default function SourceTab() {
           checkbox3: false,
           checkbox4: false,
      });
-
      const [formErrors, setFormErrors] = useState({
           name: false,
           email: false,
           phone: false,
           description: false,
      });
+     const [isSubmitting, setIsSubmitting] = useState(false);
+     const [submitStatus, setSubmitStatus] = useState(null);
 
      const handleCheckboxChange = (key) => {
           setCheckedItems((prev) => ({
@@ -28,7 +29,7 @@ export default function SourceTab() {
           }));
      };
 
-     const validateForm = (e) => {
+     const validateForm = async (e) => {
           e.preventDefault();
           const form = e.target;
           const errors = {
@@ -40,9 +41,55 @@ export default function SourceTab() {
 
           setFormErrors(errors);
 
-          const hasErrors = Object.values(errors).some(error => error);
-          if (!hasErrors) {
-               console.log('Form submitted successfully');
+          if (Object.values(errors).some(Boolean)) {
+               return;
+          }
+
+          // Form is valid, proceed with submission
+          setIsSubmitting(true);
+          
+          try {
+               const formData = new FormData();
+               
+               // Add form fields
+               formData.append('name', form.name.value);
+               formData.append('email', form.email.value);
+               formData.append('phone', form.phone.value);
+               formData.append('description', form.description.value);
+               formData.append('formType', 'Source');
+               
+               // Add contact preferences
+               formData.append('telephone', checkedItems.checkbox1);
+               formData.append('sms', checkedItems.checkbox2);
+               formData.append('emailContact', checkedItems.checkbox3);
+               formData.append('whatsapp', checkedItems.checkbox4);
+               
+               // Submit the form
+               const response = await fetch('/api/submit-form', {
+                    method: 'POST',
+                    body: formData,
+               });
+               
+               const result = await response.json();
+               
+               if (result.success) {
+                    setSubmitStatus('success');
+                    // Reset form
+                    form.reset();
+                    setCheckedItems({
+                         checkbox1: false,
+                         checkbox2: false,
+                         checkbox3: false,
+                         checkbox4: false,
+                    });
+               } else {
+                    setSubmitStatus('error');
+               }
+          } catch (error) {
+               console.error('Error submitting form:', error);
+               setSubmitStatus('error');
+          } finally {
+               setIsSubmitting(false);
           }
      };
 
@@ -54,7 +101,7 @@ export default function SourceTab() {
                     <p className="md:block hidden md:pb-8 text-black text-sm md:text-base font-normal leading-[20px] md:text-left text-center">{t("tab.descSourceOne")}</p>
                     <p className="block md:hidden md:pb-8 text-black text-sm md:text-base font-normal leading-[20px] md:text-left text-center">{t("tab.descSourceTwo")}</p>
                     <div className="w-full hidden md:flex items-center justify-center md:items-start md:justify-start">
-                         <Image src='/assets/sourcetab.svg' alt="source" width={247} height={307} className="md:w-[247px] md:h-[307px] w-[80px] h-[80px]" />
+                         <Image src='/assets/source.svg' alt="source" width={288} height={256} className="md:w-[288px] md:h-[256px] w-[80px] h-[80px]" />
                     </div>
                </div>
 
@@ -97,49 +144,58 @@ export default function SourceTab() {
                                    <p className="text-[#B80000] text-sm mt-1">It is mandatory field</p>
                               )}
                          </div>
+                    </div>
 
-                         {/* Phone Number */}
-                         <div>
-                              <label htmlFor="phone" className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3">
-                                   Phone number
-                              </label>
-                              <input
-                                   type="tel"
-                                   id="phone"
-                                   name="phone"
-                                   placeholder="(+44) 123 456 7890"
-                                   className={`w-full px-4 text-base min-h-[33px] md:h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
+                    {/* Phone */}
+                    <div>
+                         <label htmlFor="phone" className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3">
+                              Phone number
+                         </label>
+                         <input
+                              type="tel"
+                              id="phone"
+                              name="phone"
+                              placeholder="(+44) 123 456 7890"
+                              className={`w-full px-4 text-base min-h-[33px] md:h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
                               ${formErrors.phone
-                                             ? 'border-[#B80000]'
-                                             : 'border-transparent focus:border-[#017EFE]'}`}
-                              />
-                              {formErrors.phone && (
-                                   <p className="text-[#B80000] text-sm mt-1">It is mandatory field</p>
-                              )}
-                         </div>
+                                        ? 'border-[#B80000]'
+                                        : 'border-transparent focus:border-[#017EFE]'}`}
+                         />
+                         {formErrors.phone && (
+                              <p className="text-[#B80000] text-sm mt-1">It is mandatory field</p>
+                         )}
                     </div>
 
-                    {/* Image Upload */}
+                    {/* Description */}
                     <div className="pt-[14px] md:pt-6">
-                         <ImageUploader />
-                         <div className="pt-[14px] md:pt-6">
-                              <label htmlFor="description" className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3">
-                                   Description
-                              </label>
-                              <textarea
-                                   id="description"
-                                   name="description"
-                                   placeholder="Enter your description"
-                                   className={`w-full px-4 py-2.5 h-[160px] text-base bg-[#E3E8ED] rounded-[20px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
+                         <label htmlFor="description" className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3">
+                              Description
+                         </label>
+                         <textarea
+                              id="description"
+                              name="description"
+                              placeholder="Enter your description"
+                              className={`w-full px-4 py-2.5 h-[160px] text-base bg-[#E3E8ED] rounded-[20px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
                               ${formErrors.description ? 'border-[#B80000]' : 'border-transparent focus:border-[#017EFE]'}`}
-                              />
-                              {formErrors.description && (
-                                   <p className="text-[#B80000] text-sm mt-1">It is mandatory field</p>
-                              )}
-                         </div>
+                         />
+                         {formErrors.description && (
+                              <p className="text-[#B80000] text-sm mt-1">It is mandatory field</p>
+                         )}
                     </div>
 
-                    {/* Social Media */}
+                    {/* Status message */}
+                    {submitStatus === 'success' && (
+                         <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded">
+                              Form submitted successfully! We'll get back to you soon.
+                         </div>
+                    )}
+                    {submitStatus === 'error' && (
+                         <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+                              There was an error submitting the form. Please try again later.
+                         </div>
+                    )}
+
+                    {/* Contact Preferences */}
                     <div className="pt-[14px] md:pt-6 pb-[14px] md:pb-0">
                          <p className="text-sm md:text-base font-normal text-black mb-3">I am happy to be contacted by</p>
                          <div className="flex flex-wrap gap-3 md:gap-4">
@@ -158,12 +214,13 @@ export default function SourceTab() {
                          </div>
                     </div>
 
-                    {/* button */}
+                    {/* Button */}
                     <button
                          type="submit"
-                         className="text-base font-medium w-full bg-[#017EFE] hover:bg-[#003D7B] transition-all duration-300 text-white h-[35px] md:h-[40px] px-4 rounded-[60px]"
+                         disabled={isSubmitting}
+                         className={`text-base font-medium w-full ${isSubmitting ? 'bg-gray-400' : 'bg-[#017EFE] hover:bg-[#003D7B]'} transition-all duration-300 text-white h-[35px] md:h-[40px] px-4 rounded-[60px] flex items-center justify-center`}
                     >
-                         Submit
+                         {isSubmitting ? 'Submitting...' : 'Submit'}
                     </button>
                </form>
           </div>
