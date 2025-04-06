@@ -65,7 +65,7 @@ export const MobileContent = () => {
   }, []);
 
   return (
-    <div className="w-full md:text-left text-center md:w-[560px] z-30 rounded-tr-[30px] md:absolute bottom-0 bg-[#ECF0F3] md:p-8 pr-4 md:pb-[28px]">
+    <div className="w-full md:text-left text-center md:w-[560px] z-30 rounded-tr-[30px] md:absolute bottom-0 bg-[#ECF0F3] md:p-8 md:pb-[28px]">
       <p className="text-[14px] md:text-[18px] font-normal leading-[100%] md:leading-[114.99999999999999%] mt-3 md:mt-0">
         {t("hero.description")}
       </p>
