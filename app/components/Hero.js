@@ -5,9 +5,40 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { scrollToHomeFormSection } from "../utils/navigation";
 
-export const LiveChatButton = () => {
+export const LiveChatButton = ({ initiallyVisible = false }) => {
+  const [showFixedButton, setShowFixedButton] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolled = window.scrollY;
+      const viewportHeight = window.innerHeight;
+
+      if (scrolled >= viewportHeight) {
+        setShowFixedButton(true);
+      } else {
+        setShowFixedButton(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  if (initiallyVisible) {
+    return (
+      <button className="absolute right-1 md:right-[45px] z-40 -bottom-4 md:bottom-[168px] rounded-[30px] h-[41px] md:h-[47px] w-[95px] md:w-[118px] text-sm md:text-base font-normal md:font-medium bg-[#60FF7D] text-black">
+        Live Chat
+      </button>
+    );
+  }
+
+  if (!showFixedButton) return null;
+
   return (
-    <button className="absolute right-1 md:right-[45px] z-40 -bottom-4 md:bottom-[168px] rounded-[30px] h-[41px] md:h-[47px] w-[95px] md:w-[118px] text-sm md:text-base font-normal md:font-medium bg-[#60FF7D] text-black">
+    <button className="fixed right-4 md:right-6 bottom-4 md:bottom-6 rounded-[30px] h-[41px] md:h-[47px] w-[95px] md:w-[118px] text-sm md:text-base font-normal md:font-medium bg-[#60FF7D] text-black z-50 shadow-md transition-all duration-300 ease-in-out">
       Live Chat
     </button>
   );
@@ -23,6 +54,7 @@ export const Content = () => {
     const finalLang = storedLang || (langFromPath === "ru" ? "ru" : "en");
     setCurrentLang(finalLang);
   }, []);
+
   return (
     <div className="w-full md:text-left text-center md:w-[560px] z-30 rounded-tr-[30px] md:absolute bottom-0 bg-[#ECF0F3] md:p-8 pr-4 md:pb-[28px]">
       <p className="text-[14px] md:text-[18px] font-normal leading-[100%] md:leading-[114.99999999999999%] mt-3 md:mt-0">
@@ -54,6 +86,7 @@ export const Content = () => {
 
 const Hero = () => {
   const { t } = useTranslation();
+
   return (
     <div className="px-5 mt-[35px]">
       <div className="max-w-[1360px] w-full mx-auto bg-white hidden md:flex items-center justify-between rounded-[45px] h-[622px] relative overflow-hidden">
@@ -85,7 +118,7 @@ const Hero = () => {
           />
         </div>
 
-        <LiveChatButton />
+        <LiveChatButton initiallyVisible={true} />
       </div>
 
       {/* Mobile View */}
@@ -110,13 +143,15 @@ const Hero = () => {
               className="h-full !bg-contain w-fit"
             />
           </div>
-          <LiveChatButton />
+          <LiveChatButton initiallyVisible={true} />
         </div>
         <h2 className="mt-6 text-center text-[22px] leading-[95%] font-semibold">
           {t("hero.title")}
         </h2>
         <Content />
       </div>
+
+      <LiveChatButton initiallyVisible={false} />
     </div>
   );
 };
