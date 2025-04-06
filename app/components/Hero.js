@@ -149,7 +149,7 @@ const Hero = () => {
               priority
               width={500}
               height={500}
-              className="h-full !bg-contain !w-fit"
+              className="h-full !bg-contain !w-auto"
             />
           </div>
           <LiveChatButton />
