@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { scrollToHomeFormSection } from "../utils/navigation";
 
 export const LiveChatButton = () => {
   return (
@@ -28,10 +29,16 @@ export const Content = () => {
         {t("hero.description")}
       </p>
       <div className="px-8 md:px-0 mt-3 md:mt-[24px] flex items-center flex-wrap md:flex-nowrap justify-center md:justify-start gap-3 md:gap-6">
-        <button className="bg-[#017EFE] w-fit px-8 md:px-10 rounded-[60px] text-white text-[12px] md:text-[16px] font-medium h-[35px] md:h-[39px] transition duration-300 hover:bg-[#003D7B]">
+        <button
+          onClick={() => scrollToHomeFormSection("buy")}
+          className="bg-[#017EFE] w-fit px-8 md:px-10 rounded-[60px] text-white text-[12px] md:text-[16px] font-medium h-[35px] md:h-[39px] transition duration-300 hover:bg-[#003D7B]"
+        >
           {t("hero.buyBtn")}
         </button>
-        <button className="bg-[#017EFE] w-fit px-8 md:px-10 rounded-[60px] text-white text-[12px] md:text-[16px] font-medium h-[35px] md:h-[39px] transition duration-300 hover:bg-[#003D7B]">
+        <button
+          onClick={() => scrollToHomeFormSection("sell")}
+          className="bg-[#017EFE] w-fit px-8 md:px-10 rounded-[60px] text-white text-[12px] md:text-[16px] font-medium h-[35px] md:h-[39px] transition duration-300 hover:bg-[#003D7B]"
+        >
           {t("hero.sellBtn")}
         </button>
         <Link

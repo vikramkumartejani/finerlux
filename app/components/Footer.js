@@ -27,7 +27,7 @@ const BuySellLinks = ({ text }) => {
     return (
       <span
         className="cursor-pointer hover:text-[#017EFE] transition-colors"
-        onClick={() => scrollToHomeFormSection("sell")}
+        onClick={() => scrollToHomeFormSection("buy")}
       >
         {text}
       </span>
@@ -39,14 +39,14 @@ const BuySellLinks = ({ text }) => {
     <>
       <span
         className="cursor-pointer hover:text-[#017EFE] transition-colors"
-        onClick={() => scrollToHomeFormSection("buy")}
+        onClick={() => scrollToHomeFormSection("sell")}
       >
         {parts[0].trim()}
       </span>
       <span className="mx-1">/</span>
       <span
         className="cursor-pointer hover:text-[#017EFE] transition-colors"
-        onClick={() => scrollToHomeFormSection("sell")}
+        onClick={() => scrollToHomeFormSection("buy")}
       >
         {parts[1].trim()}
       </span>
