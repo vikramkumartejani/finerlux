@@ -59,11 +59,10 @@ const Hero = () => {
       <div className="max-w-[1360px] w-full mx-auto bg-white hidden md:flex items-center justify-between rounded-[45px] h-[622px] relative overflow-hidden">
         {/* Background Image */}
         <div
-          className="absolute inset-0 object-cover bg-no-repeat bg-center pt-20 opacity-15"
+          className="absolute inset-0 object-cover bg-no-repeat bg-center pt-20"
           style={{
             backgroundImage:
               "url('/assets/finerlux-rabbit-full-logo-blue.svg')",
-            backgroundSize: "65%",
           }}
         ></div>
 
@@ -82,7 +81,7 @@ const Hero = () => {
             className="relative z-10 h-full !object-contain"
             width={500}
             height={500}
-            loading="lazy"
+            priority
           />
         </div>
 
