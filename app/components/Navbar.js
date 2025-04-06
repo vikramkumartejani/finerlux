@@ -45,28 +45,27 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center justify-between w-full">
           <div className="flex items-center gap-6">
-          <Link
-  href={currentLang === "en" ? "/" : `/${currentLang}`}
-  className="px-3 py-1.5 text-black text-base font-normal"
->
-  {t("navbar.main")}
-</Link>
-<Link
-  href={currentLang === "en" ? "/services" : `/${currentLang}/services`}
-  className="px-3 py-1.5 text-black text-base font-normal"
->
-  {t("navbar.ourServices")}
-</Link>
+            <Link
+              href={currentLang === "en" ? "/" : `/${currentLang}`}
+              className="px-3 py-1.5 text-black text-base font-normal"
+            >
+              {t("navbar.main")}
+            </Link>
+            <Link
+              href={currentLang === "en" ? "/services" : `/${currentLang}/services`}
+              className="px-3 py-1.5 text-black text-base font-normal"
+            >
+              {t("navbar.ourServices")}
+            </Link>
           </div>
 
           <div className="absolute left-1/2 transform -translate-x-1/2 h-10 flex items-center justify-center">
             <div className="relative w-24 h-10 flex items-center justify-center">
               <div
-                className={`absolute transition-all duration-300 ${
-                  isScrolled
+                className={`absolute transition-all duration-300 ${isScrolled
                     ? "opacity-0 translate-y-3"
                     : "opacity-100 translate-y-0"
-                }`}
+                  }`}
               >
                 <Image
                   src="/assets/logo.svg"
@@ -78,11 +77,10 @@ const Navbar = () => {
                 />
               </div>
               <div
-                className={`absolute transition-all duration-300 ${
-                  isScrolled
+                className={`absolute transition-all duration-300 ${isScrolled
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 -translate-y-3"
-                }`}
+                  }`}
               >
                 <Image
                   src="/assets/scroll-logo.svg"
@@ -125,11 +123,10 @@ const Navbar = () => {
 
           <div className="relative w-24 h-8 flex items-center justify-center">
             <div
-              className={`absolute transition-all duration-300 ${
-                isScrolled
+              className={`absolute transition-all duration-300 ${isScrolled
                   ? "opacity-0 translate-y-3"
                   : "opacity-100 translate-y-0"
-              }`}
+                }`}
             >
               <Image
                 src="/assets/logo.svg"
@@ -139,11 +136,10 @@ const Navbar = () => {
               />
             </div>
             <div
-              className={`absolute transition-all duration-300 ${
-                isScrolled
+              className={`absolute transition-all duration-300 ${isScrolled
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 -translate-y-3"
-              }`}
+                }`}
             >
               <Image
                 src="/assets/scroll-logo.svg"
@@ -165,11 +161,10 @@ const Navbar = () => {
 
           {/* Mobile Menu */}
           <div
-            className={`absolute top-[38px] z-50 left-0 right-0 w-full transition-transform duration-300 shadow-header rounded-[30px] ease-in-out ${
-              isMenuOpen
+            className={`absolute top-[38px] z-50 left-0 right-0 w-full transition-transform duration-300 shadow-header rounded-[30px] ease-in-out ${isMenuOpen
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 -translate-y-10 pointer-events-none"
-            }`}
+              }`}
           >
             <div className="bg-white rounded-[30px] py-7 overflow-hidden flex flex-col items-center text-center gap-4">
               <ul className="space-y-4">

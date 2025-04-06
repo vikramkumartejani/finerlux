@@ -43,7 +43,7 @@ export const Content = () => {
           {t("hero.sellBtn")}
         </button>
         <Link
-          href={`/${currentLang}#withusyoucan`}
+          href="#withusyoucan"
           className="flex items-center justify-center !leading-[19px] w-fit px-8 md:px-10 rounded-[60px] text-[#017EFE] text-[12px] md:text-[16px] font-medium h-[35px] md:h-[39px] transition duration-300 hover:text-white hover:bg-[#017EFE] border-2 border-[#017EFE]"
         >
           {t("hero.learnMoreBtn")}
@@ -83,7 +83,7 @@ export const MobileContent = () => {
           {t("hero.sellBtn")}
         </button>
         <Link
-          href={`/${currentLang}#withusyoucan`}
+          href="#withusyoucan"
           className="flex items-center justify-center !leading-[19px] w-fit px-8 md:px-10 rounded-[60px] text-[#017EFE] text-[12px] md:text-[16px] font-medium h-[35px] md:h-[39px] transition duration-300 hover:text-white hover:bg-[#017EFE] border-2 border-[#017EFE]"
         >
           {t("hero.learnMoreBtn")}
