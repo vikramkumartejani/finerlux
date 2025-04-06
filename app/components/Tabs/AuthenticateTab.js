@@ -17,7 +17,7 @@ export default function AuthenticateTab() {
           name: false,
           email: false,
           phone: false,
-          item: false,
+          description: false,
      });
      const [isSubmitting, setIsSubmitting] = useState(false);
      const [submitStatus, setSubmitStatus] = useState(null);
@@ -41,7 +41,7 @@ export default function AuthenticateTab() {
                name: !form.name.value.trim(),
                email: !form.email.value.trim(),
                phone: !form.phone.value.trim(),
-               item: !form.item.value.trim(),
+               description: !form.description.value.trim(),
           };
 
           setFormErrors(errors);
@@ -52,38 +52,38 @@ export default function AuthenticateTab() {
 
           // Form is valid, proceed with submission
           setIsSubmitting(true);
-          
+
           try {
                const formData = new FormData();
-               
+
                // Add form fields
                formData.append('name', form.name.value);
                formData.append('email', form.email.value);
                formData.append('phone', form.phone.value);
-               formData.append('item', form.item.value);
+               formData.append('description', form.description.value);
                formData.append('formType', 'Authentication');
-               
+
                // Add contact preferences
                formData.append('telephone', checkedItems.checkbox1);
                formData.append('sms', checkedItems.checkbox2);
                formData.append('emailContact', checkedItems.checkbox3);
                formData.append('whatsapp', checkedItems.checkbox4);
-               
+
                // Add images if any
                if (uploadedImages.length > 0) {
                     uploadedImages.forEach(file => {
                          formData.append('images', file);
                     });
                }
-               
+
                // Submit the form
                const response = await fetch('/api/submit-form', {
                     method: 'POST',
                     body: formData,
                });
-               
+
                const result = await response.json();
-               
+
                if (result.success) {
                     setSubmitStatus('success');
                     // Reset form
@@ -156,11 +156,8 @@ export default function AuthenticateTab() {
                               {formErrors.email && (
                                    <p className="text-[#B80000] text-sm mt-1">It is mandatory field</p>
                               )}
-                         </div>
-                    </div>
 
-                    {/* Phone & Item */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 md:gap-6">
+                         </div>
                          <div>
                               <label htmlFor="phone" className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3">
                                    Phone number
@@ -179,29 +176,26 @@ export default function AuthenticateTab() {
                                    <p className="text-[#B80000] text-sm mt-1">It is mandatory field</p>
                               )}
                          </div>
-                         <div>
-                              <label htmlFor="item" className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3">
-                                   Item
-                              </label>
-                              <input
-                                   type="text"
-                                   id="item"
-                                   name="item"
-                                   placeholder="Enter item details"
-                                   className={`w-full px-4 text-base min-h-[33px] md:h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                                   ${formErrors.item
-                                             ? 'border-[#B80000]'
-                                             : 'border-transparent focus:border-[#017EFE]'}`}
-                              />
-                              {formErrors.item && (
-                                   <p className="text-[#B80000] text-sm mt-1">It is mandatory field</p>
-                              )}
-                         </div>
                     </div>
 
                     {/* Image Upload */}
                     <div className="pt-[14px] md:pt-6">
                          <ImageUploader onImagesChange={handleImagesChange} />
+                    </div>
+                    <div>
+                         <label htmlFor="description" className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3">
+                              Description
+                         </label>
+                         <textarea
+                              id="description"
+                              name="description"
+                              placeholder="Enter your description"
+                              className={`w-full px-4 py-2.5 h-[160px] text-base bg-[#E3E8ED] rounded-[20px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
+                              ${formErrors.description ? 'border-[#B80000]' : 'border-transparent focus:border-[#017EFE]'}`}
+                         />
+                         {formErrors.description && (
+                              <p className="text-[#B80000] text-sm mt-1">It is mandatory field</p>
+                         )}
                     </div>
 
                     {/* Status message */}

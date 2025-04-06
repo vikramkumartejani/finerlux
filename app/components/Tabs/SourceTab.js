@@ -1,8 +1,8 @@
 "use client"
 import Image from "next/image"
 import { useState, useEffect } from "react"
+import ImageUploader from "../ImageUploader"
 import Checkbox from "../Checkbox"
-import ImageUploader from "../ImageUploader";
 import { useTranslation } from 'react-i18next';
 
 export default function SourceTab() {
@@ -21,12 +21,17 @@ export default function SourceTab() {
      });
      const [isSubmitting, setIsSubmitting] = useState(false);
      const [submitStatus, setSubmitStatus] = useState(null);
+     const [uploadedImages, setUploadedImages] = useState([]);
 
      const handleCheckboxChange = (key) => {
           setCheckedItems((prev) => ({
                ...prev,
                [key]: !prev[key],
           }));
+     };
+
+     const handleImagesChange = (files) => {
+          setUploadedImages(files);
      };
 
      const validateForm = async (e) => {
@@ -47,31 +52,38 @@ export default function SourceTab() {
 
           // Form is valid, proceed with submission
           setIsSubmitting(true);
-          
+
           try {
                const formData = new FormData();
-               
+
                // Add form fields
                formData.append('name', form.name.value);
                formData.append('email', form.email.value);
                formData.append('phone', form.phone.value);
                formData.append('description', form.description.value);
-               formData.append('formType', 'Source');
-               
+               formData.append('formType', 'Authentication');
+
                // Add contact preferences
                formData.append('telephone', checkedItems.checkbox1);
                formData.append('sms', checkedItems.checkbox2);
                formData.append('emailContact', checkedItems.checkbox3);
                formData.append('whatsapp', checkedItems.checkbox4);
-               
+
+               // Add images if any
+               if (uploadedImages.length > 0) {
+                    uploadedImages.forEach(file => {
+                         formData.append('images', file);
+                    });
+               }
+
                // Submit the form
                const response = await fetch('/api/submit-form', {
                     method: 'POST',
                     body: formData,
                });
-               
+
                const result = await response.json();
-               
+
                if (result.success) {
                     setSubmitStatus('success');
                     // Reset form
@@ -82,6 +94,7 @@ export default function SourceTab() {
                          checkbox3: false,
                          checkbox4: false,
                     });
+                    setUploadedImages([]);
                } else {
                     setSubmitStatus('error');
                }
@@ -95,7 +108,7 @@ export default function SourceTab() {
 
      return (
           <div className="flex items-start justify-between lg:flex-row flex-col gap-6 pt-6 md:pt-12 md:px-4">
-              <div className="space-y-3 md:space-y-4 w-full lg:max-w-[482px] px-2">
+               <div className="space-y-3 md:space-y-4 w-full lg:max-w-[482px] px-2">
                     <h1 className="md:block hidden text-[24px] md:text-4xl leading-[95%] font-semibold md:text-left text-center">{t("tab.titleSourceOne")}</h1>
                     <h1 className="block md:hidden text-[24px] md:text-4xl leading-[95%] font-semibold md:text-left text-center">{t("tab.titleSourceTwo")}</h1>
                     <p className="md:block hidden md:pb-8 text-black text-sm md:text-base font-normal leading-[20px] md:text-left text-center">{t("tab.descSourceOne")}</p>
@@ -143,31 +156,33 @@ export default function SourceTab() {
                               {formErrors.email && (
                                    <p className="text-[#B80000] text-sm mt-1">It is mandatory field</p>
                               )}
+
+                         </div>
+                         <div>
+                              <label htmlFor="phone" className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3">
+                                   Phone number
+                              </label>
+                              <input
+                                   type="tel"
+                                   id="phone"
+                                   name="phone"
+                                   placeholder="(+44) 123 456 7890"
+                                   className={`w-full px-4 text-base min-h-[33px] md:h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
+                                   ${formErrors.phone
+                                             ? 'border-[#B80000]'
+                                             : 'border-transparent focus:border-[#017EFE]'}`}
+                              />
+                              {formErrors.phone && (
+                                   <p className="text-[#B80000] text-sm mt-1">It is mandatory field</p>
+                              )}
                          </div>
                     </div>
 
-                    {/* Phone */}
-                    <div>
-                         <label htmlFor="phone" className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3">
-                              Phone number
-                         </label>
-                         <input
-                              type="tel"
-                              id="phone"
-                              name="phone"
-                              placeholder="(+44) 123 456 7890"
-                              className={`w-full px-4 text-base min-h-[33px] md:h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                              ${formErrors.phone
-                                        ? 'border-[#B80000]'
-                                        : 'border-transparent focus:border-[#017EFE]'}`}
-                         />
-                         {formErrors.phone && (
-                              <p className="text-[#B80000] text-sm mt-1">It is mandatory field</p>
-                         )}
-                    </div>
-
-                    {/* Description */}
+                    {/* Image Upload */}
                     <div className="pt-[14px] md:pt-6">
+                         <ImageUploader onImagesChange={handleImagesChange} />
+                    </div>
+                    <div>
                          <label htmlFor="description" className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3">
                               Description
                          </label>
@@ -226,6 +241,4 @@ export default function SourceTab() {
           </div>
      )
 }
-
-
 
