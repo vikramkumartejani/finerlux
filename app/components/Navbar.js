@@ -13,6 +13,7 @@ const Navbar = () => {
   useEffect(() => {
     const storedLang = localStorage.getItem("selectedLanguage");
     const langFromPath = window.location.pathname.split("/")[1];
+    // Consider path with no language code as English
     const finalLang = storedLang || (langFromPath === "ru" ? "ru" : "en");
     setCurrentLang(finalLang);
 
@@ -44,18 +45,18 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center justify-between w-full">
           <div className="flex items-center gap-6">
-            <Link
-              href={`/${currentLang}`}
-              className="px-3 py-1.5 text-black text-base font-normal"
-            >
-              {t("navbar.main")}
-            </Link>
-            <Link
-              href={`/${currentLang}/services`}
-              className="px-3 py-1.5 text-black text-base font-normal"
-            >
-              {t("navbar.ourServices")}
-            </Link>
+          <Link
+  href={currentLang === "en" ? "/" : `/${currentLang}`}
+  className="px-3 py-1.5 text-black text-base font-normal"
+>
+  {t("navbar.main")}
+</Link>
+<Link
+  href={currentLang === "en" ? "/services" : `/${currentLang}/services`}
+  className="px-3 py-1.5 text-black text-base font-normal"
+>
+  {t("navbar.ourServices")}
+</Link>
           </div>
 
           <div className="absolute left-1/2 transform -translate-x-1/2 h-10 flex items-center justify-center">

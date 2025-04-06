@@ -35,18 +35,27 @@ const LanguageDropdown = () => {
 
      const changeLanguage = (lng) => {
           if (i18n.isInitialized) {
-               i18n.changeLanguage(lng);
-               const selectedLang = languages.find((lang) => lang.code === lng);
-               setCurrentLang(selectedLang);
-               if (typeof window !== "undefined") {
-                    localStorage.setItem("selectedLanguage", lng);
-                    const newPath = `/${lng}`;
-                    window.location.href = newPath; 
-               }
+            i18n.changeLanguage(lng);
+            const selectedLang = languages.find((lang) => lang.code === lng);
+            setCurrentLang(selectedLang);
+            if (typeof window !== "undefined") {
+              localStorage.setItem("selectedLanguage", lng);
+              
+              // Get current path without language prefix
+              let currentPath = pathname;
+              const firstSegment = pathname.split('/')[1];
+              if (languages.some(lang => lang.code === firstSegment)) {
+                currentPath = pathname.substring(firstSegment.length + 1) || '/';
+              }
+              
+              // For English, use path without language code, for others use language code
+              const newPath = lng === "en" ? currentPath : `/${lng}${currentPath === '/' ? '' : currentPath}`;
+              window.location.href = newPath;
+            }
           } else {
-               console.warn("i18n is not initialized, cannot change language.");
+            console.warn("i18n is not initialized, cannot change language.");
           }
-     };
+        };
 
      return (
           <>

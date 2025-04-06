@@ -2,6 +2,10 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { initI18n } from "../i18n";
+import Hero from "./components/Hero";
+import NewArrivals from "./components/NewArrivals";
+import WithUsYouCan from "./components/WithUsYouCan";
+import Tab from "./components/Tabs/Tab";
 
 const Page = () => {
   const router = useRouter();
@@ -27,10 +31,15 @@ const Page = () => {
           }
         }
 
-        router.push(`/${preferredLang}`);
+        // For English, go to root path, for other languages use the language code
+        if (preferredLang === "en") {
+          router.push("/");
+        } else {
+          router.push(`/${preferredLang}`);
+        }
       } catch (error) {
         console.error("Failed to initialize:", error);
-        router.push("/en");
+        router.push("/"); // Default to root path
       } finally {
         setIsLoading(false);
       }
@@ -65,7 +74,14 @@ const Page = () => {
     );
   }
 
-  return null;
+  return (
+    <div>
+      <Hero />
+      <NewArrivals />
+      <WithUsYouCan />
+      <Tab />
+    </div>
+  );
 };
 
 export default Page;
