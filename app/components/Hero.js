@@ -135,9 +135,9 @@ const Hero = () => {
           <div className="w-full h-full">
             <Image
               src="/assets/mobile.svg"
-              priority
               alt="mobile"
               className="w-full h-full !object-contain"
+              priority
               width={500}
               height={500}
             />
