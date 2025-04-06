@@ -11,7 +11,7 @@ import { useTranslation } from 'react-i18next';
 export default function TabComponent() {
   const { t } = useTranslation();
   const searchParams = useSearchParams();
-  const [activeTab, setActiveTab] = useState('sell'); // Default tab
+  const [activeTab, setActiveTab] = useState('sell'); 
   const buyTabRef = useRef(null);
   
   useEffect(() => {
@@ -70,7 +70,7 @@ export default function TabComponent() {
         </div>
       </div>
 
-      <div className="tab-content">
+      <div className="tab-content scroll-mt-[80px]">
         {activeTab === 'sell' && <SellTab />}
         {activeTab === 'buy' && <BuyTab ref={buyTabRef} />}
         {activeTab === 'partExchange' && <PartExchangeTab />}

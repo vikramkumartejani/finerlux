@@ -1,10 +1,9 @@
 import { useRouter } from "next/navigation";
 
 /**
- * Navigate to the buy form with prefilled information
- * @param {string} item - The name of the item
- * @param {string} details - Additional details about the item
- * @param {string} price - The price of the item (optional)
+ * @param {string} item  
+ * @param {string} details  
+ * @param {string} price 
  */
 export const navigateToBuyForm = (item, details, price) => {
   // Create a query string with the item details

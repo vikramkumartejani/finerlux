@@ -87,11 +87,11 @@ const Footer = () => {
       <div className="relative z-10 pt-[95px] md:pt-[46px] !pb-0 w-full mx-auto max-w-full">
         <div className="flex items-center justify-center ml-10 md:ml-20 mb-[25px]">
           <Image
-            src="/assets/footer-image.svg"
+            src="/assets/finerlux-rabbit-full-logo-blue-footer.svg"
             alt="footer"
-            width={121}
-            height={210}
-            className="md:w-[121px] md:h-[210px] w-[94px] h-[164px]"
+            width={162}
+            height={213}
+            className="md:w-[162px] md:h-[213px] w-[124px] h-[164px]"
           />
         </div>
         <div className="relative max-w-[1120px] w-full mx-auto h-full">
@@ -131,15 +131,22 @@ const Footer = () => {
                 </li>
                 <li
                   className="text-black text-[14px] md:text-[18px] font-normal mb-[12px] lg:mb-[18px] !leading-[22px] cursor-pointer hover:text-[#017EFE] transition-colors"
-                  onClick={() => scrollToHomeFormSection("part-exchange")}
+                  onClick={() => scrollToHomeFormSection("sell")}
                 >
-                  {t("footer.services.partExchange")}
+                  {t("footer.services.sell")}
                 </li>
                 <li
                   className="text-black text-[14px] md:text-[18px] font-normal mb-[12px] lg:mb-[18px] !leading-[22px] cursor-pointer hover:text-[#017EFE] transition-colors"
-                  onClick={() => scrollToHomeFormSection("authenticate")}
+                  onClick={() => scrollToHomeFormSection("buy")}
                 >
-                  {t("footer.services.authenticate")}
+                  {t("footer.services.buy")}
+                </li>
+
+                <li
+                  className="text-black text-[14px] md:text-[18px] font-normal mb-[12px] lg:mb-[18px] !leading-[22px] cursor-pointer hover:text-[#017EFE] transition-colors"
+                  onClick={() => scrollToHomeFormSection("part-exchange")}
+                >
+                  {t("footer.services.partExchange")}
                 </li>
                 <li
                   className="text-black text-[14px] md:text-[18px] font-normal mb-[12px] lg:mb-[18px] !leading-[22px] cursor-pointer hover:text-[#017EFE] transition-colors"
@@ -147,8 +154,11 @@ const Footer = () => {
                 >
                   {t("footer.services.source")}
                 </li>
-                <li className="text-black text-[14px] md:text-[18px] font-normal !leading-[22px]">
-                  <BuySellLinks text={t("footer.services.buySell")} />
+                <li
+                  className="text-black text-[14px] md:text-[18px] font-normal mb-[12px] lg:mb-[18px] !leading-[22px] cursor-pointer hover:text-[#017EFE] transition-colors"
+                  onClick={() => scrollToHomeFormSection("authenticate")}
+                >
+                  {t("footer.services.authenticate")}
                 </li>
               </ul>
 

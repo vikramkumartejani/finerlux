@@ -79,7 +79,7 @@ export default function Tab() {
           activeTab={activeTab}
           setActiveTab={setActiveTab}
         />
-        <div>{renderTabContent()}</div>
+        <div className="scroll-mt-[80px]">{renderTabContent()}</div>
       </div>
     </main>
   );

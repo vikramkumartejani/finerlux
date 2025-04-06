@@ -470,7 +470,7 @@ export default function SellTab() {
            {/* Status message */}
            {submitStatus === 'success' && (
                 <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded">
-                     Form submitted successfully! We'll get back to you soon.
+                     Form submitted successfully! We&apos;`ll get back to you soon.
                 </div>
            )}
            {submitStatus === 'error' && (
