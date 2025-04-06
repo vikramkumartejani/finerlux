@@ -3,6 +3,7 @@ import Cross from "../SvgIcons/Cross";
 import Right from "../SvgIcons/Right";
 import { useTranslation } from "react-i18next";
 import { scrollToHomeFormSection } from "../utils/navigation";
+import Image from "next/image";
 
 const newArrivalsData = [
   {
@@ -120,11 +121,13 @@ const NewArrivals = () => {
             <div key={watch.id}>
               <div className="bg-white rounded-[24px] sm:rounded-[30px] p-[12px] sm:p-[18px] w-full">
                 <div className="w-full h-[168px] sm:h-[248px] relative flex items-center justify-center group">
-                  <img
+                  <Image
                     src={watch.imageUrl || "/placeholder.svg"}
                     alt={`${watch.brand} ${watch.model}`}
+                    width={400}
+                    height={500}
                     draggable="false"
-                    loading="lazy"
+                    priority
                     className="w-full h-full !object-cover rounded-[20px] !aspect-square opacity-100 group-hover:opacity-0 absolute top-0 left-0"
                   />
 
