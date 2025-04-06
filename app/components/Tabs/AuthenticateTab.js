@@ -50,33 +50,28 @@ export default function AuthenticateTab() {
                return;
           }
 
-          // Form is valid, proceed with submission
           setIsSubmitting(true);
 
           try {
                const formData = new FormData();
 
-               // Add form fields
                formData.append('name', form.name.value);
                formData.append('email', form.email.value);
                formData.append('phone', form.phone.value);
                formData.append('description', form.description.value);
                formData.append('formType', 'Authentication');
 
-               // Add contact preferences
                formData.append('telephone', checkedItems.checkbox1);
                formData.append('sms', checkedItems.checkbox2);
                formData.append('emailContact', checkedItems.checkbox3);
                formData.append('whatsapp', checkedItems.checkbox4);
 
-               // Add images if any
                if (uploadedImages.length > 0) {
                     uploadedImages.forEach(file => {
                          formData.append('images', file);
                     });
                }
 
-               // Submit the form
                const response = await fetch('/api/submit-form', {
                     method: 'POST',
                     body: formData,
@@ -86,7 +81,6 @@ export default function AuthenticateTab() {
 
                if (result.success) {
                     setSubmitStatus('success');
-                    // Reset form
                     form.reset();
                     setCheckedItems({
                          checkbox1: false,

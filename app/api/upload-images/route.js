@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import { v2 as cloudinary } from 'cloudinary';
 
-// Configure Cloudinary
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
@@ -24,12 +23,10 @@ export async function POST(request) {
     
     for (const file of files) {
       if (file instanceof Blob) {
-        // Convert file to base64
         const arrayBuffer = await file.arrayBuffer();
         const buffer = Buffer.from(arrayBuffer);
         const base64String = `data:${file.type};base64,${buffer.toString('base64')}`;
         
-        // Upload to Cloudinary
         const uploadResult = await cloudinary.uploader.upload(base64String, {
           folder: 'finerlux-uploads',
         });

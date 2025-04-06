@@ -18,7 +18,6 @@ const ImageUploader = ({ onImagesChange, disabled }) => {
           const newImageFiles = [...images];
           
           imageFiles.forEach(file => {
-               // Create a preview URL for display
                const previewUrl = URL.createObjectURL(file);
                newImageFiles.push({
                     file,
@@ -28,7 +27,6 @@ const ImageUploader = ({ onImagesChange, disabled }) => {
           
           setImages(newImageFiles);
           
-          // Pass the actual file objects to the parent component
           if (onImagesChange) {
                onImagesChange(newImageFiles.map(img => img.file));
           }
@@ -36,12 +34,10 @@ const ImageUploader = ({ onImagesChange, disabled }) => {
 
      const handleRemove = (index) => {
           const updatedImages = [...images];
-          // Revoke the object URL to avoid memory leaks
           URL.revokeObjectURL(updatedImages[index].preview);
           updatedImages.splice(index, 1);
           setImages(updatedImages);
           
-          // Pass the updated file objects to the parent component
           if (onImagesChange) {
                onImagesChange(updatedImages.map(img => img.file));
           }

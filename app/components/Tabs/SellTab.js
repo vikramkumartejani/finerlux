@@ -59,13 +59,11 @@ export default function SellTab() {
                return;
           }
 
-          // Form is valid, proceed with submission
           setIsSubmitting(true);
           
           try {
                const formData = new FormData();
                
-               // Add form fields
                formData.append('name', form.name.value);
                formData.append('email', form.email.value);
                formData.append('phone', form.phone.value);
@@ -74,20 +72,17 @@ export default function SellTab() {
                formData.append('price', form.price.value);
                formData.append('formType', 'Sell');
                
-               // Add contact preferences
                formData.append('telephone', checkedItems.checkbox1);
                formData.append('sms', checkedItems.checkbox2);
                formData.append('emailContact', checkedItems.checkbox3);
                formData.append('whatsapp', checkedItems.checkbox4);
                
-               // Add images
                if (uploadedImages.length > 0) {
                     uploadedImages.forEach(file => {
                          formData.append('images', file);
                     });
                }
                
-               // Submit the form
                const response = await fetch('/api/submit-form', {
                     method: 'POST',
                     body: formData,

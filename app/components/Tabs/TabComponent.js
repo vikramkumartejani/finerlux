@@ -15,29 +15,24 @@ export default function TabComponent() {
   const buyTabRef = useRef(null);
   
   useEffect(() => {
-    // Set the active tab based on the URL parameter
     const tabParam = searchParams.get('tab');
     if (tabParam && ['sell', 'buy', 'partExchange', 'source', 'authenticate'].includes(tabParam)) {
       setActiveTab(tabParam);
       
-      // If we're switching to the buy tab AND we have the scroll flag in sessionStorage
       if (tabParam === 'buy' && sessionStorage.getItem('scrollToBuyForm') === 'true') {
-        // Clear the flag
         sessionStorage.removeItem('scrollToBuyForm');
         
-        // Schedule a scroll to the buy form after the tab renders
         setTimeout(() => {
           const buyForm = document.getElementById('buyForm');
           if (buyForm) {
             buyForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
             
-            // Focus on the first input for better UX
             const firstInput = buyForm.querySelector('input');
             if (firstInput) {
               firstInput.focus();
             }
           }
-        }, 500); // Half-second delay to ensure the DOM is updated
+        }, 500); 
       }
     }
   }, [searchParams]);

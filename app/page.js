@@ -31,7 +31,6 @@ const Page = () => {
           }
         }
 
-        // For English, go to root path, for other languages use the language code
         if (preferredLang === "en") {
           router.push("/");
         } else {
@@ -39,7 +38,7 @@ const Page = () => {
         }
       } catch (error) {
         console.error("Failed to initialize:", error);
-        router.push("/"); // Default to root path
+        router.push("/");  
       } finally {
         setIsLoading(false);
       }

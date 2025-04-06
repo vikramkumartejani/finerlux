@@ -24,7 +24,6 @@ const BuyTab = forwardRef((props, ref) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
 
-  // Simple function to update description field
   const updateDescriptionField = (text) => {
     const descriptionField = document.getElementById("description");
     if (descriptionField) {
@@ -32,26 +31,20 @@ const BuyTab = forwardRef((props, ref) => {
     }
   };
 
-  // Handle pre-filling the form based on URL parameters or sessionStorage
   useEffect(() => {
-    // Check if we have product data in sessionStorage
     if (typeof window !== "undefined") {
-      // First clear the description field
       updateDescriptionField("");
 
-      // Check for buyFormData in sessionStorage
       const formData = sessionStorage.getItem("buyFormData");
       if (formData) {
         updateDescriptionField(`Hello, I'm interested in\n${formData}`);
 
-        // Clear sessionStorage after using it
         sessionStorage.removeItem("buyFormData");
         sessionStorage.removeItem("buyFormProduct");
         return;
       }
     }
 
-    // If no sessionStorage data, check URL parameters
     const item = searchParams.get("item");
     const details = searchParams.get("details");
     const price = searchParams.get("price");
@@ -75,26 +68,21 @@ const BuyTab = forwardRef((props, ref) => {
     }
   }, [searchParams]);
 
-  // Add an extra effect to check for product data periodically
   useEffect(() => {
-    // Function to check for product data
     const checkForProductData = () => {
       if (typeof window !== "undefined") {
         const formData = sessionStorage.getItem("buyFormData");
         if (formData) {
           updateDescriptionField(`Hello, I'm interested in\n${formData}`);
 
-          // Clear the data
           sessionStorage.removeItem("buyFormData");
           sessionStorage.removeItem("buyFormProduct");
         }
       }
     };
 
-    // Initial check
     checkForProductData();
 
-    // Set interval to check periodically
     const interval = setInterval(checkForProductData, 500);
 
     return () => clearInterval(interval);
@@ -123,26 +111,22 @@ const BuyTab = forwardRef((props, ref) => {
       return;
     }
 
-    // Form is valid, proceed with submission
     setIsSubmitting(true);
 
     try {
       const formData = new FormData();
 
-      // Add form fields
       formData.append("name", form.name.value);
       formData.append("email", form.email.value);
       formData.append("phone", form.phone.value);
       formData.append("description", form.description.value);
       formData.append("formType", "Buy");
 
-      // Add contact preferences
       formData.append("telephone", checkedItems.checkbox1);
       formData.append("sms", checkedItems.checkbox2);
       formData.append("emailContact", checkedItems.checkbox3);
       formData.append("whatsapp", checkedItems.checkbox4);
 
-      // Submit the form
       const response = await fetch("/api/submit-form", {
         method: "POST",
         body: formData,
@@ -153,10 +137,8 @@ const BuyTab = forwardRef((props, ref) => {
       if (result.success) {
         setSubmitStatus("success");
 
-        // Reset all form fields to their initial state
         form.reset();
 
-        // Reset checkboxes
         setCheckedItems({
           checkbox1: false,
           checkbox2: false,
@@ -164,13 +146,11 @@ const BuyTab = forwardRef((props, ref) => {
           checkbox4: false,
         });
 
-        // Reset placeholders to defaults if they were customized
         const nameField = document.getElementById("name");
         if (nameField) {
           nameField.placeholder = "Full Name";
         }
 
-        // Clear any sessionStorage data that might be related to this form
         if (typeof window !== "undefined") {
           sessionStorage.removeItem("buyFormProduct");
           sessionStorage.removeItem("buyFormData");

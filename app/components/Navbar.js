@@ -13,11 +13,9 @@ const Navbar = () => {
   useEffect(() => {
     const storedLang = localStorage.getItem("selectedLanguage");
     const langFromPath = window.location.pathname.split("/")[1];
-    // Consider path with no language code as English
     const finalLang = storedLang || (langFromPath === "ru" ? "ru" : "en");
     setCurrentLang(finalLang);
 
-    // Add scroll event listener
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       if (scrollPosition > 20) {
@@ -29,7 +27,6 @@ const Navbar = () => {
 
     window.addEventListener("scroll", handleScroll);
 
-    // Cleanup
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };

@@ -3,7 +3,6 @@ export const uploadImages = async (files) => {
   
   const formData = new FormData();
   
-  // Append each file to the form data
   for (let i = 0; i < files.length; i++) {
     formData.append('images', files[i]);
   }

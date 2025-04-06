@@ -12,9 +12,7 @@ export default function Tab() {
 
   const [activeTab, setActiveTab] = useState("buy");
 
-  // Check for stored active tab on mount and when storage changes
   useEffect(() => {
-    // Function to check sessionStorage and update tab
     const checkSessionStorageForTab = () => {
       if (typeof window !== "undefined") {
         try {
@@ -30,11 +28,8 @@ export default function Tab() {
       }
     };
 
-    // Check on initial mount
     checkSessionStorageForTab();
 
-    // Set up an interval to periodically check storage
-    // This helps ensure we catch tab changes even if events are missed
     const interval = setInterval(checkSessionStorageForTab, 500);
 
     return () => {

@@ -9,7 +9,6 @@ import { useTranslation } from "react-i18next";
 import dynamic from "next/dynamic";
 import { scrollToHomeFormSection } from "../utils/navigation";
 
-// Dynamically import the LanguageDropdown with SSR disabled
 const LanguageDropdown = dynamic(() => import("./LanguageDropdown"), {
   ssr: false,
   loading: () => (
@@ -17,47 +16,9 @@ const LanguageDropdown = dynamic(() => import("./LanguageDropdown"), {
   ),
 });
 
-// Component to handle buy/sell links
-const BuySellLinks = ({ text }) => {
-  // Split the text by "/"
-  const parts = text.split("/");
-
-  if (parts.length === 1) {
-    // If there's no slash, just show the text and link to buy page
-    return (
-      <span
-        className="cursor-pointer hover:text-[#017EFE] transition-colors"
-        onClick={() => scrollToHomeFormSection("buy")}
-      >
-        {text}
-      </span>
-    );
-  }
-
-  // If there are two parts (sell/buy or similar)
-  return (
-    <>
-      <span
-        className="cursor-pointer hover:text-[#017EFE] transition-colors"
-        onClick={() => scrollToHomeFormSection("sell")}
-      >
-        {parts[0].trim()}
-      </span>
-      <span className="mx-1">/</span>
-      <span
-        className="cursor-pointer hover:text-[#017EFE] transition-colors"
-        onClick={() => scrollToHomeFormSection("buy")}
-      >
-        {parts[1].trim()}
-      </span>
-    </>
-  );
-};
-
 const Footer = () => {
   const [isClient, setIsClient] = useState(false);
 
-  // Use a fallback text until translation is ready
   const fallbackTranslation = {
     "footer.headline": "We help watch collectors do more of what they love.",
     "footer.rights": "All rights reserved",
@@ -75,7 +36,6 @@ const Footer = () => {
     setCurrentLang(finalLang);
   }, []);
 
-  // Translate function that uses fallback if translations aren't ready
   const safeT = (key) => {
     if (ready) return t(key);
     return fallbackTranslation[key] || key;

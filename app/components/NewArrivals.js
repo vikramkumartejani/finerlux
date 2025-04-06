@@ -79,15 +79,12 @@ const newArrivalsData = [
 const NewArrivals = () => {
   const { t } = useTranslation();
 
-  // Function to handle buy button click
   const handleBuyClick = (watch) => {
-    // First clear any existing data
     if (typeof window !== "undefined") {
       sessionStorage.removeItem("buyFormProduct");
       sessionStorage.removeItem("buyFormData");
     }
 
-    // Create a formatted description for the form
     const prefillText = `Item: ${watch.brand} ${watch.model}\nBrand: ${
       watch.brand || "N/A"
     }\nModel: ${watch.model || "N/A"}\nReference: ${
@@ -96,16 +93,13 @@ const NewArrivals = () => {
       watch.condition || "N/A"
     }\nPrice: £${watch.price}`;
 
-    // Store the watch data in sessionStorage for the buy form
     if (typeof window !== "undefined") {
       sessionStorage.setItem("buyFormProduct", JSON.stringify(watch));
       sessionStorage.setItem("buyFormData", prefillText);
 
-      // Set the active tab to "buy"
       sessionStorage.setItem("setActiveHomeTab", "buy");
     }
 
-    // Scroll to the form section
     scrollToHomeFormSection("buy");
   };
 

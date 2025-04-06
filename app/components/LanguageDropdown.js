@@ -21,7 +21,6 @@ const LanguageDropdown = () => {
                const selectedLang = languages.find((lang) => lang.code === savedLang) || languages[0];
                setCurrentLang(selectedLang);
 
-               // Initialize i18n asynchronously
                initI18n()
                     .then(() => {
                          i18n.changeLanguage(selectedLang.code);
@@ -41,14 +40,12 @@ const LanguageDropdown = () => {
             if (typeof window !== "undefined") {
               localStorage.setItem("selectedLanguage", lng);
               
-              // Get current path without language prefix
               let currentPath = pathname;
               const firstSegment = pathname.split('/')[1];
               if (languages.some(lang => lang.code === firstSegment)) {
                 currentPath = pathname.substring(firstSegment.length + 1) || '/';
               }
               
-              // For English, use path without language code, for others use language code
               const newPath = lng === "en" ? currentPath : `/${lng}${currentPath === '/' ? '' : currentPath}`;
               window.location.href = newPath;
             }
