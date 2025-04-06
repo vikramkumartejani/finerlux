@@ -79,7 +79,8 @@
                "partExchange": "Part exchange",
                "authenticate": "Authenticate",
                "source": "Source",
-               "buySell": "Buy/Sell"
+               "sell": "Sell",
+               "buy": "Buy"
           },
           "privacy": {
                "title": "Privacy"

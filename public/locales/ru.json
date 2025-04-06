@@ -78,7 +78,8 @@
                "partExchange": "Обмен",
                "authenticate": "Аутентификация",
                "source": "Поиск",
-               "buySell": "Покупка/Продажа"
+                "sell": "Купить",
+               "buy": "Продать"
           },
           "privacy": {
                "title": "Приватность"
