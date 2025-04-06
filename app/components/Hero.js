@@ -146,10 +146,10 @@ const Hero = () => {
             <Image
               src="/assets/hero-watch.webp"
               alt="hero-watch"
-              width={500}
               priority
+              width={500}
               height={500}
-              className="h-full !bg-contain !max-w-fit"
+              className="h-full !bg-contain !w-fit"
             />
           </div>
           <LiveChatButton />
