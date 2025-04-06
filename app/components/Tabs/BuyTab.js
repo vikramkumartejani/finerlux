@@ -216,7 +216,7 @@ const BuyTab = forwardRef((props, ref) => {
   };
 
   return (
-    <div className="flex items-start justify-between lg:flex-row flex-col gap-6 pt-6 md:pt-12 md:px-4">
+    <div className="scroll-mt-[80px] flex items-start justify-between lg:flex-row flex-col gap-6 pt-6 md:pt-12 md:px-4">
       <div className="space-y-3 md:space-y-4 w-full lg:max-w-[482px] px-2">
         <h1 className="md:block hidden text-[24px] md:text-4xl leading-[95%] font-semibold md:text-left text-center">
           {t("tab.titleBuyOne")}
