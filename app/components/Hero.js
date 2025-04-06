@@ -128,7 +128,7 @@ const Hero = () => {
             <Image
               src="/assets/mobile.svg"
               priority
-              alt="mobil"
+              alt="mobile"
               className="w-full h-full !object-contain"
               width={500}
               height={500}
@@ -139,6 +139,7 @@ const Hero = () => {
               src="/assets/hero-watch.webp"
               alt="hero-watch"
               width={500}
+              priority
               height={500}
               className="h-full !bg-contain w-fit"
             />
