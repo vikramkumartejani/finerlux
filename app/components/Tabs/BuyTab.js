@@ -42,22 +42,7 @@ const BuyTab = forwardRef((props, ref) => {
       // Check for buyFormData in sessionStorage
       const formData = sessionStorage.getItem("buyFormData");
       if (formData) {
-        updateDescriptionField(formData);
-
-        // Also update name placeholder if we have product data
-        try {
-          const productData = JSON.parse(
-            sessionStorage.getItem("buyFormProduct")
-          );
-          if (productData) {
-            const nameField = document.getElementById("name");
-            if (nameField) {
-              nameField.placeholder = `Interested in ${productData.brand} ${productData.model}`;
-            }
-          }
-        } catch (err) {
-          console.error("Error parsing product data:", err);
-        }
+        updateDescriptionField(`Hello, I'm interested in\n${formData}`);
 
         // Clear sessionStorage after using it
         sessionStorage.removeItem("buyFormData");
@@ -72,7 +57,7 @@ const BuyTab = forwardRef((props, ref) => {
     const price = searchParams.get("price");
 
     if (item || details || price) {
-      let prefillText = "";
+      let prefillText = "Hello, I'm interested in\n";
 
       if (item) {
         prefillText += `Item: ${item}\n`;
@@ -97,21 +82,7 @@ const BuyTab = forwardRef((props, ref) => {
       if (typeof window !== "undefined") {
         const formData = sessionStorage.getItem("buyFormData");
         if (formData) {
-          updateDescriptionField(formData);
-
-          try {
-            const productData = JSON.parse(
-              sessionStorage.getItem("buyFormProduct")
-            );
-            if (productData) {
-              const nameField = document.getElementById("name");
-              if (nameField) {
-                nameField.placeholder = `Interested in ${productData.brand} ${productData.model}`;
-              }
-            }
-          } catch (err) {
-            console.error("Error parsing product data in interval:", err);
-          }
+          updateDescriptionField(`Hello, I'm interested in\n${formData}`);
 
           // Clear the data
           sessionStorage.removeItem("buyFormData");
