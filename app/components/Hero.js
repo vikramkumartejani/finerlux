@@ -29,7 +29,7 @@ export const LiveChatButton = ({ initiallyVisible = false }) => {
 
   if (initiallyVisible) {
     return (
-      <button className="absolute right-1 md:right-[45px] z-40 -bottom-4 md:bottom-[168px] rounded-[30px] h-[41px] md:h-[47px] w-[95px] md:w-[118px] text-sm md:text-base font-normal md:font-medium bg-[#60FF7D] text-black">
+      <button  aria-label="Start Live Chat" title="Start Live Chat" className="absolute right-1 md:right-[45px] z-40 -bottom-4 md:bottom-[168px] rounded-[30px] h-[41px] md:h-[47px] w-[95px] md:w-[118px] text-sm md:text-base font-normal md:font-medium bg-[#60FF7D] text-black">
         Live Chat
       </button>
     );
@@ -38,7 +38,7 @@ export const LiveChatButton = ({ initiallyVisible = false }) => {
   if (!showFixedButton) return null;
 
   return (
-    <button className="fixed right-4 md:right-6 bottom-4 md:bottom-6 rounded-[30px] h-[41px] md:h-[47px] w-[95px] md:w-[118px] text-sm md:text-base font-normal md:font-medium bg-[#60FF7D] text-black z-50 shadow-md transition-all duration-300 ease-in-out">
+    <button  aria-label="Start Live Chat" title="Start Live Chat" className="fixed right-4 md:right-6 bottom-4 md:bottom-6 rounded-[30px] h-[41px] md:h-[47px] w-[95px] md:w-[118px] text-sm md:text-base font-normal md:font-medium bg-[#60FF7D] text-black z-50 shadow-md transition-all duration-300 ease-in-out">
       Live Chat
     </button>
   );
