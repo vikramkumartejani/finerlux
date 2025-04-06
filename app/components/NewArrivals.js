@@ -132,11 +132,13 @@ const NewArrivals = () => {
                   />
 
                   {/* Backside image (shown on hover) */}
-                  <img
+                  <Image
                     src={watch.backsideImageUrl || "/placeholder.svg"}
                     alt={`${watch.brand} ${watch.model} - Back View`}
                     draggable="false"
-                    loading="lazy"
+                    width={400}
+                    height={500}
+                    priority
                     className="w-full sm:w-[204px] h-[168px] sm:h-[248px] rounded-[20px] !object-cover opacity-0 group-hover:opacity-100 absolute top-0 left-0"
                   />
 
