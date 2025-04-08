@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -12,18 +12,18 @@
   scroll-behavior: smooth;
 }
 
-body{
-  background: #ECF0F3;
+body {
+  background: #ecf0f3;
 }
 
-.scrollbar-hide { 
-  overflow: auto; 
-  scrollbar-width: none;  
-  -ms-overflow-style: none;  
+.scrollbar-hide {
+  overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .scrollbar-hide::-webkit-scrollbar {
-  display: none;  
+  display: none;
 }
 
 .social-icons {
@@ -32,14 +32,13 @@ body{
 }
 
 .social-icons .social-icons-path {
-  fill: #828282;  
+  fill: #828282;
   transition: fill 0.3s ease-in-out;
 }
 
 .social-icons:hover .social-icons-path {
-  fill: #017EFE;  
+  fill: #017efe;
 }
-
 
 .card {
   /* background: white; */
@@ -86,7 +85,7 @@ body{
   justify-content: space-between;
   /* align-items: center; */
   flex-direction: column;
-  background: #ECF0F3;
+  background: #ecf0f3;
   padding: 0.625rem 0.625rem 0.625rem 0;
   border-top-right-radius: 30px;
 }
@@ -100,7 +99,7 @@ body{
   width: 1.2rem;
   height: 1.2rem;
   border-bottom-right-radius: 30px;
-  box-shadow: 0.313rem 0.313rem 0 0.313rem #ECF0F3;
+  box-shadow: 0.313rem 0.313rem 0 0.313rem #ecf0f3;
   transform: rotate(90deg);
 }
 
@@ -112,16 +111,16 @@ body{
   background: transparent;
   width: 1.2rem;
   height: 1.2rem;
-  border-bottom-right-radius:30px;
-  box-shadow: 0.313rem 0.313rem 0 0.313rem #ECF0F3;
+  border-bottom-right-radius: 30px;
+  box-shadow: 0.313rem 0.313rem 0 0.313rem #ecf0f3;
   transform: rotate(90deg);
 }
 
 @media screen and (max-width: 768px) {
-  .card{
-    display:none;
+  .card {
+    display: none;
   }
-  .tag{
+  .tag {
     display: none;
   }
 }
