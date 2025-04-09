@@ -2,6 +2,7 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import "./globals.css";
 import { Inter } from "next/font/google";
+import { Toaster } from 'react-hot-toast';
 
 const inter = Inter({
   subsets: ["latin"],
@@ -22,6 +23,31 @@ export default function RootLayout({ children }) {
         <Navbar />
         {children}
         <Footer />
+        <Toaster 
+          position="top-right"
+          toastOptions={{
+            duration: 3000,
+            style: {
+              background: '#fff',
+              color: '#333',
+              boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+              borderRadius: '8px',
+              padding: '12px 20px',
+            },
+            success: {
+              iconTheme: {
+                primary: '#10B981',
+                secondary: '#FFFFFF',
+              },
+            },
+            error: {
+              iconTheme: {
+                primary: '#EF4444',
+                secondary: '#FFFFFF',
+              },
+            },
+          }}
+        />
       </body>
     </html>
   );
