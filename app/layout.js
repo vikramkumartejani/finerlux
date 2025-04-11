@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import "./globals.css";
@@ -19,6 +20,20 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={inter.className}>
+      <Head>
+        <link 
+          rel="preload" 
+          href="/assets/hero-watch.webp" 
+          as="image" 
+          type="image/webp" 
+        />
+        <link 
+          rel="preload" 
+          href="/assets/mobile.svg" 
+          as="image" 
+          type="image/svg+xml" 
+        />
+      </Head>
       <body>
         <Navbar />
         {children}
