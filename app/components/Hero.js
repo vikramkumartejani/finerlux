@@ -141,8 +141,8 @@ const Hero = () => {
               alt="mobile"
               className="w-full h-full !object-contain"
               priority
-              width={200}
-              height={265}
+              width={50}
+              height={50}
             />
           <div className="absolute z-40 flex items-end justify-end right-2 top-0 h-full w-fit">
             <Image
