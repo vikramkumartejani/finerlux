@@ -184,7 +184,7 @@ const Footer = () => {
                 )}
 
                 <div className="mt-6 flex items-center gap-4 md:gap-[30px]">
-                  <Link href="/">
+                  <Link href="https://www.instagram.com/finerlux.co" target="_blank">
                     <Instagram />
                   </Link>
                   <Link href="/">
