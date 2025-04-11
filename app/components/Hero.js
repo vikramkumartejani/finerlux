@@ -138,9 +138,6 @@ const Hero = () => {
         <div className="h-[265px] w-full bg-white rounded-[30px] relative flex items-end justify-end">
             <Image
               src="/assets/mobile.svg"
-              fetchPriority="high"
-              decoding="async"
-              style={{color:"transparent"}}
               alt="mobile"
               className="w-full h-full"
               priority
