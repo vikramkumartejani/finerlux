@@ -145,14 +145,14 @@ const Hero = () => {
               height={265}
             /> */}
           <div className="absolute z-40 flex items-end justify-end right-2 top-0 h-full w-fit">
-            <Image
+            {/* <Image
               src="/assets/hero-watch.webp"
               alt="hero-watch"
               priority
               width={500}
               height={500}
               className="h-full !bg-contain !w-auto"
-            />
+            /> */}
           </div>
           <LiveChatButton />
         </div>
