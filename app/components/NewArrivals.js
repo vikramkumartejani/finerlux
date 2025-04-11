@@ -118,8 +118,8 @@ const NewArrivals = () => {
                   <Image
                     src={watch.imageUrl || "/placeholder.svg"}
                     alt={`${watch.brand} ${watch.model}`}
-                    width={500}
-                    height={0}
+                    width={400}
+                    height={500}
                     draggable="false"
                     priority
                     className="w-full h-full !object-cover rounded-[20px] !aspect-square opacity-100 group-hover:opacity-0 absolute top-0 left-0"
