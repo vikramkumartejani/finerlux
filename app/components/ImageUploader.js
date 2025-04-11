@@ -63,6 +63,13 @@ const ImageUploader = ({ onImagesChange, disabled }) => {
     toast.success("File removed successfully");
   };
 
+  // Handler for clicking on the main container div
+  const handleContainerClick = () => {
+    if (!disabled) {
+      fileInputRef.current.click();
+    }
+  };
+
   return (
     <div>
       <label className="block text-base font-normal text-black mb-2 md:mb-3">
@@ -72,7 +79,7 @@ const ImageUploader = ({ onImagesChange, disabled }) => {
         className={`h-[165px] md:min-h-[191px] rounded-[20px] md:rounded-[30px] p-3 md:p-4 flex flex-col items-start justify-start bg-[#E3E8ED] cursor-pointer `}
         onDrop={handleDrop}
         onDragOver={(e) => e.preventDefault()}
-        onClick={() => !disabled && fileInputRef.current.click()}
+        onClick={handleContainerClick}
       >
         <input
           type="file"
@@ -88,7 +95,6 @@ const ImageUploader = ({ onImagesChange, disabled }) => {
           <div className="w-full h-full flex flex-col items-center justify-center">
             <div
               className="w-[100px] h-[100px] cursor-pointer group"
-              onClick={() => !disabled && fileInputRef.current.click()}
             >
               <Image
                 src="/assets/file-upload.svg"
@@ -113,7 +119,10 @@ const ImageUploader = ({ onImagesChange, disabled }) => {
             </p>
           </div>
         ) : (
-          <div className="w-full h-full flex flex-wrap gap-2 md:gap-3 overflow-y-auto scrollbar-hide !overflow-visible">
+          <div 
+            className="w-full h-full flex flex-wrap gap-2 md:gap-3 overflow-y-auto scrollbar-hide !overflow-visible"
+            onClick={(e) => e.stopPropagation()} // Prevent container click when clicking in the image area
+          >
             {images.map((image, index) => (
               <div
                 key={index}
@@ -127,20 +136,6 @@ const ImageUploader = ({ onImagesChange, disabled }) => {
                       src={image.preview}
                       className="object-cover w-full h-full rounded-[14px]"
                     />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M8 5V19L19 12L8 5Z"
-                          fill="rgba(255,255,255,0.7)"
-                        />
-                      </svg>
-                    </div>
                   </div>
                 ) : (
                   <Image
@@ -152,11 +147,44 @@ const ImageUploader = ({ onImagesChange, disabled }) => {
                 )}
                 {(hoveredIndex === index || window.innerWidth < 768) && (
                   <button
-                    className="absolute !z-50 -top-2 -right-2 bg-white hover:text-red-500 hover:border border-red-500 rounded-full min-w-5 min-h-5 max-w-5 max-h-5 flex items-center justify-center text-xs shadow-md transition-colors duration-200
-                                                  "
-                    onClick={() => handleRemove(index)}
+                    onClick={(e) => {
+                      e.stopPropagation(); // Prevent container click when removing
+                      handleRemove(index);
+                    }}
+                    className="absolute !z-50 -top-2 -right-2 w-6 h-6 group"
                   >
-                    <span className="mt-[3px]">✕</span>
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect
+                        x="0.5"
+                        y="0.5"
+                        width="23"
+                        height="23"
+                        rx="5.5"
+                        fill="white"
+                      />
+                      <rect
+                        x="0.5"
+                        y="0.5"
+                        width="23"
+                        height="23"
+                        rx="5.5"
+                        stroke="#828282"
+                        className="group-hover:stroke-[#B80000]"
+                      />
+                      <path
+                        d="M18 6L12 12M12 12L6 18M12 12L6 6M12 12L18 18"
+                        stroke="#828282"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="group-hover:stroke-[#B80000]"
+                      />
+                    </svg>
                   </button>
                 )}
               </div>
@@ -164,6 +192,7 @@ const ImageUploader = ({ onImagesChange, disabled }) => {
             <label
               htmlFor="file-upload"
               className="h-16 w-16 md:w-20 md:h-20 overflow-visible flex items-center justify-center bg-white border border-[#828282] hover:border-[#017EFE] rounded-[14px] cursor-pointer group"
+              onClick={(e) => e.stopPropagation()} // Prevent container click when clicking the + button
             >
               <svg
                 className="text-[#828282] group-hover:text-[#017EFE]"
