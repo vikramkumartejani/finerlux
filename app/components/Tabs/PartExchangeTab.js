@@ -403,7 +403,7 @@ export default function PartExchangeTab() {
                   <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
                     <div
                       ref={modalRef}
-                      className="bg-white rounded-[20px] p-6 max-w-xl w-full min-h-[85vh] max-h-[85vh] overflow-y-auto scrollbar-hide"
+                      className="bg-white rounded-[20px] p-6 max-w-xl w-full min-h-[85vh] max-h-[90vh] overflow-y-auto scrollbar-hide"
                     >
                       <div className="flex justify-between items-center mb-4">
                         <h2 className="text-xl font-bold">Conditions</h2>
