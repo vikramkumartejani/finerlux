@@ -109,23 +109,22 @@ export default function PartExchangeTab() {
     setIsModalOpen(false);
   };
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (modalRef.current && !modalRef.current.contains(event.target)) {
-        closeModal();
-      }
-    };
-
-    if (isModalOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
-    }
-
+useEffect(() => {
+  if (isModalOpen) {
+    const scrollY = window.scrollY;
+    
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = '100%';
+    
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      window.scrollTo(0, scrollY);
     };
-  }, [isModalOpen]);
+  }
+}, [isModalOpen]);
 
   const validateForm = async (e) => {
     e.preventDefault();
