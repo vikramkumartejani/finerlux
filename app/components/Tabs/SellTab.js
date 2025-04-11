@@ -351,7 +351,7 @@ export default function SellTab() {
                 disabled={isModalOpen}
               >
                 <option>Watch</option>
-                <option>Jewelry</option>
+                <option>Jewellery</option>
                 <option>Other</option>
               </select>
               <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
