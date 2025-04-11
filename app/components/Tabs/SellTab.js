@@ -1,10 +1,10 @@
-"use client"
-import Image from "next/image"
-import { useState, useRef, useEffect } from "react"
-import ImageUploader from "../ImageUploader"
-import Checkbox from "../Checkbox"
-import ConditionsModal from "./ConditionsModal"
-import { useTranslation } from 'react-i18next';
+"use client";
+import Image from "next/image";
+import { useState, useRef, useEffect } from "react";
+import ImageUploader from "../ImageUploader";
+import Checkbox from "../Checkbox";
+import ConditionsModal from "./ConditionsModal";
+import { useTranslation } from "react-i18next";
 
 export default function SellTab() {
   const { t } = useTranslation();
@@ -22,7 +22,14 @@ export default function SellTab() {
     phone: false,
     item: false,
     condition: false,
-    price: false
+    price: false,
+  });
+
+  const [formatErrors, setFormatErrors] = useState({
+    name: false,
+    email: false,
+    phone: false,
+    price: false,
   });
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -41,6 +48,40 @@ export default function SellTab() {
     setUploadedImages(files);
   };
 
+  const validateInput = (field, value) => {
+    const newFormatErrors = { ...formatErrors };
+
+    switch (field) {
+      case "name":
+        // Check if name contains any digits
+        newFormatErrors.name = /\d/.test(value);
+        break;
+      case "email":
+        // Basic email validation
+        newFormatErrors.email =
+          value.trim() !== "" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+        break;
+      case "phone":
+        // Check if phone contains any letters
+        newFormatErrors.phone = /[a-zA-Z]/.test(value);
+        break;
+      case "price":
+        // Validate price is a positive number
+        newFormatErrors.price =
+          value && (isNaN(parseFloat(value)) || parseFloat(value) <= 0);
+        break;
+      default:
+        break;
+    }
+
+    setFormatErrors(newFormatErrors);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    validateInput(name, value);
+  };
+
   const validateForm = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -50,12 +91,21 @@ export default function SellTab() {
       phone: !form.phone.value.trim(),
       item: !form.item.value.trim(),
       condition: !form.condition.value.trim(),
-      price: !form.price.value.trim()
+      price: !form.price.value.trim(),
     };
 
     setFormErrors(errors);
 
-    if (Object.values(errors).some(Boolean)) {
+    // Validate format for all fields before submission
+    validateInput("name", form.name.value);
+    validateInput("email", form.email.value);
+    validateInput("phone", form.phone.value);
+    validateInput("price", form.price.value);
+
+    if (
+      Object.values(errors).some(Boolean) ||
+      Object.values(formatErrors).some(Boolean)
+    ) {
       return;
     }
 
@@ -64,34 +114,34 @@ export default function SellTab() {
     try {
       const formData = new FormData();
 
-      formData.append('name', form.name.value);
-      formData.append('email', form.email.value);
-      formData.append('phone', form.phone.value);
-      formData.append('item', form.item.value);
-      formData.append('condition', form.condition.value);
-      formData.append('price', form.price.value);
-      formData.append('formType', 'Sell');
+      formData.append("name", form.name.value);
+      formData.append("email", form.email.value);
+      formData.append("phone", form.phone.value);
+      formData.append("item", form.item.value);
+      formData.append("condition", form.condition.value);
+      formData.append("price", form.price.value);
+      formData.append("formType", "Sell");
 
-      formData.append('telephone', checkedItems.checkbox1);
-      formData.append('sms', checkedItems.checkbox2);
-      formData.append('emailContact', checkedItems.checkbox3);
-      formData.append('whatsapp', checkedItems.checkbox4);
+      formData.append("telephone", checkedItems.checkbox1);
+      formData.append("sms", checkedItems.checkbox2);
+      formData.append("emailContact", checkedItems.checkbox3);
+      formData.append("whatsapp", checkedItems.checkbox4);
 
       if (uploadedImages.length > 0) {
-        uploadedImages.forEach(file => {
-          formData.append('images', file);
+        uploadedImages.forEach((file) => {
+          formData.append("images", file);
         });
       }
 
-      const response = await fetch('/api/submit-form', {
-        method: 'POST',
+      const response = await fetch("/api/submit-form", {
+        method: "POST",
         body: formData,
       });
 
       const result = await response.json();
 
       if (result.success) {
-        setSubmitStatus('success');
+        setSubmitStatus("success");
         form.reset();
         setCheckedItems({
           checkbox1: false,
@@ -99,13 +149,19 @@ export default function SellTab() {
           checkbox3: false,
           checkbox4: false,
         });
+        setFormatErrors({
+          name: false,
+          email: false,
+          phone: false,
+          price: false,
+        });
         setUploadedImages([]);
       } else {
-        setSubmitStatus('error');
+        setSubmitStatus("error");
       }
     } catch (error) {
-      console.error('Error submitting form:', error);
-      setSubmitStatus('error');
+      console.error("Error submitting form:", error);
+      setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
     }
@@ -138,7 +194,7 @@ export default function SellTab() {
   }, [isModalOpen]);
 
   useEffect(() => {
-    if (submitStatus === 'success') {
+    if (submitStatus === "success") {
       const timer = setTimeout(() => {
         setSubmitStatus(null);
       }, 5000);
@@ -191,8 +247,9 @@ export default function SellTab() {
               id="name"
               name="name"
               placeholder="Full Name"
+              onChange={handleInputChange}
               className={`w-full px-4 text-base min-h-[33px] md:min-h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                                   ${formErrors.name
+                                   ${formErrors.name || formatErrors.name
                   ? "border-[#B80000]"
                   : "border-transparent focus:border-[#017EFE]"
                 }`}
@@ -200,6 +257,11 @@ export default function SellTab() {
             {formErrors.name && (
               <p className="text-[#B80000] text-sm mt-1">
                 It is mandatory field
+              </p>
+            )}
+            {formatErrors.name && (
+              <p className="text-[#B80000] text-sm mt-1">
+                Name cannot contain numbers
               </p>
             )}
           </div>
@@ -215,8 +277,9 @@ export default function SellTab() {
               id="email"
               name="email"
               placeholder="example@mail.com"
+              onChange={handleInputChange}
               className={`w-full px-4 text-base min-h-[33px] md:h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                                   ${formErrors.email
+                                   ${formErrors.email || formatErrors.email
                   ? "border-[#B80000]"
                   : "border-transparent focus:border-[#017EFE]"
                 }`}
@@ -224,6 +287,11 @@ export default function SellTab() {
             {formErrors.email && (
               <p className="text-[#B80000] text-sm mt-1">
                 It is mandatory field
+              </p>
+            )}
+            {formatErrors.email && (
+              <p className="text-[#B80000] text-sm mt-1">
+                Please enter a valid email address
               </p>
             )}
           </div>
@@ -237,12 +305,13 @@ export default function SellTab() {
               Phone number
             </label>
             <input
-              type="number"
+              type="text"
               id="phone"
               name="phone"
               placeholder="(+44) 123 456 7890"
+              onChange={handleInputChange}
               className={`w-full px-4 text-base min-h-[33px] md:h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                              ${formErrors.phone
+                              ${formErrors.phone || formatErrors.phone
                   ? "border-[#B80000]"
                   : "border-transparent focus:border-[#017EFE]"
                 }`}
@@ -250,6 +319,11 @@ export default function SellTab() {
             {formErrors.phone && (
               <p className="text-[#B80000] text-sm mt-1">
                 It is mandatory field
+              </p>
+            )}
+            {formatErrors.phone && (
+              <p className="text-[#B80000] text-sm mt-1">
+                Phone number cannot contain letters
               </p>
             )}
           </div>
@@ -270,7 +344,7 @@ export default function SellTab() {
                 name="item"
                 className={`w-full px-4 text-base min-h-[33px] md:h-[42px] bg-[#E3E8ED] appearance-none rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
                                         ${formErrors.item
-                    ? "border-[#B80000]  bg-red-50"
+                    ? "border-[#B80000]"
                     : "border-transparent focus:border-[#017EFE]"
                   }`}
                 defaultValue="Watch"
@@ -375,7 +449,7 @@ export default function SellTab() {
                 name="condition"
                 className={`w-full px-4 text-base min-h-[33px] md:h-[42px] bg-[#E3E8ED] appearance-none rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
                                                       ${formErrors.condition
-                    ? "border-red-500 bg-red-50"
+                    ? "border-[#B80000]"
                     : "border-transparent focus:border-[#017EFE]"
                   }`}
                 defaultValue="Good"
@@ -428,11 +502,12 @@ export default function SellTab() {
                   </span>
                 </div>
                 <input
-                  type="number"
+                  type="text"
                   id="price"
                   name="price"
+                  onChange={handleInputChange}
                   className={`w-full px-4 pl-7 text-base min-h-[36px] md:h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                                   ${formErrors.price
+                                   ${formErrors.price || formatErrors.price
                       ? "border-[#B80000] "
                       : "border-transparent focus:border-[#017EFE] group-hover:border-[#017EFE]"
                     }`}
@@ -442,6 +517,11 @@ export default function SellTab() {
               {formErrors.price && (
                 <p className="text-[#B80000] text-sm mt-1">
                   It is mandatory field
+                </p>
+              )}
+              {formatErrors.price && (
+                <p className="text-[#B80000] text-sm mt-1">
+                  Please enter a valid positive number
                 </p>
               )}
             </div>
@@ -457,12 +537,12 @@ export default function SellTab() {
         </div>
 
         {/* Status message */}
-        {submitStatus === 'success' && (
+        {submitStatus === "success" && (
           <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded">
-            Form submitted successfully! We&apos;`ll get back to you soon.
+            Form submitted successfully! We&apos;ll get back to you soon.
           </div>
         )}
-        {submitStatus === 'error' && (
+        {submitStatus === "error" && (
           <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
             There was an error submitting the form. Please try again later.
           </div>
@@ -515,7 +595,7 @@ export default function SellTab() {
           className="text-base font-medium w-full bg-[#017EFE] hover:bg-[#003D7B] transition-all duration-300 text-white h-[35px] md:h-[40px] px-4 rounded-[60px]"
           disabled={isModalOpen || isSubmitting}
         >
-          {isSubmitting ? 'Submitting...' : 'Submit'}
+          {isSubmitting ? "Submitting..." : "Submit"}
         </button>
       </form>
     </div>

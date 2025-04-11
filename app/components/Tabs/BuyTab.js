@@ -102,24 +102,25 @@ const BuyTab = forwardRef((props, ref) => {
 
   const validateInput = (field, value) => {
     const newFormatErrors = { ...formatErrors };
-    
+
     switch (field) {
-      case 'name':
+      case "name":
         // Check if name contains any digits
         newFormatErrors.name = /\d/.test(value);
         break;
-      case 'email':
+      case "email":
         // Basic email validation
-        newFormatErrors.email = value.trim() !== '' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+        newFormatErrors.email =
+          value.trim() !== "" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
         break;
-      case 'phone':
+      case "phone":
         // Check if phone contains any letters
         newFormatErrors.phone = /[a-zA-Z]/.test(value);
         break;
       default:
         break;
     }
-    
+
     setFormatErrors(newFormatErrors);
   };
 
@@ -141,11 +142,14 @@ const BuyTab = forwardRef((props, ref) => {
     setFormErrors(errors);
 
     // Validate format for all fields before submission
-    validateInput('name', form.name.value);
-    validateInput('email', form.email.value);
-    validateInput('phone', form.phone.value);
+    validateInput("name", form.name.value);
+    validateInput("email", form.email.value);
+    validateInput("phone", form.phone.value);
 
-    if (Object.values(errors).some(Boolean) || Object.values(formatErrors).some(Boolean)) {
+    if (
+      Object.values(errors).some(Boolean) ||
+      Object.values(formatErrors).some(Boolean)
+    ) {
       return;
     }
 
@@ -257,11 +261,10 @@ const BuyTab = forwardRef((props, ref) => {
               placeholder="Full Name"
               onChange={handleInputChange}
               className={`w-full px-4 text-base min-h-[33px] md:min-h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                                   ${
-                                     formErrors.name || formatErrors.name
-                                       ? "border-[#B80000]"
-                                       : "border-transparent focus:border-[#017EFE]"
-                                   }`}
+                                   ${formErrors.name || formatErrors.name
+                  ? "border-[#B80000]"
+                  : "border-transparent focus:border-[#017EFE]"
+                }`}
             />
             {formErrors.name && (
               <p className="text-[#B80000] text-sm mt-1">
@@ -288,11 +291,10 @@ const BuyTab = forwardRef((props, ref) => {
               placeholder="example@mail.com"
               onChange={handleInputChange}
               className={`w-full px-4 text-base min-h-[33px] md:h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                                   ${
-                                     formErrors.email || formatErrors.email
-                                       ? "border-[#B80000]"
-                                       : "border-transparent focus:border-[#017EFE]"
-                                   }`}
+                                   ${formErrors.email || formatErrors.email
+                  ? "border-[#B80000]"
+                  : "border-transparent focus:border-[#017EFE]"
+                }`}
             />
             {formErrors.email && (
               <p className="text-[#B80000] text-sm mt-1">
@@ -320,11 +322,10 @@ const BuyTab = forwardRef((props, ref) => {
               placeholder="(+44) 123 456 7890"
               onChange={handleInputChange}
               className={`w-full px-4 text-base min-h-[33px] md:h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                              ${
-                                formErrors.phone || formatErrors.phone
-                                  ? "border-[#B80000]"
-                                  : "border-transparent focus:border-[#017EFE]"
-                              }`}
+                              ${formErrors.phone || formatErrors.phone
+                  ? "border-[#B80000]"
+                  : "border-transparent focus:border-[#017EFE]"
+                }`}
             />
             {formErrors.phone && (
               <p className="text-[#B80000] text-sm mt-1">
@@ -351,11 +352,10 @@ const BuyTab = forwardRef((props, ref) => {
             name="description"
             placeholder="Enter your description"
             className={`w-full px-4 py-2.5 h-[160px] text-base bg-[#E3E8ED] rounded-[20px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                              ${
-                                formErrors.description
-                                  ? "border-[#B80000]"
-                                  : "border-transparent focus:border-[#017EFE]"
-                              }`}
+                              ${formErrors.description
+                ? "border-[#B80000]"
+                : "border-transparent focus:border-[#017EFE]"
+              }`}
           />
           {formErrors.description && (
             <p className="text-[#B80000] text-sm mt-1">It is mandatory field</p>
@@ -412,9 +412,8 @@ const BuyTab = forwardRef((props, ref) => {
         <button
           type="submit"
           disabled={isSubmitting}
-          className={`text-base font-medium w-full ${
-            isSubmitting ? "bg-gray-400" : "bg-[#017EFE] hover:bg-[#003D7B]"
-          } transition-all duration-300 text-white h-[35px] md:h-[40px] px-4 rounded-[60px] flex items-center justify-center`}
+          className={`text-base font-medium w-full ${isSubmitting ? "bg-gray-400" : "bg-[#017EFE] hover:bg-[#003D7B]"
+            } transition-all duration-300 text-white h-[35px] md:h-[40px] px-4 rounded-[60px] flex items-center justify-center`}
         >
           {isSubmitting ? "Submitting..." : "Submit"}
         </button>

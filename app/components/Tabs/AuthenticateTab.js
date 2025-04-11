@@ -7,21 +7,82 @@ import { useTranslation } from "react-i18next";
 
 export default function AuthenticateTab() {
   const { t } = useTranslation();
-  const [checkedItems, setCheckedItems] = useState({
-    checkbox1: false,
-    checkbox2: false,
-    checkbox3: false,
-    checkbox4: false,
+
+  // Form data state to track input values
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    description: "",
   });
+
+  // Validation errors that show in real-time as user types
+  const [validationErrors, setValidationErrors] = useState({
+    name: false,
+    email: false,
+    phone: false,
+    description: false,
+  });
+
+  // Original form errors for submission validation
   const [formErrors, setFormErrors] = useState({
     name: false,
     email: false,
     phone: false,
     description: false,
   });
+
+  const [checkedItems, setCheckedItems] = useState({
+    checkbox1: false,
+    checkbox2: false,
+    checkbox3: false,
+    checkbox4: false,
+  });
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [uploadedImages, setUploadedImages] = useState([]);
+
+  // Validate input as user types
+  const validateInput = (name, value) => {
+    switch (name) {
+      case "name":
+        // Check if name contains numbers
+        return /\d/.test(value);
+      case "email":
+        // Basic email validation
+        return value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+      case "phone":
+        // Check if phone contains letters
+        return /[a-zA-Z]/.test(value);
+      default:
+        return false;
+    }
+  };
+
+  // Handle input changes and validate in real-time
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    // Only validate if there's some input
+    if (value) {
+      setValidationErrors((prev) => ({
+        ...prev,
+        [name]: validateInput(name, value),
+      }));
+    } else {
+      // Clear error if field is empty
+      setValidationErrors((prev) => ({
+        ...prev,
+        [name]: false,
+      }));
+    }
+  };
 
   const handleCheckboxChange = (key) => {
     setCheckedItems((prev) => ({
@@ -46,7 +107,11 @@ export default function AuthenticateTab() {
 
     setFormErrors(errors);
 
-    if (Object.values(errors).some(Boolean)) {
+    // Check both empty fields and validation errors
+    if (
+      Object.values(errors).some(Boolean) ||
+      Object.values(validationErrors).some(Boolean)
+    ) {
       return;
     }
 
@@ -82,6 +147,18 @@ export default function AuthenticateTab() {
       if (result.success) {
         setSubmitStatus("success");
         form.reset();
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          description: "",
+        });
+        setValidationErrors({
+          name: false,
+          email: false,
+          phone: false,
+          description: false,
+        });
         setCheckedItems({
           checkbox1: false,
           checkbox2: false,
@@ -143,17 +220,23 @@ export default function AuthenticateTab() {
               type="text"
               id="name"
               name="name"
+              value={formData.name}
+              onChange={handleInputChange}
               placeholder="Full Name"
               className={`w-full px-4 text-base min-h-[33px] md:min-h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                                   ${
-                                     formErrors.name
-                                       ? "border-[#B80000]"
-                                       : "border-transparent focus:border-[#017EFE]"
-                                   }`}
+                     ${validationErrors.name || formErrors.name
+                  ? "border-[#B80000]"
+                  : "border-transparent focus:border-[#017EFE]"
+                }`}
             />
             {formErrors.name && (
               <p className="text-[#B80000] text-sm mt-1">
                 It is mandatory field
+              </p>
+            )}
+            {validationErrors.name && !formErrors.name && (
+              <p className="text-[#B80000] text-sm mt-1">
+                Name cannot contain numbers
               </p>
             )}
           </div>
@@ -168,17 +251,23 @@ export default function AuthenticateTab() {
               type="email"
               id="email"
               name="email"
+              value={formData.email}
+              onChange={handleInputChange}
               placeholder="example@mail.com"
               className={`w-full px-4 text-base min-h-[33px] md:h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                                   ${
-                                     formErrors.email
-                                       ? "border-[#B80000]"
-                                       : "border-transparent focus:border-[#017EFE]"
-                                   }`}
+                     ${validationErrors.email || formErrors.email
+                  ? "border-[#B80000]"
+                  : "border-transparent focus:border-[#017EFE]"
+                }`}
             />
             {formErrors.email && (
               <p className="text-[#B80000] text-sm mt-1">
                 It is mandatory field
+              </p>
+            )}
+            {validationErrors.email && !formErrors.email && (
+              <p className="text-[#B80000] text-sm mt-1">
+                Please enter a valid email address
               </p>
             )}
           </div>
@@ -190,20 +279,26 @@ export default function AuthenticateTab() {
               Phone number
             </label>
             <input
-              type="tel"
+              type="text"
               id="phone"
               name="phone"
+              value={formData.phone}
+              onChange={handleInputChange}
               placeholder="(+44) 123 456 7890"
               className={`w-full px-4 text-base min-h-[33px] md:h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                                   ${
-                                     formErrors.phone
-                                       ? "border-[#B80000]"
-                                       : "border-transparent focus:border-[#017EFE]"
-                                   }`}
+                     ${validationErrors.phone || formErrors.phone
+                  ? "border-[#B80000]"
+                  : "border-transparent focus:border-[#017EFE]"
+                }`}
             />
             {formErrors.phone && (
               <p className="text-[#B80000] text-sm mt-1">
                 It is mandatory field
+              </p>
+            )}
+            {validationErrors.phone && !formErrors.phone && (
+              <p className="text-[#B80000] text-sm mt-1">
+                Phone number cannot contain letters
               </p>
             )}
           </div>
@@ -223,13 +318,14 @@ export default function AuthenticateTab() {
           <textarea
             id="description"
             name="description"
+            value={formData.description}
+            onChange={handleInputChange}
             placeholder="Enter your description"
             className={`w-full px-4 py-2.5 h-[160px] text-base bg-[#E3E8ED] rounded-[20px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                              ${
-                                formErrors.description
-                                  ? "border-[#B80000]"
-                                  : "border-transparent focus:border-[#017EFE]"
-                              }`}
+                ${formErrors.description
+                ? "border-[#B80000]"
+                : "border-transparent focus:border-[#017EFE]"
+              }`}
           />
           {formErrors.description && (
             <p className="text-[#B80000] text-sm mt-1">It is mandatory field</p>
@@ -239,7 +335,7 @@ export default function AuthenticateTab() {
         {/* Status message */}
         {submitStatus === "success" && (
           <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded">
-            Form submitted successfully! We&apos;`ll get back to you soon.
+            Form submitted successfully! We&apos;ll get back to you soon.
           </div>
         )}
         {submitStatus === "error" && (
@@ -289,9 +385,8 @@ export default function AuthenticateTab() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className={`text-base font-medium w-full ${
-            isSubmitting ? "bg-gray-400" : "bg-[#017EFE] hover:bg-[#003D7B]"
-          } transition-all duration-300 text-white h-[35px] md:h-[40px] px-4 rounded-[60px] flex items-center justify-center`}
+          className={`text-base font-medium w-full ${isSubmitting ? "bg-gray-400" : "bg-[#017EFE] hover:bg-[#003D7B]"
+            } transition-all duration-300 text-white h-[35px] md:h-[40px] px-4 rounded-[60px] flex items-center justify-center`}
         >
           {isSubmitting ? "Submitting..." : "Submit"}
         </button>

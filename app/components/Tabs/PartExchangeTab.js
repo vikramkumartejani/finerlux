@@ -27,6 +27,64 @@ export default function PartExchangeTab() {
     description: false,
   });
 
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    item: "Watch",
+    condition: "Good",
+    price: "",
+    description: "",
+  });
+
+  const [validationErrors, setValidationErrors] = useState({
+    name: false,
+    email: false,
+    phone: false,
+    item: false,
+    condition: false,
+    price: false,
+    description: false,
+  });
+
+  const validateInput = (name, value) => {
+    switch (name) {
+      case "name":
+        return /\d/.test(value);
+      case "price":
+        return value && (isNaN(value) || parseFloat(value) <= 0);
+      case "email":
+        return value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+      case "phone":
+        return /[a-zA-Z]/.test(value);
+      default:
+        return false;
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    // Only validate if there's some input
+    if (value) {
+      setValidationErrors((prev) => ({
+        ...prev,
+        [name]: validateInput(name, value),
+      }));
+    } else {
+      // Clear error if field is empty
+      setValidationErrors((prev) => ({
+        ...prev,
+        [name]: false,
+      }));
+    }
+  };
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
@@ -218,20 +276,27 @@ export default function PartExchangeTab() {
               type="text"
               id="name"
               name="name"
+              value={formData.name}
+              onChange={handleInputChange}
               placeholder="Full Name"
               className={`w-full px-4 text-base min-h-[33px] md:min-h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                                                 ${
-                                                   formErrors.name
-                                                     ? "border-[#B80000]"
-                                                     : "border-transparent focus:border-[#017EFE]"
-                                                 }`}
+                ${formErrors.name || formErrors.name
+                  ? "border-[#B80000]"
+                  : "border-transparent focus:border-[#017EFE]"
+                }`}
             />
             {formErrors.name && (
               <p className="text-[#B80000] text-sm mt-1">
                 It is mandatory field
               </p>
             )}
+            {validationErrors.name && (
+              <p className="text-[#B80000] text-sm mt-1">
+                Name cannot contain numbers
+              </p>
+            )}
           </div>
+
           <div>
             <label
               htmlFor="email"
@@ -243,17 +308,23 @@ export default function PartExchangeTab() {
               type="email"
               id="email"
               name="email"
+              value={formData.email}
+              onChange={handleInputChange}
               placeholder="example@mail.com"
               className={`w-full px-4 text-base min-h-[33px] md:h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                                                 ${
-                                                   formErrors.email
-                                                     ? "border-[#B80000]"
-                                                     : "border-transparent focus:border-[#017EFE]"
-                                                 }`}
+                ${formErrors.email || formErrors.email
+                  ? "border-[#B80000]"
+                  : "border-transparent focus:border-[#017EFE]"
+                }`}
             />
             {formErrors.email && (
               <p className="text-[#B80000] text-sm mt-1">
                 It is mandatory field
+              </p>
+            )}
+            {validationErrors.email && (
+              <p className="text-[#B80000] text-sm mt-1">
+                Please enter a valid email address
               </p>
             )}
           </div>
@@ -267,20 +338,26 @@ export default function PartExchangeTab() {
               Phone number
             </label>
             <input
-              type="number"
+              type="text"
               id="phone"
               name="phone"
+              value={formData.phone}
+              onChange={handleInputChange}
               placeholder="(+44) 123 456 7890"
               className={`w-full px-4 text-base min-h-[33px] md:h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                                            ${
-                                              formErrors.phone
-                                                ? "border-[#B80000]"
-                                                : "border-transparent focus:border-[#017EFE]"
-                                            }`}
+                ${formErrors.phone || formErrors.phone
+                  ? "border-[#B80000]"
+                  : "border-transparent focus:border-[#017EFE]"
+                }`}
             />
             {formErrors.phone && (
               <p className="text-[#B80000] text-sm mt-1">
                 It is mandatory field
+              </p>
+            )}
+            {validationErrors.phone && (
+              <p className="text-[#B80000] text-sm mt-1">
+                Phone number cannot contain letters
               </p>
             )}
           </div>
@@ -300,11 +377,10 @@ export default function PartExchangeTab() {
                 id="item"
                 name="item"
                 className={`w-full px-4 text-base min-h-[33px] md:h-[42px] bg-[#E3E8ED] appearance-none rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                                                      ${
-                                                        formErrors.item
-                                                          ? "border-red-500 bg-red-50"
-                                                          : "border-transparent focus:border-[#017EFE]"
-                                                      }`}
+                                                      ${formErrors.item
+                    ? "border-red-500 bg-red-50"
+                    : "border-transparent focus:border-[#017EFE]"
+                  }`}
                 defaultValue="Watch"
                 disabled={isModalOpen}
               >
@@ -404,11 +480,10 @@ export default function PartExchangeTab() {
                 id="condition"
                 name="condition"
                 className={`w-full px-4 text-base min-h-[33px] md:h-[42px] bg-[#E3E8ED] appearance-none rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                                                      ${
-                                                        formErrors.condition
-                                                          ? "border-red-500 bg-red-50"
-                                                          : "border-transparent focus:border-[#017EFE]"
-                                                      }`}
+                                                      ${formErrors.condition
+                    ? "border-red-500 bg-red-50"
+                    : "border-transparent focus:border-[#017EFE]"
+                  }`}
                 defaultValue="Good"
                 disabled={isModalOpen}
               >
@@ -457,21 +532,27 @@ export default function PartExchangeTab() {
                   </span>
                 </div>
                 <input
-                  type="number"
+                  type="price"
                   id="price"
                   name="price"
+                  value={formData.price}
+                  onChange={handleInputChange}
                   className={`w-full px-4 pl-7 text-base min-h-[36px] md:h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                                                 ${
-                                                   formErrors.price
-                                                     ? "border-[#B80000] "
-                                                     : "border-transparent focus:border-[#017EFE] group-hover:border-[#017EFE]"
-                                                 }`}
+                 ${validationErrors.price || formErrors.price
+                      ? "border-[#B80000] "
+                      : "border-transparent focus:border-[#017EFE] group-hover:border-[#017EFE]"
+                    }`}
                   disabled={isModalOpen}
                 />
               </div>
               {formErrors.price && (
                 <p className="text-[#B80000] text-sm mt-1">
                   It is mandatory field
+                </p>
+              )}
+              {validationErrors.price && !formErrors.price && (
+                <p className="text-[#B80000] text-sm mt-1">
+                  Please enter a valid price
                 </p>
               )}
             </div>
@@ -497,11 +578,10 @@ export default function PartExchangeTab() {
               name="description"
               placeholder="Enter your description"
               className={`w-full px-4 py-2.5 h-[160px] text-base bg-[#E3E8ED] rounded-[20px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                              ${
-                                formErrors.description
-                                  ? "border-[#B80000]"
-                                  : "border-transparent focus:border-[#017EFE]"
-                              }`}
+                              ${formErrors.description
+                  ? "border-[#B80000]"
+                  : "border-transparent focus:border-[#017EFE]"
+                }`}
               disabled={isModalOpen}
             />
             {formErrors.description && (
