@@ -107,8 +107,8 @@ const Hero = () => {
           }}
         ></div>
 
-        <div className="w-full pl-8 pt-[100px] lg:pt-[135px]">
-          <h1 className="max-w-[500px] text-[40px] !leading-[95%] font-semibold">
+        <div className="w-full pl-8 pt-[100px] lg:pt-[135px] z-30">
+          <h1 className="max-w-[530px] text-[40px] !leading-[95%] font-semibold">
             {t("hero.title")}
           </h1>
         </div>
