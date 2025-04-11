@@ -28,7 +28,15 @@ export const scrollToHomeFormSection = (tabId = "buy") => {
       sessionStorage.setItem("setActiveHomeTab", tabId);
     }
 
-    formSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    // Add offset to the scroll position
+    const offset = 80; // This matches your scroll-mt-[80px] class
+    const elementPosition = formSection.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth"
+    });
 
     setTimeout(() => {
       const tabButton = document.querySelector(`[data-tab-id="${tabId}"]`);
