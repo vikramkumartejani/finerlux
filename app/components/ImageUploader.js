@@ -15,9 +15,7 @@ const ImageUploader = ({ onImagesChange, disabled }) => {
   };
 
   const handleFiles = (files) => {
-    // Allow both images and videos, but exclude GIFs
     const validFiles = files.filter((file) => {
-      // Accept images (except GIFs) and videos
       return (
         (file.type.startsWith("image/") && file.type !== "image/gif") ||
         file.type.startsWith("video/")
@@ -25,7 +23,6 @@ const ImageUploader = ({ onImagesChange, disabled }) => {
     });
 
     if (files.length !== validFiles.length) {
-      // Use toast to notify that GIFs were filtered out
       toast.error(
         "GIF files are not allowed. Only images and videos can be uploaded."
       );
@@ -72,9 +69,10 @@ const ImageUploader = ({ onImagesChange, disabled }) => {
         Upload photos and videos of item
       </label>
       <div
-        className={`h-[165px] md:min-h-[191px] rounded-[20px] md:rounded-[30px] p-3 md:p-4 flex flex-col items-start justify-start bg-[#E3E8ED] `}
+        className={`h-[165px] md:min-h-[191px] rounded-[20px] md:rounded-[30px] p-3 md:p-4 flex flex-col items-start justify-start bg-[#E3E8ED] cursor-pointer `}
         onDrop={handleDrop}
         onDragOver={(e) => e.preventDefault()}
+        onClick={() => !disabled && fileInputRef.current.click()}
       >
         <input
           type="file"
@@ -115,7 +113,7 @@ const ImageUploader = ({ onImagesChange, disabled }) => {
             </p>
           </div>
         ) : (
-          <div className="w-full h-full flex flex-wrap gap-2 md:gap-3 overflow-y-auto scrollbar-hide">
+          <div className="w-full h-full flex flex-wrap gap-2 md:gap-3 overflow-y-auto scrollbar-hide !overflow-visible">
             {images.map((image, index) => (
               <div
                 key={index}
@@ -154,18 +152,18 @@ const ImageUploader = ({ onImagesChange, disabled }) => {
                 )}
                 {(hoveredIndex === index || window.innerWidth < 768) && (
                   <button
-                    className="absolute -top-2 -right-2 bg-white rounded-full w-5 h-5 flex items-center justify-center text-xs shadow-md hover:bg-red-100 transition-colors duration-200
+                    className="absolute !z-50 -top-2 -right-2 bg-white hover:text-red-500 hover:border border-red-500 rounded-full min-w-5 min-h-5 max-w-5 max-h-5 flex items-center justify-center text-xs shadow-md transition-colors duration-200
                                                   "
                     onClick={() => handleRemove(index)}
                   >
-                    ✕
+                    <span className="mt-[3px]">✕</span>
                   </button>
                 )}
               </div>
             ))}
             <label
               htmlFor="file-upload"
-              className="h-16 w-16 md:w-20 md:h-20 flex items-center justify-center bg-white border border-[#828282] hover:border-[#017EFE] rounded-[14px] cursor-pointer group"
+              className="h-16 w-16 md:w-20 md:h-20 overflow-visible flex items-center justify-center bg-white border border-[#828282] hover:border-[#017EFE] rounded-[14px] cursor-pointer group"
             >
               <svg
                 className="text-[#828282] group-hover:text-[#017EFE]"
