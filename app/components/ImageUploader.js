@@ -78,7 +78,7 @@ const ImageUploader = ({ onImagesChange, disabled }) => {
         {t("form.uploadFileTitle")}
       </label>
       <div
-        className={`h-[165px] md:min-h-[191px] rounded-[20px] md:rounded-[30px] p-3 md:p-4 flex flex-col items-start justify-start bg-[#E3E8ED] cursor-pointer `}
+        className={`h-[165px] md:min-h-[191px] group rounded-[20px] md:rounded-[30px] p-3 md:p-4 flex flex-col items-start justify-start bg-[#E3E8ED] cursor-pointer `}
         onDrop={handleDrop}
         onDragOver={(e) => e.preventDefault()}
         onClick={handleContainerClick}
@@ -96,7 +96,7 @@ const ImageUploader = ({ onImagesChange, disabled }) => {
         {images.length === 0 ? (
           <div className="w-full h-full flex flex-col items-center justify-center">
             <div
-              className="w-[100px] h-[100px] cursor-pointer group"
+              className="w-[100px] h-[100px] cursor-pointer "
             >
               <Image
                 src="/assets/file-upload.svg"
