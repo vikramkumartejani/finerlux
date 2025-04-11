@@ -101,10 +101,10 @@
           "conditionOption": {
                "new": "Новое",
                "unworn": "Неношеное",
-               "veryGood": "Очень хорошее",
+               "veryGood": "Отличное",
                "good": "Хорошее",
                "fair": "Удовлетворительное",
-               "incomplete": "Неполное"
+               "incomplete": "Требует ремонта"
           }
      },
      "contactMethods": {
@@ -116,7 +116,7 @@
      "modal": {
           "title": "Состояние",
           "conditionTitles": {
-               "new": "Новый",
+               "new": "Новое",
                "unworn": "Неношеное",
                "veryGood": "Отличное",
                "good": "Хорошее",
