@@ -252,28 +252,28 @@ const BuyTab = forwardRef((props, ref) => {
               htmlFor="name"
               className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3"
             >
-              Name
+              {t("form.name")}
             </label>
             <input
               type="text"
               id="name"
               name="name"
-              placeholder="Full Name"
+              placeholder={t("form.namePlaceholder")}
               onChange={handleInputChange}
               className={`w-full px-4 text-base min-h-[33px] md:min-h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                                   ${formErrors.name || formatErrors.name
+                ${formErrors.name || formatErrors.name
                   ? "border-[#B80000]"
                   : "border-transparent focus:border-[#017EFE]"
                 }`}
             />
             {formErrors.name && (
               <p className="text-[#B80000] text-sm mt-1">
-                It is mandatory field
+                {t("form.mandatoryField")}
               </p>
             )}
             {formatErrors.name && (
               <p className="text-[#B80000] text-sm mt-1">
-                Name cannot contain numbers
+                {t("form.nameContainNumbers")}
               </p>
             )}
           </div>
@@ -282,7 +282,7 @@ const BuyTab = forwardRef((props, ref) => {
               htmlFor="email"
               className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3"
             >
-              Email
+              {t("form.email")}
             </label>
             <input
               type="email"
@@ -298,12 +298,12 @@ const BuyTab = forwardRef((props, ref) => {
             />
             {formErrors.email && (
               <p className="text-[#B80000] text-sm mt-1">
-                It is mandatory field
+                {t("form.mandatoryField")}
               </p>
             )}
             {formatErrors.email && (
               <p className="text-[#B80000] text-sm mt-1">
-                Please enter a valid email address
+                {t("form.emailAddress")}
               </p>
             )}
           </div>
@@ -313,7 +313,7 @@ const BuyTab = forwardRef((props, ref) => {
               htmlFor="phone"
               className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3"
             >
-              Phone number
+              {t("form.phone")}
             </label>
             <input
               type="text"
@@ -329,12 +329,12 @@ const BuyTab = forwardRef((props, ref) => {
             />
             {formErrors.phone && (
               <p className="text-[#B80000] text-sm mt-1">
-                It is mandatory field
+                {t("form.mandatoryField")}
               </p>
             )}
             {formatErrors.phone && (
               <p className="text-[#B80000] text-sm mt-1">
-                Phone number cannot contain letters
+                {t("form.phoneNumberContainNumbers")}
               </p>
             )}
           </div>
@@ -345,12 +345,12 @@ const BuyTab = forwardRef((props, ref) => {
             htmlFor="description"
             className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3"
           >
-            Description
+            {t("form.description")}
           </label>
           <textarea
             id="description"
             name="description"
-            placeholder="Enter your description"
+            placeholder={t("form.descriptionplaceholder")}
             className={`w-full px-4 py-2.5 h-[160px] text-base bg-[#E3E8ED] rounded-[20px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
                               ${formErrors.description
                 ? "border-[#B80000]"
@@ -358,54 +358,55 @@ const BuyTab = forwardRef((props, ref) => {
               }`}
           />
           {formErrors.description && (
-            <p className="text-[#B80000] text-sm mt-1">It is mandatory field</p>
+            <p className="text-[#B80000] text-sm mt-1">{t("form.mandatoryField")}</p>
           )}
         </div>
         {/* Contact Preferences */}
         <div className="pt-[14px] md:pt-6 pb-[14px] md:pb-0">
           <p className="text-sm md:text-base font-normal text-black mb-3">
-            I am happy to be contacted by
+            {t("form.contactedBy")}
           </p>
           <div className="flex flex-wrap gap-3 md:gap-4">
             <label className="inline-flex items-center">
               <Checkbox
-                title="Telephone"
+                title={t("contactMethods.telephone")}
                 checked={checkedItems.checkbox1}
                 onChange={() => handleCheckboxChange("checkbox1")}
               />
             </label>
             <label className="inline-flex items-center">
               <Checkbox
-                title="SMS"
+                title={t("contactMethods.sms")}
                 checked={checkedItems.checkbox2}
                 onChange={() => handleCheckboxChange("checkbox2")}
               />
             </label>
             <label className="inline-flex items-center">
               <Checkbox
-                title="Email"
+                title={t("contactMethods.email")}
                 checked={checkedItems.checkbox3}
                 onChange={() => handleCheckboxChange("checkbox3")}
               />
             </label>
             <label className="inline-flex items-center">
               <Checkbox
-                title="Whatsapp"
+                title={t("contactMethods.whatsapp")}
                 checked={checkedItems.checkbox4}
                 onChange={() => handleCheckboxChange("checkbox4")}
               />
             </label>
           </div>
         </div>
+
         {/* Status message */}
         {submitStatus === "success" && (
           <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded">
-            Form submitted successfully! We&apos;ll get back to you soon.
+            {t("form.submittedSuccessfully")}
           </div>
         )}
         {submitStatus === "error" && (
           <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
-            There was an error submitting the form. Please try again later.
+            {t("form.errorSubmitting")}
           </div>
         )}
         {/* Button */}
@@ -415,7 +416,7 @@ const BuyTab = forwardRef((props, ref) => {
           className={`text-base font-medium w-full ${isSubmitting ? "bg-gray-400" : "bg-[#017EFE] hover:bg-[#003D7B]"
             } transition-all duration-300 text-white h-[35px] md:h-[40px] px-4 rounded-[60px] flex items-center justify-center`}
         >
-          {isSubmitting ? "Submitting..." : "Submit"}
+          {isSubmitting ? t("form.submitting") : t("form.submit")}
         </button>
       </form>
     </div>

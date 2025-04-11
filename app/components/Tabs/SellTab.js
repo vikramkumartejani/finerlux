@@ -240,13 +240,13 @@ export default function SellTab() {
               htmlFor="name"
               className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3"
             >
-              Name
+              {t("form.name")}
             </label>
             <input
               type="text"
               id="name"
               name="name"
-              placeholder="Full Name"
+              placeholder={t("form.namePlaceholder")}
               onChange={handleInputChange}
               className={`w-full px-4 text-base min-h-[33px] md:min-h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
                                    ${formErrors.name || formatErrors.name
@@ -256,12 +256,12 @@ export default function SellTab() {
             />
             {formErrors.name && (
               <p className="text-[#B80000] text-sm mt-1">
-                It is mandatory field
+                {t("form.mandatoryField")}
               </p>
             )}
             {formatErrors.name && (
               <p className="text-[#B80000] text-sm mt-1">
-                Name cannot contain numbers
+                {t("form.nameContainNumbers")}
               </p>
             )}
           </div>
@@ -270,7 +270,7 @@ export default function SellTab() {
               htmlFor="email"
               className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3"
             >
-              Email
+              {t("form.email")}
             </label>
             <input
               type="email"
@@ -286,12 +286,12 @@ export default function SellTab() {
             />
             {formErrors.email && (
               <p className="text-[#B80000] text-sm mt-1">
-                It is mandatory field
+                {t("form.mandatoryField")}
               </p>
             )}
             {formatErrors.email && (
               <p className="text-[#B80000] text-sm mt-1">
-                Please enter a valid email address
+                {t("form.emailAddress")}
               </p>
             )}
           </div>
@@ -302,7 +302,7 @@ export default function SellTab() {
               htmlFor="phone"
               className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3"
             >
-              Phone number
+              {t("form.phone")}
             </label>
             <input
               type="text"
@@ -318,12 +318,12 @@ export default function SellTab() {
             />
             {formErrors.phone && (
               <p className="text-[#B80000] text-sm mt-1">
-                It is mandatory field
+                {t("form.mandatoryField")}
               </p>
             )}
             {formatErrors.phone && (
               <p className="text-[#B80000] text-sm mt-1">
-                Phone number cannot contain letters
+                {t("form.phoneNumberContainNumbers")}
               </p>
             )}
           </div>
@@ -336,7 +336,7 @@ export default function SellTab() {
               htmlFor="item"
               className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3"
             >
-              Item
+              {t("form.item")}
             </label>
             <div className="relative">
               <select
@@ -350,9 +350,9 @@ export default function SellTab() {
                 defaultValue="Watch"
                 disabled={isModalOpen}
               >
-                <option>Watch</option>
-                <option>Jewellery</option>
-                <option>Other</option>
+                <option>{t("form.itemOptions.watch")}</option>
+                <option>{t("form.itemOptions.jewellery")}</option>
+                <option>{t("form.itemOptions.other")}</option>
               </select>
               <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                 <svg
@@ -373,7 +373,7 @@ export default function SellTab() {
             </div>
             {formErrors.item && (
               <p className="text-[#B80000] text-sm mt-1">
-                It is mandatory field
+                {t("form.mandatoryField")}
               </p>
             )}
           </div>
@@ -383,7 +383,7 @@ export default function SellTab() {
               htmlFor="condition"
               className="flex items-center gap-1 text-sm md:text-base font-normal text-black mb-2 md:mb-3"
             >
-              Condition
+              {t("form.condition")}
               <div>
                 <div
                   className="ml-1 text-gray-400 cursor-pointer"
@@ -444,12 +444,12 @@ export default function SellTab() {
                 defaultValue="Good"
                 disabled={isModalOpen}
               >
-                <option>New</option>
-                <option>Unworn</option>
-                <option>Very Good</option>
-                <option>Good</option>
-                <option>Fair</option>
-                <option>Incomplete</option>
+                <option>{t("form.conditionOption.new")}</option>
+                <option>{t("form.conditionOption.unworn")}</option>
+                <option>{t("form.conditionOption.veryGood")}</option>
+                <option>{t("form.conditionOption.good")}</option>
+                <option>{t("form.conditionOption.fair")}</option>
+                <option>{t("form.conditionOption.incomplete")}</option>
               </select>
               <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                 <svg
@@ -470,7 +470,7 @@ export default function SellTab() {
             </div>
             {formErrors.condition && (
               <p className="text-[#B80000] text-sm mt-1">
-                It is mandatory field
+                {t("form.mandatoryField")}
               </p>
             )}
           </div>
@@ -481,7 +481,7 @@ export default function SellTab() {
               htmlFor="price"
               className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3"
             >
-              Your Price
+              {t("form.price")}
             </label>
             <div className="relative">
               <div className=" group">
@@ -505,12 +505,12 @@ export default function SellTab() {
               </div>
               {formErrors.price && (
                 <p className="text-[#B80000] text-sm mt-1">
-                  It is mandatory field
+                  {t("form.mandatoryField")}
                 </p>
               )}
               {formatErrors.price && (
                 <p className="text-[#B80000] text-sm mt-1">
-                  Please enter a valid positive number
+                  {t("form.positiveNumber")}
                 </p>
               )}
             </div>
@@ -528,24 +528,24 @@ export default function SellTab() {
         {/* Status message */}
         {submitStatus === "success" && (
           <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded">
-            Form submitted successfully! We&apos;ll get back to you soon.
+            {t("form.submittedSuccessfully")}
           </div>
         )}
         {submitStatus === "error" && (
           <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
-            There was an error submitting the form. Please try again later.
+            {t("form.errorSubmitting")}
           </div>
         )}
 
         {/* Social Media */}
         <div className="pt-[14px] md:pt-6 pb-[14px] md:pb-0">
           <p className="text-sm md:text-base font-normal text-black mb-3">
-            I am happy to be contacted by
+            {t("form.contactedBy")}
           </p>
           <div className="flex flex-wrap gap-3 md:gap-4">
             <label className="inline-flex items-center">
               <Checkbox
-                title="Telephone"
+                title={t("contactMethods.telephone")}
                 checked={checkedItems.checkbox1}
                 onChange={() => handleCheckboxChange("checkbox1")}
                 disabled={isModalOpen}
@@ -553,7 +553,7 @@ export default function SellTab() {
             </label>
             <label className="inline-flex items-center">
               <Checkbox
-                title="SMS"
+                title={t("contactMethods.sms")}
                 checked={checkedItems.checkbox2}
                 onChange={() => handleCheckboxChange("checkbox2")}
                 disabled={isModalOpen}
@@ -561,7 +561,7 @@ export default function SellTab() {
             </label>
             <label className="inline-flex items-center">
               <Checkbox
-                title="Email"
+                title={t("contactMethods.email")}
                 checked={checkedItems.checkbox3}
                 onChange={() => handleCheckboxChange("checkbox3")}
                 disabled={isModalOpen}
@@ -569,7 +569,7 @@ export default function SellTab() {
             </label>
             <label className="inline-flex items-center">
               <Checkbox
-                title="Whatsapp"
+                title={t("contactMethods.whatsapp")}
                 checked={checkedItems.checkbox4}
                 onChange={() => handleCheckboxChange("checkbox4")}
                 disabled={isModalOpen}
@@ -584,7 +584,7 @@ export default function SellTab() {
           className="text-base font-medium w-full bg-[#017EFE] hover:bg-[#003D7B] transition-all duration-300 text-white h-[35px] md:h-[40px] px-4 rounded-[60px]"
           disabled={isModalOpen || isSubmitting}
         >
-          {isSubmitting ? "Submitting..." : "Submit"}
+          {isSubmitting ? t("form.submitting") : t("form.submit")}
         </button>
       </form>
     </div>

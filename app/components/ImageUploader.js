@@ -1,8 +1,10 @@
 import Image from "next/image";
 import React, { useState, useRef } from "react";
 import toast from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 
 const ImageUploader = ({ onImagesChange, disabled }) => {
+    const { t } = useTranslation();
   const [images, setImages] = useState([]);
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const fileInputRef = useRef(null);
@@ -73,7 +75,7 @@ const ImageUploader = ({ onImagesChange, disabled }) => {
   return (
     <div>
       <label className="block text-base font-normal text-black mb-2 md:mb-3">
-        Upload photos and videos of item
+        {t("form.uploadFileTitle")}
       </label>
       <div
         className={`h-[165px] md:min-h-[191px] rounded-[20px] md:rounded-[30px] p-3 md:p-4 flex flex-col items-start justify-start bg-[#E3E8ED] cursor-pointer `}
@@ -112,16 +114,16 @@ const ImageUploader = ({ onImagesChange, disabled }) => {
               />
             </div>
             <p className="text-[#828282] text-sm md:text-base font-normal mt-2">
-              Drag and drop files here or click to upload
+              {t("form.dragAndDrop")}
             </p>
             <p className="text-[#828282] text-xs font-normal mt-1">
-              Supports images and videos (GIFs not allowed)
+              {t("form.supportsImages")}
             </p>
           </div>
         ) : (
           <div 
             className="w-full h-full flex flex-wrap gap-2 md:gap-3 overflow-y-auto scrollbar-hide !overflow-visible"
-            onClick={(e) => e.stopPropagation()} // Prevent container click when clicking in the image area
+            onClick={(e) => e.stopPropagation()}  
           >
             {images.map((image, index) => (
               <div

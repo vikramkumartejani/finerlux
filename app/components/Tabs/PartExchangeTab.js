@@ -236,7 +236,7 @@ export default function PartExchangeTab() {
               htmlFor="name"
               className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3"
             >
-              Name
+              {t("form.name")}
             </label>
             <input
               type="text"
@@ -244,22 +244,21 @@ export default function PartExchangeTab() {
               name="name"
               value={formData.name}
               onChange={handleInputChange}
-              placeholder="Full Name"
+              placeholder={t("form.namePlaceholder")}
               className={`w-full px-4 text-base min-h-[33px] md:min-h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                ${
-                  formErrors.name || formErrors.name
-                    ? "border-[#B80000]"
-                    : "border-transparent focus:border-[#017EFE]"
+                ${formErrors.name || formErrors.name
+                  ? "border-[#B80000]"
+                  : "border-transparent focus:border-[#017EFE]"
                 }`}
             />
             {formErrors.name && (
               <p className="text-[#B80000] text-sm mt-1">
-                It is mandatory field
+                {t("form.mandatoryField")}
               </p>
             )}
             {validationErrors.name && (
               <p className="text-[#B80000] text-sm mt-1">
-                Name cannot contain numbers
+                {t("form.nameContainNumbers")}
               </p>
             )}
           </div>
@@ -269,7 +268,7 @@ export default function PartExchangeTab() {
               htmlFor="email"
               className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3"
             >
-              Email
+              {t("form.email")}
             </label>
             <input
               type="email"
@@ -279,20 +278,19 @@ export default function PartExchangeTab() {
               onChange={handleInputChange}
               placeholder="example@mail.com"
               className={`w-full px-4 text-base min-h-[33px] md:h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                ${
-                  formErrors.email || formErrors.email
-                    ? "border-[#B80000]"
-                    : "border-transparent focus:border-[#017EFE]"
+                ${formErrors.email || formErrors.email
+                  ? "border-[#B80000]"
+                  : "border-transparent focus:border-[#017EFE]"
                 }`}
             />
             {formErrors.email && (
               <p className="text-[#B80000] text-sm mt-1">
-                It is mandatory field
+                {t("form.mandatoryField")}
               </p>
             )}
             {validationErrors.email && (
               <p className="text-[#B80000] text-sm mt-1">
-                Please enter a valid email address
+                {t("form.emailAddress")}
               </p>
             )}
           </div>
@@ -303,7 +301,7 @@ export default function PartExchangeTab() {
               htmlFor="phone"
               className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3"
             >
-              Phone number
+              {t("form.phone")}
             </label>
             <input
               type="text"
@@ -313,20 +311,19 @@ export default function PartExchangeTab() {
               onChange={handleInputChange}
               placeholder="(+44) 123 456 7890"
               className={`w-full px-4 text-base min-h-[33px] md:h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                ${
-                  formErrors.phone || formErrors.phone
-                    ? "border-[#B80000]"
-                    : "border-transparent focus:border-[#017EFE]"
+                ${formErrors.phone || formErrors.phone
+                  ? "border-[#B80000]"
+                  : "border-transparent focus:border-[#017EFE]"
                 }`}
             />
             {formErrors.phone && (
               <p className="text-[#B80000] text-sm mt-1">
-                It is mandatory field
+                {t("form.mandatoryField")}
               </p>
             )}
             {validationErrors.phone && (
               <p className="text-[#B80000] text-sm mt-1">
-                Phone number cannot contain letters
+                {t("form.phoneNumberContainNumbers")}
               </p>
             )}
           </div>
@@ -339,24 +336,23 @@ export default function PartExchangeTab() {
               htmlFor="item"
               className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3"
             >
-              Item
+              {t("form.item")}
             </label>
             <div className="relative">
               <select
                 id="item"
                 name="item"
                 className={`w-full px-4 text-base min-h-[33px] md:h-[42px] bg-[#E3E8ED] appearance-none rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                                                      ${
-                                                        formErrors.item
-                                                          ? "border-red-500 bg-red-50"
-                                                          : "border-transparent focus:border-[#017EFE]"
-                                                      }`}
+                                                      ${formErrors.item
+                    ? "border-red-500 bg-red-50"
+                    : "border-transparent focus:border-[#017EFE]"
+                  }`}
                 defaultValue="Watch"
                 disabled={isModalOpen}
               >
-                <option>Watch</option>
-                <option>Jewellery</option>
-                <option>Other</option>
+                <option>{t("form.itemOptions.watch")}</option>
+                <option>{t("form.itemOptions.jewellery")}</option>
+                <option>{t("form.itemOptions.other")}</option>
               </select>
               <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                 <svg
@@ -376,7 +372,7 @@ export default function PartExchangeTab() {
               </div>
             </div>
             {formErrors.item && (
-              <p className="text-red-500 text-sm mt-1">It is mandatory field</p>
+              <p className="text-red-500 text-sm mt-1">  {t("form.mandatoryField")}</p>
             )}
           </div>
 
@@ -385,7 +381,7 @@ export default function PartExchangeTab() {
               htmlFor="condition"
               className="flex items-center gap-1 text-sm md:text-base font-normal text-black mb-2 md:mb-3"
             >
-              Condition
+              {t("form.condition")}
               <div>
                 <div
                   className="ml-1 text-gray-400 cursor-pointer"
@@ -439,20 +435,19 @@ export default function PartExchangeTab() {
                 id="condition"
                 name="condition"
                 className={`w-full px-4 text-base min-h-[33px] md:h-[42px] bg-[#E3E8ED] appearance-none rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                                                      ${
-                                                        formErrors.condition
-                                                          ? "border-red-500 bg-red-50"
-                                                          : "border-transparent focus:border-[#017EFE]"
-                                                      }`}
+                                                      ${formErrors.condition
+                    ? "border-red-500 bg-red-50"
+                    : "border-transparent focus:border-[#017EFE]"
+                  }`}
                 defaultValue="Good"
                 disabled={isModalOpen}
               >
-                <option>New</option>
-                <option>Unworn</option>
-                <option>Very Good</option>
-                <option>Good</option>
-                <option>Fair</option>
-                <option>Incomplete</option>
+                <option>{t("form.conditionOption.new")}</option>
+                <option>{t("form.conditionOption.unworn")}</option>
+                <option>{t("form.conditionOption.veryGood")}</option>
+                <option>{t("form.conditionOption.good")}</option>
+                <option>{t("form.conditionOption.fair")}</option>
+                <option>{t("form.conditionOption.incomplete")}</option>
               </select>
               <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                 <svg
@@ -472,7 +467,7 @@ export default function PartExchangeTab() {
               </div>
             </div>
             {formErrors.condition && (
-              <p className="text-red-500 text-sm mt-1">It is mandatory field</p>
+              <p className="text-red-500 text-sm mt-1">  {t("form.mandatoryField")}</p>
             )}
           </div>
 
@@ -482,7 +477,7 @@ export default function PartExchangeTab() {
               htmlFor="price"
               className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3"
             >
-              Your Price
+              {t("form.price")}
             </label>
             <div className="relative">
               <div className="group">
@@ -498,22 +493,21 @@ export default function PartExchangeTab() {
                   value={formData.price}
                   onChange={handleInputChange}
                   className={`w-full px-4 pl-7 text-base min-h-[36px] md:h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                 ${
-                   validationErrors.price || formErrors.price
-                     ? "border-[#B80000] "
-                     : "border-transparent focus:border-[#017EFE] group-hover:border-[#017EFE]"
-                 }`}
+                 ${validationErrors.price || formErrors.price
+                      ? "border-[#B80000] "
+                      : "border-transparent focus:border-[#017EFE] group-hover:border-[#017EFE]"
+                    }`}
                   disabled={isModalOpen}
                 />
               </div>
               {formErrors.price && (
                 <p className="text-[#B80000] text-sm mt-1">
-                  It is mandatory field
+                  {t("form.mandatoryField")}
                 </p>
               )}
               {validationErrors.price && !formErrors.price && (
                 <p className="text-[#B80000] text-sm mt-1">
-                  Please enter a valid price
+                  {t("form.positiveNumber")}
                 </p>
               )}
             </div>
@@ -532,23 +526,22 @@ export default function PartExchangeTab() {
               htmlFor="description"
               className="block text-sm md:text-base font-normal text-black mb-2 md:mb-3"
             >
-              Description
+              {t("form.description")}
             </label>
             <textarea
               id="description"
               name="description"
-              placeholder="Enter your description"
+              placeholder={t("form.descriptionplaceholder")}
               className={`w-full px-4 py-2.5 h-[160px] text-base bg-[#E3E8ED] rounded-[20px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                              ${
-                                formErrors.description
-                                  ? "border-[#B80000]"
-                                  : "border-transparent focus:border-[#017EFE]"
-                              }`}
+                              ${formErrors.description
+                  ? "border-[#B80000]"
+                  : "border-transparent focus:border-[#017EFE]"
+                }`}
               disabled={isModalOpen}
             />
             {formErrors.description && (
               <p className="text-[#B80000] text-sm mt-1">
-                It is mandatory field
+                {t("form.mandatoryField")}
               </p>
             )}
           </div>
@@ -557,24 +550,24 @@ export default function PartExchangeTab() {
         {/* Status message */}
         {submitStatus === "success" && (
           <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded">
-            Form submitted successfully! We&apos;`ll get back to you soon.
+            {t("form.submittedSuccessfully")}
           </div>
         )}
         {submitStatus === "error" && (
           <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
-            There was an error submitting the form. Please try again later.
+            {t("form.errorSubmitting")}
           </div>
         )}
 
         {/* Social Media */}
         <div className="pt-[14px] md:pt-6 pb-[14px] md:pb-0">
           <p className="text-sm md:text-base font-normal text-black mb-3">
-            I am happy to be contacted by
+            {t("form.contactedBy")}
           </p>
           <div className="flex flex-wrap gap-3 md:gap-4">
             <label className="inline-flex items-center">
               <Checkbox
-                title="Telephone"
+                title={t("contactMethods.telephone")}
                 checked={checkedItems.checkbox1}
                 onChange={() => handleCheckboxChange("checkbox1")}
                 disabled={isModalOpen}
@@ -582,7 +575,7 @@ export default function PartExchangeTab() {
             </label>
             <label className="inline-flex items-center">
               <Checkbox
-                title="SMS"
+                title={t("contactMethods.sms")}
                 checked={checkedItems.checkbox2}
                 onChange={() => handleCheckboxChange("checkbox2")}
                 disabled={isModalOpen}
@@ -590,7 +583,7 @@ export default function PartExchangeTab() {
             </label>
             <label className="inline-flex items-center">
               <Checkbox
-                title="Email"
+                title={t("contactMethods.email")}
                 checked={checkedItems.checkbox3}
                 onChange={() => handleCheckboxChange("checkbox3")}
                 disabled={isModalOpen}
@@ -598,7 +591,7 @@ export default function PartExchangeTab() {
             </label>
             <label className="inline-flex items-center">
               <Checkbox
-                title="Whatsapp"
+                title={t("contactMethods.whatsapp")}
                 checked={checkedItems.checkbox4}
                 onChange={() => handleCheckboxChange("checkbox4")}
                 disabled={isModalOpen}
@@ -613,7 +606,7 @@ export default function PartExchangeTab() {
           className="text-base font-medium w-full bg-[#017EFE] hover:bg-[#003D7B] transition-all duration-300 text-white h-[35px] md:h-[40px] px-4 rounded-[60px]"
           disabled={isModalOpen || isSubmitting}
         >
-          {isSubmitting ? "Submitting..." : "Submit"}
+          {isSubmitting ? t("form.submitting") : t("form.submit")}
         </button>
       </form>
     </div>
