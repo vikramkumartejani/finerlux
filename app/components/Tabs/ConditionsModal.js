@@ -4,7 +4,6 @@ const ConditionsModal = () => {
 
      return (
           <div>
-               <h2 className="text-xl font-bold mb-4">Conditions</h2>
                <ul className="list-disc pl-5 space-y-2">
                     <li className="text-sm sm:text-base"><strong>New:</strong> The item is brand new, never used, and in perfect condition. It has no scratches, marks, or signs of wear. It comes with all original packaging and warranty, just like buying directly from a store.</li>
                     <li className="text-sm sm:text-base"><strong>Unworn:</strong> The item has never been worn, but it might not be straight from the store. It has no signs of use but could have tiny marks from handling or storage. Any original stickers or packaging might still be there.</li>

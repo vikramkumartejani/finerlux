@@ -225,40 +225,6 @@ export default function PartExchangeTab() {
         </div>
       </div>
 
-      {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-          <div
-            ref={modalRef}
-            className="bg-white rounded-[20px] p-6 max-w-md w-full min-h-[800px] max-h-[800px] overflow-y-auto"
-          >
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-bold">Conditions</h2>
-              <button
-                onClick={closeModal}
-                className="text-gray-500 hover:text-gray-700"
-              >
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M18 6L6 18M6 6L18 18"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
-            <ConditionsModal />
-          </div>
-        </div>
-      )}
-
       <form
         onSubmit={validateForm}
         className="space-y-2.5 md:space-y-6 min-w-full lg:min-w-[500px] xl:min-w-[636px]"
@@ -280,9 +246,10 @@ export default function PartExchangeTab() {
               onChange={handleInputChange}
               placeholder="Full Name"
               className={`w-full px-4 text-base min-h-[33px] md:min-h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                ${formErrors.name || formErrors.name
-                  ? "border-[#B80000]"
-                  : "border-transparent focus:border-[#017EFE]"
+                ${
+                  formErrors.name || formErrors.name
+                    ? "border-[#B80000]"
+                    : "border-transparent focus:border-[#017EFE]"
                 }`}
             />
             {formErrors.name && (
@@ -312,9 +279,10 @@ export default function PartExchangeTab() {
               onChange={handleInputChange}
               placeholder="example@mail.com"
               className={`w-full px-4 text-base min-h-[33px] md:h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                ${formErrors.email || formErrors.email
-                  ? "border-[#B80000]"
-                  : "border-transparent focus:border-[#017EFE]"
+                ${
+                  formErrors.email || formErrors.email
+                    ? "border-[#B80000]"
+                    : "border-transparent focus:border-[#017EFE]"
                 }`}
             />
             {formErrors.email && (
@@ -345,9 +313,10 @@ export default function PartExchangeTab() {
               onChange={handleInputChange}
               placeholder="(+44) 123 456 7890"
               className={`w-full px-4 text-base min-h-[33px] md:h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                ${formErrors.phone || formErrors.phone
-                  ? "border-[#B80000]"
-                  : "border-transparent focus:border-[#017EFE]"
+                ${
+                  formErrors.phone || formErrors.phone
+                    ? "border-[#B80000]"
+                    : "border-transparent focus:border-[#017EFE]"
                 }`}
             />
             {formErrors.phone && (
@@ -377,10 +346,11 @@ export default function PartExchangeTab() {
                 id="item"
                 name="item"
                 className={`w-full px-4 text-base min-h-[33px] md:h-[42px] bg-[#E3E8ED] appearance-none rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                                                      ${formErrors.item
-                    ? "border-red-500 bg-red-50"
-                    : "border-transparent focus:border-[#017EFE]"
-                  }`}
+                                                      ${
+                                                        formErrors.item
+                                                          ? "border-red-500 bg-red-50"
+                                                          : "border-transparent focus:border-[#017EFE]"
+                                                      }`}
                 defaultValue="Watch"
                 disabled={isModalOpen}
               >
@@ -430,46 +400,35 @@ export default function PartExchangeTab() {
                 </div>
 
                 {isModalOpen && (
-                  <div className="bg-black bg-opacity-50 top-0 fixed inset-0 z-50">
+                  <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
                     <div
-                      className="fixed top-0 inset-0 mx-4 mb-4 z-50 rounded-[30px] flex items-center justify-center !overflow-auto scrollbar-hide"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        closeModal();
-                      }}
+                      ref={modalRef}
+                      className="bg-white rounded-[20px] p-6 max-w-xl w-full min-h-[80vh] max-h-[80vh] overflow-y-auto scrollbar-hide"
                     >
-                      <div
-                        ref={modalRef}
-                        className="bg-white p-4 md:p-6 overflow-auto scrollbar-hide rounded-[30px] !mx-5 shadow-xl max-w-3xl w-full absolute md:relative top-4 md:top-0"
-                        onClick={(e) => e.stopPropagation()}
-                      >
+                      <div className="flex justify-between items-center mb-4">
+                        <h2 className="text-xl font-bold">Conditions</h2>
                         <button
-                          className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            closeModal();
-                          }}
-                          aria-label="Close modal"
+                          onClick={closeModal}
+                          className="text-gray-500 hover:text-gray-700"
                         >
                           <svg
-                            xmlns="http://www.w3.org/2000/svg"
                             width="24"
                             height="24"
                             viewBox="0 0 24 24"
                             fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
+                            xmlns="http://www.w3.org/2000/svg"
                           >
-                            <line x1="18" y1="6" x2="6" y2="18"></line>
-                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                            <path
+                              d="M18 6L6 18M6 6L18 18"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
                           </svg>
                         </button>
-                        <ConditionsModal />
                       </div>
+                      <ConditionsModal />
                     </div>
                   </div>
                 )}
@@ -480,10 +439,11 @@ export default function PartExchangeTab() {
                 id="condition"
                 name="condition"
                 className={`w-full px-4 text-base min-h-[33px] md:h-[42px] bg-[#E3E8ED] appearance-none rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                                                      ${formErrors.condition
-                    ? "border-red-500 bg-red-50"
-                    : "border-transparent focus:border-[#017EFE]"
-                  }`}
+                                                      ${
+                                                        formErrors.condition
+                                                          ? "border-red-500 bg-red-50"
+                                                          : "border-transparent focus:border-[#017EFE]"
+                                                      }`}
                 defaultValue="Good"
                 disabled={isModalOpen}
               >
@@ -538,10 +498,11 @@ export default function PartExchangeTab() {
                   value={formData.price}
                   onChange={handleInputChange}
                   className={`w-full px-4 pl-7 text-base min-h-[36px] md:h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                 ${validationErrors.price || formErrors.price
-                      ? "border-[#B80000] "
-                      : "border-transparent focus:border-[#017EFE] group-hover:border-[#017EFE]"
-                    }`}
+                 ${
+                   validationErrors.price || formErrors.price
+                     ? "border-[#B80000] "
+                     : "border-transparent focus:border-[#017EFE] group-hover:border-[#017EFE]"
+                 }`}
                   disabled={isModalOpen}
                 />
               </div>
@@ -578,10 +539,11 @@ export default function PartExchangeTab() {
               name="description"
               placeholder="Enter your description"
               className={`w-full px-4 py-2.5 h-[160px] text-base bg-[#E3E8ED] rounded-[20px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
-                              ${formErrors.description
-                  ? "border-[#B80000]"
-                  : "border-transparent focus:border-[#017EFE]"
-                }`}
+                              ${
+                                formErrors.description
+                                  ? "border-[#B80000]"
+                                  : "border-transparent focus:border-[#017EFE]"
+                              }`}
               disabled={isModalOpen}
             />
             {formErrors.description && (
