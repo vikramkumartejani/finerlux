@@ -4,14 +4,14 @@
           "ourServices": "Our Services",
           "chat": "Chat"
      },
-     "hero":{
+     "hero": {
           "title": "We help watch collectors do more of what they love.",
           "description": "We buy, sell, and source luxury timepieces and jewelry that help customers save time and enjoy more of what they love.",
           "buyBtn": "Buy",
           "sellBtn": "Sell",
           "learnMoreBtn": "Learn more"
      },
-     "newArrivals":{
+     "newArrivals": {
           "title": "New Arrivals",
           "year": "Year",
           "box": "Box",
@@ -41,7 +41,7 @@
                "description": "Ensure your watch or jewellery is 100% authentic. Expert verification, detailed assessments, and certification for guaranteed authenticity."
           }
      },
-     "tab":{
+     "tab": {
           "sell": "Sell",
           "buy": "Buy",
           "partExchange": "Part Exchange",
@@ -68,12 +68,30 @@
           "descAuthenticateOne": "Get your watch and jewellery verified by our experts. Whether you're buying, selling, or just want peace of mind, our authentication service provides a detailed inspection to confirm authenticity. Trusted by collectors and professionals worldwide.",
           "descAuthenticateTwo": "Ensure confidence in your purchase or sale with our expert verification service."
      },
+     "modal": {
+          "title": "Conditions",
+          "conditionTitles": {
+               "new": "New",
+               "unworn": "Unworn",
+               "veryGood": "Very Good",
+               "good": "Good",
+               "fair": "Fair",
+               "incomplete": "Incomplete"
+          },
+          "conditions": {
+               "new": "The item is brand new, never used, and in perfect condition. It has no scratches, marks, or signs of wear. It comes with all original packaging and warranty, just like buying directly from a store.",
+               "unworn": "The item has never been worn, but it might not be straight from the store. It has no signs of use but could have tiny marks from handling or storage. Any original stickers or packaging might still be there.",
+               "veryGood": "The item has been worn but taken care of really well. It may have small, barely noticeable scratches, but nothing major. It might have been cleaned or polished to look better. Any markings or engravings are still clear.",
+               "good": "The item has been used and shows clear signs of wear, like scratches or small dents. The bracelet or strap might be a bit stretched. Some markings or engravings may be faded, but they're still visible.",
+               "fair": "The item has been worn a lot and shows major signs of use, like deep scratches or dents. The bracelet or strap is visibly worn. It may have been polished, but you can still see the damage.",
+               "incomplete": "The item is not fully functional because it's missing parts or is broken. It is meant for repair or to be used for spare parts."
+          }
+     },
      "footer": {
           "headline": "We help watch collectors do more of what they love.",
           "contacts": {
                "title": "Contacts"
           },
-         
           "services": {
                "title": "Services",
                "partExchange": "Part exchange",

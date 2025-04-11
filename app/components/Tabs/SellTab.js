@@ -404,7 +404,7 @@ export default function SellTab() {
                       className="bg-white rounded-[20px] p-6 max-w-xl w-full min-h-[85vh] max-h-[85vh] overflow-y-auto scrollbar-hide"
                     >
                       <div className="flex justify-between items-center mb-4">
-                        <h2 className="text-xl font-bold">Conditions</h2>
+                        <h2 className="text-xl font-bold"> {t("modal.title")}</h2>
                         <button
                           onClick={closeModal}
                           className="text-gray-500 hover:text-gray-700"
