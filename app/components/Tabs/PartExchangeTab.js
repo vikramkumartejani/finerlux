@@ -225,7 +225,7 @@ useEffect(() => {
       </div>
 
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div className=" sticky inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
           <div
             ref={modalRef}
             className="bg-white rounded-[20px] p-6 max-w-md w-full max-h-[80vh] overflow-y-auto"
