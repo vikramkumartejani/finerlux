@@ -78,7 +78,7 @@ const ImageUploader = ({ onImagesChange, disabled }) => {
         {t("form.uploadFileTitle")}
       </label>
       <div
-        className={`h-[165px] md:min-h-[191px] group rounded-[20px] md:rounded-[30px] p-3 md:p-4 flex flex-col items-start justify-start bg-[#E3E8ED] cursor-pointer `}
+        className={`h-[200px] md:min-h-[191px] group rounded-[20px] md:rounded-[30px] p-3 md:p-4 flex flex-col items-start justify-start bg-[#E3E8ED] cursor-pointer `}
         onDrop={handleDrop}
         onDragOver={(e) => e.preventDefault()}
         onClick={handleContainerClick}
@@ -113,10 +113,10 @@ const ImageUploader = ({ onImagesChange, disabled }) => {
                 className="hidden group-hover:block"
               />
             </div>
-            <p className="text-[#828282] text-sm md:text-base font-normal mt-2">
+            <p className="text-[#828282] text-sm md:text-base font-normal mt-2 text-center">
               {t("form.dragAndDrop")}
             </p>
-            <p className="text-[#828282] text-xs font-normal mt-1">
+            <p className="text-[#828282] text-xs font-normal mt-1 text-center">
               {t("form.supportsImages")}
             </p>
           </div>
