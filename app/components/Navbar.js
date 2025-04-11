@@ -97,7 +97,7 @@ const Navbar = () => {
               href="tel:+441234567890"
               className="flex items-center text-black text-base font-normal"
             >
-              <span className="mr-2">Need help?</span> +44 123 456 7890
+              <span className="mr-2">{t("navbar.needHelp")}</span> +44 123 456 7890
             </Link>
           </div>
         </div>

@@ -2,7 +2,8 @@
      "navbar": {
           "main": "Main",
           "ourServices": "Our Services",
-          "chat": "Chat"
+          "chat": "Chat",
+          "needHelp": "Need help?"
      },
      "hero": {
           "title": "We help watch collectors do more of what they love.",
