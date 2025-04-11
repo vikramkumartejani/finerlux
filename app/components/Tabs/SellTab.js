@@ -237,7 +237,7 @@ export default function SellTab() {
               Phone number
             </label>
             <input
-              type="tel"
+              type="number"
               id="phone"
               name="phone"
               placeholder="(+44) 123 456 7890"
@@ -423,12 +423,12 @@ export default function SellTab() {
             <div className="relative">
               <div className=" group">
                 <div className="absolute top-[6px] md:top-[9px] left-0 pl-4 flex items-center pointer-events-none">
-                  <span className="text-[#828282] text-[18px] !leading-[22px] group-hover:text-black">
+                  <span className="text-[#828282] text-[18px] !leading-[22px] group-hover:text-black mt-0.5">
                     £
                   </span>
                 </div>
                 <input
-                  type="text"
+                  type="number"
                   id="price"
                   name="price"
                   className={`w-full px-4 pl-7 text-base min-h-[36px] md:h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 

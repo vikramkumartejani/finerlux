@@ -258,7 +258,7 @@ const BuyTab = forwardRef((props, ref) => {
               Phone number
             </label>
             <input
-              type="tel"
+              type="number"
               id="phone"
               name="phone"
               placeholder="(+44) 123 456 7890"

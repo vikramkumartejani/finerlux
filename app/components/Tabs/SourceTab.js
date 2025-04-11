@@ -190,7 +190,7 @@ export default function SourceTab() {
               Phone number
             </label>
             <input
-              type="tel"
+              type="number"
               id="phone"
               name="phone"
               placeholder="(+44) 123 456 7890"
