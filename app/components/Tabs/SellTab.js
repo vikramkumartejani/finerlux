@@ -398,46 +398,35 @@ export default function SellTab() {
                 </div>
 
                 {isModalOpen && (
-                  <div className="bg-black bg-opacity-50 top-0 fixed inset-0 z-50">
+                  <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
                     <div
-                      className="fixed top-0 inset-0 mx-4 mb-4 z-50 rounded-[30px] flex items-center justify-center !overflow-auto scrollbar-hide"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        closeModal();
-                      }}
+                      ref={modalRef}
+                      className="bg-white rounded-[20px] p-6 max-w-xl w-full min-h-[85vh] max-h-[85vh] overflow-y-auto scrollbar-hide"
                     >
-                      <div
-                        ref={modalRef}
-                        className="bg-white p-4 md:p-6 overflow-auto scrollbar-hide rounded-[30px] !mx-5 shadow-xl max-w-3xl w-full absolute md:relative top-4 md:top-0"
-                        onClick={(e) => e.stopPropagation()}
-                      >
+                      <div className="flex justify-between items-center mb-4">
+                        <h2 className="text-xl font-bold">Conditions</h2>
                         <button
-                          className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            closeModal();
-                          }}
-                          aria-label="Close modal"
+                          onClick={closeModal}
+                          className="text-gray-500 hover:text-gray-700"
                         >
                           <svg
-                            xmlns="http://www.w3.org/2000/svg"
                             width="24"
                             height="24"
                             viewBox="0 0 24 24"
                             fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
+                            xmlns="http://www.w3.org/2000/svg"
                           >
-                            <line x1="18" y1="6" x2="6" y2="18"></line>
-                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                            <path
+                              d="M18 6L6 18M6 6L18 18"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
                           </svg>
                         </button>
-                        <ConditionsModal />
                       </div>
+                      <ConditionsModal />
                     </div>
                   </div>
                 )}
