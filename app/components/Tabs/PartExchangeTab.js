@@ -109,22 +109,23 @@ export default function PartExchangeTab() {
     setIsModalOpen(false);
   };
 
-useEffect(() => {
-  if (isModalOpen) {
-    const scrollY = window.scrollY;
-    
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${scrollY}px`;
-    document.body.style.width = '100%';
-    
-    return () => {
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-      window.scrollTo(0, scrollY);
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        closeModal();
+      }
     };
-  }
-}, [isModalOpen]);
+
+    if (isModalOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isModalOpen]);
 
   const validateForm = async (e) => {
     e.preventDefault();
@@ -225,7 +226,7 @@ useEffect(() => {
       </div>
 
       {isModalOpen && (
-        <div className=" sticky inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
           <div
             ref={modalRef}
             className="bg-white rounded-[20px] p-6 max-w-md w-full max-h-[80vh] overflow-y-auto"
