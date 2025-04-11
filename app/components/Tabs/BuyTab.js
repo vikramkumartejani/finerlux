@@ -21,6 +21,11 @@ const BuyTab = forwardRef((props, ref) => {
     phone: false,
     description: false,
   });
+  const [formatErrors, setFormatErrors] = useState({
+    name: false,
+    email: false,
+    phone: false,
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
 
@@ -95,6 +100,34 @@ const BuyTab = forwardRef((props, ref) => {
     }));
   };
 
+  const validateInput = (field, value) => {
+    const newFormatErrors = { ...formatErrors };
+    
+    switch (field) {
+      case 'name':
+        // Check if name contains any digits
+        newFormatErrors.name = /\d/.test(value);
+        break;
+      case 'email':
+        // Basic email validation
+        newFormatErrors.email = value.trim() !== '' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+        break;
+      case 'phone':
+        // Check if phone contains any letters
+        newFormatErrors.phone = /[a-zA-Z]/.test(value);
+        break;
+      default:
+        break;
+    }
+    
+    setFormatErrors(newFormatErrors);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    validateInput(name, value);
+  };
+
   const validateForm = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -107,7 +140,12 @@ const BuyTab = forwardRef((props, ref) => {
 
     setFormErrors(errors);
 
-    if (Object.values(errors).some(Boolean)) {
+    // Validate format for all fields before submission
+    validateInput('name', form.name.value);
+    validateInput('email', form.email.value);
+    validateInput('phone', form.phone.value);
+
+    if (Object.values(errors).some(Boolean) || Object.values(formatErrors).some(Boolean)) {
       return;
     }
 
@@ -144,6 +182,12 @@ const BuyTab = forwardRef((props, ref) => {
           checkbox2: false,
           checkbox3: false,
           checkbox4: false,
+        });
+
+        setFormatErrors({
+          name: false,
+          email: false,
+          phone: false,
         });
 
         const nameField = document.getElementById("name");
@@ -211,9 +255,10 @@ const BuyTab = forwardRef((props, ref) => {
               id="name"
               name="name"
               placeholder="Full Name"
+              onChange={handleInputChange}
               className={`w-full px-4 text-base min-h-[33px] md:min-h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
                                    ${
-                                     formErrors.name
+                                     formErrors.name || formatErrors.name
                                        ? "border-[#B80000]"
                                        : "border-transparent focus:border-[#017EFE]"
                                    }`}
@@ -221,6 +266,11 @@ const BuyTab = forwardRef((props, ref) => {
             {formErrors.name && (
               <p className="text-[#B80000] text-sm mt-1">
                 It is mandatory field
+              </p>
+            )}
+            {formatErrors.name && (
+              <p className="text-[#B80000] text-sm mt-1">
+                Name cannot contain numbers
               </p>
             )}
           </div>
@@ -236,9 +286,10 @@ const BuyTab = forwardRef((props, ref) => {
               id="email"
               name="email"
               placeholder="example@mail.com"
+              onChange={handleInputChange}
               className={`w-full px-4 text-base min-h-[33px] md:h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
                                    ${
-                                     formErrors.email
+                                     formErrors.email || formatErrors.email
                                        ? "border-[#B80000]"
                                        : "border-transparent focus:border-[#017EFE]"
                                    }`}
@@ -246,6 +297,11 @@ const BuyTab = forwardRef((props, ref) => {
             {formErrors.email && (
               <p className="text-[#B80000] text-sm mt-1">
                 It is mandatory field
+              </p>
+            )}
+            {formatErrors.email && (
+              <p className="text-[#B80000] text-sm mt-1">
+                Please enter a valid email address
               </p>
             )}
           </div>
@@ -258,13 +314,14 @@ const BuyTab = forwardRef((props, ref) => {
               Phone number
             </label>
             <input
-              type="number"
+              type="text"
               id="phone"
               name="phone"
               placeholder="(+44) 123 456 7890"
+              onChange={handleInputChange}
               className={`w-full px-4 text-base min-h-[33px] md:h-[42px] bg-[#E3E8ED] rounded-[30px] placeholder:text-[#828282] text-black outline-none border transition-colors duration-300 
                               ${
-                                formErrors.phone
+                                formErrors.phone || formatErrors.phone
                                   ? "border-[#B80000]"
                                   : "border-transparent focus:border-[#017EFE]"
                               }`}
@@ -272,6 +329,11 @@ const BuyTab = forwardRef((props, ref) => {
             {formErrors.phone && (
               <p className="text-[#B80000] text-sm mt-1">
                 It is mandatory field
+              </p>
+            )}
+            {formatErrors.phone && (
+              <p className="text-[#B80000] text-sm mt-1">
+                Phone number cannot contain letters
               </p>
             )}
           </div>
