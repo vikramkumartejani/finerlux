@@ -136,23 +136,17 @@ const Hero = () => {
       {/* Mobile View */}
       <div className="md:hidden block">
         <div className="h-[265px] w-full bg-white rounded-[30px] relative flex items-end justify-end">
-          <Image
-            src="/assets/mobile.svg"
-            alt="mobile"
-            className="w-full h-full !object-contain"
-            placeholder="blur"
-            blurDataURL="data:image/svg+xml;base64,..."
-            priority={true}
-            width={50}
-            height={50}
-          />
+            <Image
+              src="/assets/mobile.svg"
+              alt="mobile"
+              className="w-full h-full !object-contain"
+              width={265}
+              height={270}
+            />
           <div className="absolute z-40 flex items-end justify-end right-2 top-0 h-full w-fit">
             <Image
               src="/assets/hero-watch.webp"
               alt="hero-watch"
-              placeholder="blur"
-              blurDataURL="data:image/svg+xml;base64,..."
-              priority={true}
               width={500}
               height={500}
               className="h-full !bg-contain !w-auto"
