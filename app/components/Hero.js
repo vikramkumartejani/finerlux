@@ -136,13 +136,14 @@ const Hero = () => {
       {/* Mobile View */}
       <div className="md:hidden block">
         <div className="h-[265px] w-full bg-white rounded-[30px] relative flex items-end justify-end">
-          <div className="w-full h-full static">
+          <div className="w-full h-full">
             <Image
               src="/assets/mobile.svg"
               alt="mobile"
-              className="w-full h-full !object-contain static"
+              className="w-full h-full !object-contain"
               priority
-              fill
+              width={500}
+              height={500}
             />
           </div>
           <div className="absolute z-40 flex items-end justify-end right-2 top-0 h-full w-fit">
