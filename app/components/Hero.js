@@ -7,7 +7,11 @@ import { scrollToHomeFormSection } from "../utils/navigation";
 
 export const LiveChatButton = () => {
   return (
-    <button className="fixed right-4 bottom-4 rounded-[30px] h-[41px] md:h-[47px] w-[95px] md:w-[118px] text-sm md:text-base font-normal md:font-medium bg-[#60FF7D] text-black z-50">
+    <button
+      className="fixed right-6 bottom-6 md:right-8 md:bottom-8 rounded-[30px] h-[41px] md:h-[47px] w-[95px] md:w-[118px] 
+                 text-sm md:text-base font-normal md:font-medium bg-[#60FF7D] text-black z-50 
+                 animate-subtleBounce hover:animate-none transition-transform"
+    >
       Live Chat
     </button>
   );
