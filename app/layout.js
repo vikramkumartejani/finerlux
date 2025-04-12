@@ -28,13 +28,6 @@ export default function RootLayout({ children }) {
           imagesrcset="/assets/mobile.svg"
           type="image/svg+xml"
         />
-        <link
-          rel="preload"
-          as="image"
-          href="/assets/hero-watch.webp"
-          imagesrcset="/assets/hero-watch.webp"
-          type="image/svg+xml"
-        />
       </Head>
       <body>
         <Navbar />
