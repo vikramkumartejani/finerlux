@@ -142,8 +142,6 @@ const Hero = () => {
   priority
   width={265}
   height={270}
-    placeholder="blur" // Add this
-    blurDataURL="data:image/svg+xml;base64,..."
   className="w-full h-full"
   quality={80} // Adjust as needed between 75-85 for good balance
 />
@@ -153,8 +151,6 @@ const Hero = () => {
   alt="hero-watch"
   width={500}
   height={500}
-    placeholder="blur" // Add this
-    blurDataURL="data:image/svg+xml;base64,..."
   priority // This is fine for hero images
   className="h-full !bg-contain !w-auto"
   sizes="(max-width: 768px) 100vw, 500px" // Define responsive sizes
