@@ -135,7 +135,7 @@ const Hero = () => {
 
       {/* Mobile View */}
       <div className="md:hidden block">
-        <div className="h-[265px] min-w-full bg-white rounded-[30px] relative flex items-end justify-end">
+        <div className="h-[265px] !overflow-hidden min-w-full bg-white rounded-[30px] relative flex items-end justify-end">
           <Image
             src="/assets/mobile.svg"
             alt="mobile"
