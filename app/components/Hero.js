@@ -140,24 +140,31 @@ const Hero = () => {
             src="/assets/mobile.svg"
             alt="mobile"
             fetchpriority="high"
+            placeholder="blur"
+            blurDataURL="data:image/svg+xml;base64,..."
             decoding="async"
             data-nimg="1"
             width={265}
             height={265}
-            className="w-full h-full"
+            className="w-auto"
+            loading="eager" // <-- change this
             quality={40}
           />
+
           <div className="absolute z-40 flex items-end justify-end right-2 top-0 h-full w-fit">
             <Image
               src="/assets/hero-watch.webp"
               alt="hero-watch"
-              width={500}
+              width={265}
+              placeholder="blur" // Add this
+              blurDataURL="data:image/svg+xml;base64,..."
               height={500}
+              loading="lazy"
               fetchpriority="high"
               decoding="async"
               data-nimg="1"
               className="h-full !bg-contain !w-auto"
-              sizes="(max-width: 768px) 100vw, 500px"  
+              sizes="(max-width: 768px) 100vw, 500px"
             />
           </div>
           <LiveChatButton />
