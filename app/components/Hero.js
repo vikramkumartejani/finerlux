@@ -140,6 +140,7 @@ const Hero = () => {
               src="/assets/mobile.svg"
               alt="mobile"
               className="w-full h-full !object-contain"
+              loading="lazy"
             />
           <div className="absolute z-40 flex items-end justify-end right-2 top-0 h-full w-fit">
             <Image
