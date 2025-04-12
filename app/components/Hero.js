@@ -137,14 +137,14 @@ const Hero = () => {
       <div className="md:hidden block">
         <div className="h-[265px] w-full bg-white rounded-[30px] relative flex items-end justify-end">
             <Image
-              src="/assets/mobile2.svg"
+              src="/assets/mobile.svg"
               alt="mobile"
               priority
               className="w-full h-full"
               width={265}
               height={270}
             />
-          {/* <div className="absolute z-40 flex items-end justify-end right-2 top-0 h-full w-fit">
+          <div className="absolute z-40 flex items-end justify-end right-2 top-0 h-full w-fit">
             <Image
               src="/assets/hero-watch.webp"
               alt="hero-watch"
@@ -152,7 +152,7 @@ const Hero = () => {
               height={500}
               className="h-full !bg-contain !w-auto"
             />
-          </div> */}
+          </div>
           <LiveChatButton />
         </div>
         <h2 className="mt-6 text-center text-[22px] leading-[95%] font-semibold">
