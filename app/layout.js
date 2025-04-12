@@ -21,7 +21,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={inter.className}>
       <Head>
-        <link rel="preload" fetchpriority="high" as="image" href="/assets/mobile.svg" type="image/webp" />
+      <link
+  rel="preload"
+  as="image"
+  href="/assets/mobile.svg"
+  imagesrcset="/assets/mobile.svg"
+  type="image/svg+xml"
+/>
+
       </Head>
       <body>
         <Navbar />
