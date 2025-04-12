@@ -99,7 +99,6 @@ export const MobileContent = () => {
 
 const Hero = () => {
   const { t } = useTranslation();
-  const [isLoading, setIsLoading] = useState(true);
 
   return (
     <div className="px-5 mt-[35px]">
@@ -136,24 +135,22 @@ const Hero = () => {
 
       {/* Mobile View */}
       <div className="md:hidden block">
-        <div className="relative h-[265px] w-full bg-white rounded-[30px] flex items-end justify-end">
-          {isLoading && (
-            <div className="absolute inset-0 z-10 bg-gray-100 flex items-center justify-center animate-pulse rounded-[30px]">
-              {/* <span className="text-gray-400 text-sm">Loading image...</span> */}
-            </div>
-          )}
+        <div className="h-[265px] w-full bg-white rounded-[30px] relative flex items-end justify-end">
           <Image
-            src="/assets/mobile.svg"
+            src="/assets/hero-bg-logo.svg"
             alt="mobile"
-            width={265}
-            height={265}
-            className={`w-auto transition-opacity duration-700 ease-in-out ${isLoading ? 'opacity-0' : 'opacity-100'
-              }`}
-            onLoadingComplete={() => setIsLoading(false)}
-            priority
             fetchpriority="high"
-            loading="eager"
+            placeholder="blur"
+            blurDataURL="data:image/svg+xml;base64,..."
+            decoding="async"
+            data-nimg="1"
+            width={331}
+            height={267}
+            className="w-auto"
+            loading="eager" // <-- change this
+            quality={40}
           />
+
           <div className="absolute z-40 flex items-end justify-end right-2 top-0 h-full w-fit">
             <Image
               src="/assets/hero-watch.webp"
