@@ -137,13 +137,13 @@ const Hero = () => {
       <div className="md:hidden block">
         <div className="h-[265px] w-full bg-white rounded-[30px] relative flex items-end justify-end">
           <img
-            src="/assets/mobile.svg"
+            src="/assets/finerlux-rabbit-full-logo-blue.svg"
             alt="mobile"
-            priority
+            loading="lazy"
             placeholder="blur"
             blurDataURL="data:image/svg+xml;base64,..."
             decoding="async"
-            className="w-auto"
+            className="w-full h-full !object-cover"
           />
 
           <div className="absolute z-40 flex items-end justify-end right-2 top-0 h-full w-fit">
@@ -152,7 +152,7 @@ const Hero = () => {
               alt="hero-watch"
               placeholder="blur"
               blurDataURL="data:image/svg+xml;base64,..."
-              priority
+               loading="lazy"
               decoding="async"
               data-nimg="1"
               className="h-full !bg-contain !w-auto"
