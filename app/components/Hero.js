@@ -137,9 +137,9 @@ const Hero = () => {
       <div className="md:hidden block">
         <div className="h-[265px] w-full bg-white rounded-[30px] relative flex items-end justify-end">
           <Image
-            src="/assets/hero-bg-logo.svg"
+            src="/assets/mobile.svg"
             alt="mobile"
-            fetchpriority="high"
+            fetchPriority="high"
             placeholder="blur"
             blurDataURL="data:image/svg+xml;base64,..."
             decoding="async"
@@ -147,8 +147,7 @@ const Hero = () => {
             width={331}
             height={267}
             className="w-auto"
-            loading="eager" // <-- change this
-            quality={40}
+            quality={10}
           />
 
           <div className="absolute z-40 flex items-end justify-end right-2 top-0 h-full w-fit">
@@ -160,7 +159,7 @@ const Hero = () => {
               blurDataURL="data:image/svg+xml;base64,..."
               height={500}
               loading="lazy"
-              fetchpriority="high"
+              fetchPriority="high"
               decoding="async"
               data-nimg="1"
               className="h-full !bg-contain !w-auto"
