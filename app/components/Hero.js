@@ -158,7 +158,7 @@ const Hero = () => {
               blurDataURL="data:image/svg+xml;base64,..."
               height={500}
               loading="lazy"
-              fetchPriority="high"
+              priority
               decoding="async"
               data-nimg="1"
               className="h-full !bg-contain !w-auto"
