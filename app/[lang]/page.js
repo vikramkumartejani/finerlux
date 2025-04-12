@@ -34,7 +34,7 @@ const LanguagePage = () => {
   return (
     <I18nextProvider i18n={i18n}>
       {/* <Hero /> */}
-      {/* <NewArrivals /> */}
+      <NewArrivals />
       <WithUsYouCan />
       <Tab />
     </I18nextProvider>
