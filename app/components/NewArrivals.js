@@ -17,7 +17,7 @@ const newArrivalsData = [
     price: "15,150",
     originalPrice: "15,150",
     // imageUrl: "/assets/rolex-daytona-116500ln-panda-cover.webp",
-    // backsideImageUrl: "/assets/rolex-daytona-116500ln-panda-closeup.webp",
+    backsideImageUrl: "/assets/rolex-daytona-116500ln-panda-closeup.webp",
   },
   {
     id: 2,
@@ -30,7 +30,7 @@ const newArrivalsData = [
     price: "12,700",
     originalPrice: "13,335",
     // imageUrl: "/assets/rolex-gmt-master-2-126720vtnr-sprite-cover.webp",
-    // backsideImageUrl: "/assets/rolex-gmt-master-2-126720vtnr-sprite-closeup.webp",
+    backsideImageUrl: "/assets/rolex-gmt-master-2-126720vtnr-sprite-closeup.webp",
   },
   {
     id: 3,
@@ -43,7 +43,7 @@ const newArrivalsData = [
     price: "13,900",
     originalPrice: "14,456",
     // imageUrl: "/assets/rolex-gmt-master-2-126711chnr-rootbeer-cover.webp",
-    // backsideImageUrl: "/assets/rolex-gmt-master-2-126711chnr-rootbeer-closeup.webp",
+    backsideImageUrl: "/assets/rolex-gmt-master-2-126711chnr-rootbeer-closeup.webp",
   },
   {
     id: 4,
@@ -56,7 +56,7 @@ const newArrivalsData = [
     price: "15,100",
     originalPrice: "15,553",
     // imageUrl: "/assets/rolex-gmt-master-2-126710blro-pepsi-cover.webp",
-    // backsideImageUrl: "/assets/rolex-gmt-master-2-126710blro-pepsi-close.webp",
+    backsideImageUrl: "/assets/rolex-gmt-master-2-126710blro-pepsi-close.webp",
   },
   {
     id: 5,
@@ -68,8 +68,8 @@ const newArrivalsData = [
     discount: 0,
     price: "12,380",
     originalPrice: "12,380",
-    // imageUrl: "/assets/rolex-gmt-master-2-126710blnr-batgirl-cover.webp",
-    // backsideImageUrl: "/assets/rolex-gmt-master-2-126710blnr-batgirl-closeup.webp",
+    imageUrl: "/assets/rolex-gmt-master-2-126710blnr-batgirl-cover.webp",
+    backsideImageUrl: "/assets/rolex-gmt-master-2-126710blnr-batgirl-closeup.webp",
   },
 ];
 
