@@ -75,7 +75,7 @@ const Page = () => {
 
   return (
     <div>
-      <Hero />
+      {/* <Hero //> */}
       <NewArrivals />
       <WithUsYouCan />
       <Tab />
