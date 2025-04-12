@@ -154,7 +154,7 @@ const Hero = () => {
               src="/assets/hero-watch.webp"
               alt="hero-watch"
               width={265}
-              placeholder="blur" // Add this
+              placeholder="blur"  
               blurDataURL="data:image/svg+xml;base64,..."
               height={500}
               priority
