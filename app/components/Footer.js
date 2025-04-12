@@ -44,7 +44,7 @@ const Footer = () => {
   return (
     <div className="w-full">
       {/* Content */}
-      <div className="relative z-10 pt-[95px] md:pt-[46px] !pb-0 w-full mx-auto max-w-full">
+      <div className="relative z-10 pt-[70px] sm:pt-[95px] md:pt-[46px] !pb-0 w-full mx-auto max-w-full">
         <div className="flex items-center justify-center ml-10 md:ml-20 mb-[25px]">
           <Image
             src="/assets/finerlux-rabbit-full-logo-blue-footer.svg"
