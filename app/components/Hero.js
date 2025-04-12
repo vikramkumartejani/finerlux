@@ -139,15 +139,8 @@ const Hero = () => {
           <Image
             src="/assets/mobile.svg"
             alt="mobile"
-            fetchPriority="high"
-            placeholder="blur"
-            blurDataURL="data:image/svg+xml;base64,..."
-            decoding="async"
-            data-nimg="1"
             width={331}
             height={267}
-            className="w-auto"
-            quality={10}
           />
 
           <div className="absolute z-40 flex items-end justify-end right-2 top-0 h-full w-fit">
