@@ -132,6 +132,8 @@ const NewArrivals = () => {
                   <Image
   src={watch.backsideImageUrl || "/placeholder.svg"}
   alt={`${watch.brand} ${watch.model} - Back View`}
+    placeholder="blur" // Add this
+    blurDataURL="data:image/svg+xml;base64,..."
   draggable="false"
   width={204} // Match actual display dimensions
   height={248}
