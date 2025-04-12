@@ -136,7 +136,7 @@ const Hero = () => {
       {/* Mobile View */}
       <div className="md:hidden block">
         <div className="h-[265px] w-full bg-white rounded-[30px] relative flex items-end justify-end">
-          {/* <Image
+          <Image
             src="/assets/mobile.svg"
             alt="mobile"
             fetchpriority="high"
@@ -159,7 +159,7 @@ const Hero = () => {
               className="h-full !bg-contain !w-auto"
               sizes="(max-width: 768px) 100vw, 500px"  
             />
-          </div> */}
+          </div>
           <LiveChatButton />
         </div>
         <h2 className="mt-6 text-center text-[22px] leading-[95%] font-semibold">
