@@ -100,6 +100,14 @@ export const MobileContent = () => {
 const Hero = () => {
   const { t } = useTranslation();
 
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Simulate loading
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 1500); // Simulated loading time
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="px-5 mt-[35px]">
       <div className="card max-w-[1360px] w-full mx-auto bg-white hidden md:flex items-center justify-between rounded-[45px] h-[622px] relative overflow-hidden">
@@ -135,32 +143,36 @@ const Hero = () => {
 
       {/* Mobile View */}
       <div className="md:hidden block">
-        <div className="h-[265px] w-full bg-white rounded-[30px] relative flex items-end justify-end">
+      <div className="h-[265px] w-full bg-white rounded-[30px] relative flex items-end justify-end">
+      {isLoading ? (
+        <div className="h-full w-full animate-pulse rounded-[30px] bg-gray-200" />
+      ) : (
+        <>
           <Image
             src="/assets/mobile.svg"
             alt="mobile"
             width={331}
             height={267}
+            priority
           />
 
           <div className="absolute z-40 flex items-end justify-end right-2 top-0 h-full w-fit">
-            <Image
-              src="/assets/hero-watch.webp"
-              alt="hero-watch"
-              width={265}
-              placeholder="blur" // Add this
-              blurDataURL="data:image/svg+xml;base64,..."
-              height={500}
-              loading="lazy"
-              fetchPriority="high"
-              decoding="async"
-              data-nimg="1"
-              className="h-full !bg-contain !w-auto"
-              sizes="(max-width: 768px) 100vw, 500px"
-            />
+          <Image
+          src="/assets/hero-watch.webp"
+          alt="hero-watch"
+          width={265}
+          height={500}
+          loading="lazy"
+          fetchPriority="high"
+          className="h-full !bg-contain !w-auto"
+        />
           </div>
-          <LiveChatButton />
-        </div>
+        </>
+      )}
+    </div>
+
+       
+
         <h2 className="mt-6 text-center text-[22px] leading-[95%] font-semibold">
           {t("hero.title")}
         </h2>
