@@ -136,25 +136,29 @@ const Hero = () => {
       {/* Mobile View */}
       <div className="md:hidden block">
         <div className="h-[265px] w-full bg-white rounded-[30px] relative flex items-end justify-end">
-        <Image
-  src="/assets/mobile.svg"
-  alt="mobile"
-  priority
-  width={265}
-  height={270}
-  className="w-full h-full"
-  quality={80} // Adjust as needed between 75-85 for good balance
-/>
-          <div className="absolute z-40 flex items-end justify-end right-2 top-0 h-full w-fit">
           <Image
-  src="/assets/hero-watch.webp"
-  alt="hero-watch"
-  width={500}
-  height={500}
-  priority // This is fine for hero images
-  className="h-full !bg-contain !w-auto"
-  sizes="(max-width: 768px) 100vw, 500px" // Define responsive sizes
-/>
+            src="/assets/mobile.svg"
+            alt="mobile"
+            fetchpriority="high"
+            decoding="async"
+            data-nimg="1"
+            width={265}
+            height={265}
+            className="w-full h-full"
+            quality={40}
+          />
+          <div className="absolute z-40 flex items-end justify-end right-2 top-0 h-full w-fit">
+            <Image
+              src="/assets/hero-watch.webp"
+              alt="hero-watch"
+              width={500}
+              height={500}
+              fetchpriority="high"
+              decoding="async"
+              data-nimg="1"
+              className="h-full !bg-contain !w-auto"
+              sizes="(max-width: 768px) 100vw, 500px"  
+            />
           </div>
           <LiveChatButton />
         </div>
