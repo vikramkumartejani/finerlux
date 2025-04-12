@@ -135,28 +135,23 @@ const Hero = () => {
 
       {/* Mobile View */}
       <div className="md:hidden block">
-        <div className="h-[265px] w-full bg-white rounded-[30px] relative flex items-end justify-end">
-          <img
-            src="/assets/finerlux-rabbit-full-logo-blue.svg"
+        <div className="h-[265px] min-w-full bg-white rounded-[30px] relative flex items-end justify-end">
+          <Image
+            src="/assets/mobile.svg"
             alt="mobile"
-            loading="lazy"
-            placeholder="blur"
-            blurDataURL="data:image/svg+xml;base64,..."
-            decoding="async"
-            className="w-full h-full !object-cover"
+            width={331}
+            height={267}
+            priority
+            className="w-full h-full"
           />
 
           <div className="absolute z-40 flex items-end justify-end right-2 top-0 h-full w-fit">
-            <img
+            <Image
               src="/assets/hero-watch.webp"
               alt="hero-watch"
-              placeholder="blur"
-              blurDataURL="data:image/svg+xml;base64,..."
-               loading="lazy"
-              decoding="async"
-              data-nimg="1"
-              className="h-full !bg-contain !w-auto"
-              sizes="(max-width: 768px) 100vw, 500px"
+              width={265}
+              height={500}
+              className="h-full !bg-contain w-full"
             />
           </div>
           <LiveChatButton />
