@@ -22,13 +22,14 @@ export const Content = ({ loading }) => {
 
   return (
     <div className="tag w-full md:text-left text-center md:w-[560px] z-30 rounded-tr-[30px] md:absolute bottom-0 bg-[#ECF0F3] md:p-8 pr-4 md:pb-[28px]">
-      {loading ? (
-        <div className="h-[18px] w-[90%] bg-gray-300 rounded animate-pulse mb-3 mx-auto md:mx-0" />
-      ) : (
+      {!loading ? (
         <p className="text-[14px] md:text-[18px] font-normal leading-[100%] md:leading-[115%] mt-3 md:mt-0">
           {t("hero.description")}
         </p>
+      ) : (
+        <div className="h-[18px] w-[90%] bg-gray-300 rounded animate-pulse mb-3 mx-auto md:mx-0" />
       )}
+
       <div className="px-8 md:px-0 mt-3 md:mt-[24px] flex items-center flex-wrap md:flex-nowrap justify-center md:justify-start gap-3 md:gap-6">
         {loading
           ? [...Array(3)].map((_, i) => (
@@ -65,13 +66,14 @@ export const MobileContent = ({ loading }) => {
 
   return (
     <div className="w-full md:text-left text-center md:w-[560px] z-30 rounded-tr-[30px] md:absolute bottom-0 bg-[#ECF0F3] md:p-8 md:pb-[28px]">
-      {loading ? (
-        <div className="h-[18px] w-[90%] bg-gray-300 rounded animate-pulse mb-3 mx-auto md:mx-0" />
-      ) : (
+      {!loading ? (
         <p className="text-[14px] md:text-[18px] font-normal leading-[100%] md:leading-[115%] mt-3 md:mt-0">
           {t("hero.description")}
         </p>
+      ) : (
+        <div className="h-[18px] w-[90%] bg-gray-300 rounded animate-pulse mb-3 mx-auto md:mx-0" />
       )}
+
       <div className="px-8 md:px-0 mt-3 md:mt-[24px] flex items-center flex-wrap md:flex-nowrap justify-center md:justify-start gap-3 md:gap-6">
         {loading
           ? [...Array(3)].map((_, i) => (
