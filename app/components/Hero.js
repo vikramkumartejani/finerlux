@@ -153,14 +153,10 @@ const Hero = () => {
               src="/assets/hero-watch.webp"
               alt="hero-watch"
               width={265}
-              placeholder="blur"
-              blurDataURL="data:image/svg+xml;base64,..."
-              height={500}
-              priority
+              height={350}
               decoding="async"
               data-nimg="1"
               className="h-full !bg-contain w-full"
-              sizes="(max-width: 768px) 100vw, 500px"
             />
           </div>
           <LiveChatButton />
