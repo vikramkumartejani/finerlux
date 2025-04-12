@@ -6,19 +6,19 @@ import { scrollToHomeFormSection } from "../utils/navigation";
 import Image from "next/image";
 
 const newArrivalsData = [
-  {
-    id: 1,
-    brand: "Rolex",
-    model: "Daytona",
-    reference: "126500LN",
-    year: 2022,
-    condition: "Papers, Box",
-    discount: 0,
-    price: "15,150",
-    originalPrice: "15,150",
-    imageUrl: "/assets/rolex-daytona-116500ln-panda-cover.webp",
-    backsideImageUrl: "/assets/rolex-daytona-116500ln-panda-closeup.webp",
-  },
+  // {
+  //   id: 1,
+  //   brand: "Rolex",
+  //   model: "Daytona",
+  //   reference: "126500LN",
+  //   year: 2022,
+  //   condition: "Papers, Box",
+  //   discount: 0,
+  //   price: "15,150",
+  //   originalPrice: "15,150",
+  //   imageUrl: "/assets/rolex-daytona-116500ln-panda-cover.webp",
+  //   backsideImageUrl: "/assets/rolex-daytona-116500ln-panda-closeup.webp",
+  // },
   {
     id: 2,
     brand: "Rolex",
