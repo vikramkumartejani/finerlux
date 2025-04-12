@@ -33,7 +33,7 @@ const LanguagePage = () => {
 
   return (
     <I18nextProvider i18n={i18n}>
-      {/* <Hero /> */}
+      <Hero />
       <NewArrivals />
       <WithUsYouCan />
       <Tab />
