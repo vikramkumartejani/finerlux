@@ -154,9 +154,7 @@ const Hero = () => {
               alt="hero-watch"
               width={265}
               height={350}
-              decoding="async"
-              data-nimg="1"
-              className="h-full !bg-contain w-full"
+              className="h-full !bg-contain w-fit"
             />
           </div>
           <LiveChatButton />
