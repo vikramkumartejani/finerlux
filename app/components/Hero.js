@@ -157,7 +157,6 @@ const Hero = () => {
               placeholder="blur" // Add this
               blurDataURL="data:image/svg+xml;base64,..."
               height={500}
-              loading="lazy"
               priority
               decoding="async"
               data-nimg="1"
