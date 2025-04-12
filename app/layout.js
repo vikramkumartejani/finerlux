@@ -20,6 +20,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={inter.className}>
+      <Head>
+        <link rel="preload" fetchpriority="high" as="image" href="/assets/mobile.svg" type="image/webp" />
+      </Head>
       <body>
         <Navbar />
         {children}
