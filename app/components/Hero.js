@@ -148,7 +148,7 @@ const Hero = () => {
             className="w-full"
           />
 
-          <div className="absolute z-40 flex items-end justify-end right-2 top-0 h-full w-fit">
+          <div className="absolute z-40 flex items-end justify-end right-2 top-0 h-full ">
             <Image
               src="/assets/hero-watch.webp"
               alt="hero-watch"
