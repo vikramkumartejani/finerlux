@@ -148,13 +148,13 @@ const Hero = () => {
             className="w-full"
           />
 
-          <div className="absolute z-40 flex items-end justify-end right-2 top-0 h-full ">
+          <div className="absolute z-40 flex items-end justify-end -right-9 top-0 h-full w-full">
             <Image
               src="/assets/hero-watch.webp"
               alt="hero-watch"
               width={265}
               height={350}
-              className="h-full w-full "
+              className="!h-full !object-contain"
             />
           </div>
           <LiveChatButton />
