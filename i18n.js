@@ -26,7 +26,7 @@ const initI18n = async () => {
           typeof window !== "undefined"
             ? localStorage.getItem("selectedLanguage") || "en"
             : "en",
-      });   
+      });
   }
   return initializationPromise;
 };
