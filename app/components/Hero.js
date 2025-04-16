@@ -101,7 +101,7 @@ const Hero = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="px-5 mt-[35px]">
+    <div className="px-5 mt-[74px] sm:mt-[35px]">
       <div className="card max-w-[1360px] w-full mx-auto bg-white hidden md:flex items-center justify-between rounded-[45px] h-[622px] relative overflow-hidden">
         <div
           className="absolute inset-0 object-cover bg-no-repeat bg-center pt-20"

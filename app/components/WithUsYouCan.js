@@ -19,9 +19,10 @@ const WithUsYouCan = () => {
         <div className="w-full flex xl:flex-row flex-col items-start gap-3 sm:gap-6">
           <div className="w-full flex flex-col items-start gap-3 sm:gap-6">
             <div className="w-full flex items-center lg:flex-row flex-col gap-3 sm:gap-6">
+              {/* Box 1 with Hover Scale Effect */}
               <div
                 onClick={() => scrollToHomeFormSection("sell")}
-                className="bg-white rounded-[20px] sm:rounded-[30px] w-full xl:max-w-[416px] xl:min-w-[416px] pl-[24px] pt-[24px] relative h-[150px] sm:h-[206px] overflow-hidden cursor-pointer"
+                className="bg-white rounded-[20px] sm:rounded-[30px] w-full xl:max-w-[416px] xl:min-w-[416px] pl-[24px] pt-[24px] relative h-[150px] sm:h-[206px] overflow-hidden cursor-pointer transition-transform duration-300 hover:scale-103"
               >
                 <div className="max-w-[190px] sm:max-w-[300px] lg:max-w-[201px] ">
                   <h2 className="text-black text-[18px] sm:text-[24px] font-semibold !leading-[22px] sm:!leading-[29px] mb-3 sm:mb-[18px]">
@@ -41,10 +42,10 @@ const WithUsYouCan = () => {
                   />
                 </div>
               </div>
-
+              {/* Box 2 */}
               <div
                 onClick={() => scrollToHomeFormSection("buy")}
-                className="bg-white rounded-[20px] sm:rounded-[30px] w-full xl:max-w-[526px] pl-[24px] pt-[24px] relative h-[167px] sm:h-[206px] overflow-hidden cursor-pointer"
+                className="bg-white rounded-[20px] sm:rounded-[30px] w-full xl:max-w-[526px] pl-[24px] pt-[24px] relative h-[167px] sm:h-[206px] overflow-hidden cursor-pointer transition-transform duration-300 hover:scale-103"
               >
                 <div className="max-w-[184px] sm:max-w-[300px] lg:max-w-[250px] xl:max-w-[271px]">
                   <h2 className="text-black text-[18px] sm:text-[24px] font-semibold !leading-[29px] mb-3 sm:mb-[18px]">
@@ -74,9 +75,10 @@ const WithUsYouCan = () => {
             </div>
 
             <div className="w-full flex items-center lg:flex-row flex-col gap-3 sm:gap-6">
+              {/* Box 3 */}
               <div
                 onClick={() => scrollToHomeFormSection("part-exchange")}
-                className="bg-white rounded-[20px] sm:rounded-[30px] w-full xl:max-w-[526px] pl-[24px] pt-[24px] relative h-[184px] sm:h-[206px] overflow-hidden cursor-pointer"
+                className="bg-white rounded-[20px] sm:rounded-[30px] w-full xl:max-w-[526px] pl-[24px] pt-[24px] relative h-[184px] sm:h-[206px] overflow-hidden cursor-pointer transition-transform duration-300 hover:scale-103"
               >
                 <div className="max-w-[174px] sm:max-w-[300px] lg:max-w-[232px]">
                   <h2 className="text-black text-[18px] sm:text-[24px] font-semibold !leading-[29px] mb-3 sm:mb-[18px]">
@@ -103,10 +105,10 @@ const WithUsYouCan = () => {
                   />
                 </div>
               </div>
-
+              {/* Box 4 */}
               <div
                 onClick={() => scrollToHomeFormSection("source")}
-                className="bg-white rounded-[20px] sm:rounded-[30px] w-full xl:max-w-[416px] xl:min-w-[416px] pl-[24px] pt-[24px] relative h-[167px] sm:h-[206px] overflow-hidden cursor-pointer"
+                className="bg-white rounded-[20px] sm:rounded-[30px] w-full xl:max-w-[416px] xl:min-w-[416px] pl-[24px] pt-[24px] relative h-[167px] sm:h-[206px] overflow-hidden cursor-pointer transition-transform duration-300 hover:scale-103"
               >
                 <div className="max-w-[171px] sm:max-w-[300px] lg:max-w-[280px] xl:max-w-[188px]">
                   <h2 className="text-black text-[18px] sm:text-[24px] font-semibold !leading-[29px] mb-3 sm:mb-[18px]">
@@ -136,9 +138,10 @@ const WithUsYouCan = () => {
             </div>
           </div>
 
+          {/* Box 5 */}
           <div
             onClick={() => scrollToHomeFormSection("authenticate")}
-            className="bg-white rounded-[20px] sm:rounded-[30px] w-full lg:w-1/2 xl:max-w-[306px] xl:min-w-[306px] overflow-hidden pl-[24px] lg:pl-[24px] pr-[20px] pt-[24px] pb-2.5 h-[201px] lg:h-fit xl:h-[436px] flex xl:flex-col flex-row justify-between relative cursor-pointer"
+            className="bg-white rounded-[20px] sm:rounded-[30px] w-full lg:w-1/2 xl:max-w-[306px] xl:min-w-[306px] overflow-hidden pl-[24px] lg:pl-[24px] pr-[20px] pt-[24px] pb-2.5 h-[201px] lg:h-fit xl:h-[436px] flex xl:flex-col flex-row justify-between relative cursor-pointer transition-transform duration-300 hover:scale-103"
           >
             <div className="xl:max-w-[240px] max-w-[170px] sm:max-w-full">
               <h2 className="text-black text-[18px] sm:text-[24px] font-semibold !leading-[29px] mb-3 sm:mb-[18px]">
