@@ -10,7 +10,7 @@ async function optimizeImages() {
     const files = fs.readdirSync(ASSETS_DIR);
     
     for (const file of files) {
-      if (file.match(/\.(jpg|jpeg|png|webp)$/i)) {
+      if (file.match(/\.(jpg|jpeg|svg|png|webp)$/i)) {
         const filePath = path.join(ASSETS_DIR, file);
         const stats = fs.statSync(filePath);
         const fileSizeInMB = stats.size / (1024 * 1024);

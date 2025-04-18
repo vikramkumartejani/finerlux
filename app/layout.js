@@ -31,8 +31,8 @@ export const metadata = {
     type: "website",
   },
   icons: {
-    icon: "/favicon.ico",
-    apple: "/favicon.ico",
+    icon: "/favicon.jpg",
+    apple: "/favicon.jpg",
   },
   robots: {
     index: true,
