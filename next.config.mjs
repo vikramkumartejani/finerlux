@@ -3,6 +3,8 @@ const nextConfig = {
   images: {
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
     formats: ['image/webp', 'image/avif'],
+    minimumCacheTTL: 60,
+    domains: [],
   },
   compress: true,
   webpack(config) {
@@ -13,10 +15,6 @@ const nextConfig = {
     return config;
   },
   reactStrictMode: true,
-  images: {
-    unoptimized: true,
-  },
-
 }
 
 export default nextConfig;

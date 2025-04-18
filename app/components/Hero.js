@@ -127,6 +127,10 @@ const Hero = () => {
             width={500}
             height={500}
             priority
+            loading="eager"
+            fetchPriority="high"
+            sizes="(max-width: 768px) 100vw, 50vw"
+            quality={85}
           />
         </div>
 
@@ -142,9 +146,8 @@ const Hero = () => {
             width={331}
             height={267}
             priority
-            placeholder="blur"
-            blurDataURL="data:image/svg+xml;base64,..."
-            decoding="async"
+            loading="eager"
+            sizes="100vw"
             className="w-full"
           />
 
@@ -155,6 +158,10 @@ const Hero = () => {
               width={265}
               height={350}
               className="!h-full !object-contain"
+              loading="eager"
+              fetchPriority="high"
+              sizes="(max-width: 768px) 100vw"
+              quality={85}
             />
           </div>
           <LiveChatButton />
