@@ -190,9 +190,9 @@ const Footer = () => {
                   <Link href="/">
                     <Whatsapp />
                   </Link>
-                  <Link href="/">
+                  {/* <Link href="/">
                     <Telegram />
-                  </Link>
+                  </Link> */}
                 </div>
               </div>
             </div>
