@@ -19,7 +19,7 @@ export const metadata = {
   openGraph: {
     title: "Finer Lux - Pre-Owned Watches & Jewellery",
     description:
-      "Buy & Sell luxury watches, jewellery with us. Instant payment on the spot — via direct bank transfer, cash or crypto. Only Authenticated pieces.",
+      "Buy & Sell luxury watches, jewellery with us. Instant payment on the spot — via direct bank transfer, cash or crypto. Only Authenticated pieces. We help customers to save time and enjoy more of what they love.",
     images: [
       {
         url: "/assets/og-image.jpg",
