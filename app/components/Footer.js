@@ -127,10 +127,14 @@ const Footer = () => {
                   {t("footer.privacy.title")}
                 </li>
                 <li className="text-black text-[14px] md:text-[18px] font-normal mb-[12px] lg:mb-[18px] !leading-[22px]">
+                  <Link href='/terms-condition' className="">
                   Terms & Conditions
+                  </Link>
                 </li>
                 <li className="text-black text-[14px] md:text-[18px] font-normal !leading-[22px]">
+                  <Link href='/privacy-policy'>
                   Privacy policy
+                  </Link>
                 </li>
               </ul>
 
