@@ -49,7 +49,7 @@ const Navbar = () => {
               {t("navbar.main")}
             </Link>
             <Link
-              href={currentLang === "en" ? "/services" : `/${currentLang}/services`}
+              href={currentLang === "en" ? "#withusyoucan" : `${currentLang}#withusyoucan`}
               className="px-3 py-1.5 text-black text-base font-normal"
             >
               {t("navbar.ourServices")}
@@ -167,13 +167,14 @@ const Navbar = () => {
               <ul className="space-y-4">
                 <li>
                   <Link
-                    href="/services"
+                    href={currentLang === "en" ? "#withusyoucan" : `${currentLang}#withusyoucan`}
                     className="text-base font-normal text-black"
                     onClick={toggleMenu}
                   >
                     {t("navbar.ourServices")}
                   </Link>
                 </li>
+                
                 <li>
                   <Link
                     href="/"

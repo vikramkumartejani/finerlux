@@ -101,7 +101,7 @@ const Hero = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="px-5 mt-[35px]">
+    <div className="px-5 mt-[74px] sm:mt-[35px]">
       <div className="card max-w-[1360px] w-full mx-auto bg-white hidden md:flex items-center justify-between rounded-[45px] h-[622px] relative overflow-hidden">
         <div
           className="absolute inset-0 object-cover bg-no-repeat bg-center pt-20"
@@ -127,6 +127,10 @@ const Hero = () => {
             width={500}
             height={500}
             priority
+            loading="eager"
+            fetchPriority="high"
+            sizes="(max-width: 768px) 100vw, 50vw"
+            quality={85}
           />
         </div>
 
@@ -142,9 +146,8 @@ const Hero = () => {
             width={331}
             height={267}
             priority
-            placeholder="blur"
-            blurDataURL="data:image/svg+xml;base64,..."
-            decoding="async"
+            loading="eager"
+            sizes="100vw"
             className="w-full"
           />
 
@@ -155,6 +158,10 @@ const Hero = () => {
               width={265}
               height={350}
               className="!h-full !object-contain"
+              loading="eager"
+              fetchPriority="high"
+              sizes="(max-width: 768px) 100vw"
+              quality={85}
             />
           </div>
           <LiveChatButton />

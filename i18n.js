@@ -8,8 +8,14 @@ import LanguageDetector from "i18next-browser-languagedetector";
 let initializationPromise = null;
 
 const initI18n = async () => {
-  if (!i18n.isInitialized && !initializationPromise) {
-    initializationPromise = i18n
+  // Check if we're already initializing or have initialized
+  if (i18n.isInitialized || initializationPromise) {
+    return initializationPromise || Promise.resolve(i18n);
+  }
+
+  // Create the initialization promise
+  initializationPromise = new Promise((resolve) => {
+    i18n
       .use(HttpBackend)
       .use(LanguageDetector)
       .use(initReactI18next)
@@ -22,15 +28,17 @@ const initI18n = async () => {
         backend: {
           loadPath: "/locales/{{lng}}.json",
         },
-        lng:
-          typeof window !== "undefined"
-            ? localStorage.getItem("selectedLanguage") || "en"
-            : "en",
-      });
-  }
+        lng: typeof window !== "undefined" 
+             ? localStorage.getItem("selectedLanguage") || "en" 
+             : "en",
+      })
+      .then(() => resolve(i18n));
+  });
+
   return initializationPromise;
 };
 
+// Only initialize in the browser
 if (typeof window !== "undefined") {
   initI18n().catch(console.error);
 }

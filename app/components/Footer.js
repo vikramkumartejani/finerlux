@@ -78,10 +78,10 @@ const Footer = () => {
                   Hatton Garden, London
                 </li>
                 <li className="text-black text-[14px] md:text-[18px] font-normal mb-[12px] lg:mb-[18px] !leading-[22px]">
-                  info@finerlux.com
+                  <a href="mailto:info@finerlux.com">info@finerlux.com</a>
                 </li>
                 <li className="text-black text-[14px] md:text-[18px] font-normal !leading-[22px]">
-                  +44 123 456 7890
+                  <a href="tel:+441234567890">+44 123 456 7890</a>
                 </li>
               </ul>
 
@@ -190,9 +190,9 @@ const Footer = () => {
                   <Link href="/">
                     <Whatsapp />
                   </Link>
-                  <Link href="/">
+                  {/* <Link href="/">
                     <Telegram />
-                  </Link>
+                  </Link> */}
                 </div>
               </div>
             </div>

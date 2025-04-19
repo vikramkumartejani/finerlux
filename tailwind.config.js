@@ -19,6 +19,9 @@ module.exports = {
       animation: {
         subtleBounce: 'subtleBounce 1.5s ease-in-out infinite',
       },
+      scale: {
+        '103': '1.03',
+      }
     },
   },
   plugins: [],

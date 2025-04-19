@@ -151,7 +151,7 @@ const NewArrivals = () => {
                   )}
                 </div>
 
-                <div className="mt-[8px] sm:mt-[12px] space-y-1.5 sm:space-y-3">
+                <div className="mt-[12px] space-y-1.5 sm:space-y-3">
                   <h3 className="text-black font-normal !leading-[9px] sm:!leading-[12px] text-xs sm:text-[16px]">
                     {watch.brand}
                   </h3>
