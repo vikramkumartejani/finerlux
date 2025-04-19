@@ -3,12 +3,12 @@ import React from 'react';
 const PrivacyPolicy = () => {
      return (
           <div className="px-5 pt-20 sm:pt-24 pb-6">
-               <div className="max-w-[1295px] w-full mx-auto">
+               <div className="max-w-[1296px] w-full mx-auto">
                     <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-black mb-3 md:mb-6">Privacy Policy</h1>
                     <p className="text-black text-sm sm:text-base mb-4 md:mb-8">Effective Date: 17 April 2025</p>
 
                     <p className="text-black text-sm sm:text-base mb-6">
-                         Welcome to Finer Lux ("we", "our", "us"). We are committed to protecting and respecting your privacy.
+                         Welcome to Finer Lux (&ldquo;we&rdquo;, &ldquo;our&rdquo;, &ldquo;us&rdquo;). We are committed to protecting and respecting your privacy.
                          This Privacy Policy explains how we collect, use, store, and share your personal information when you
                          use our website https://finerlux.com/ and our services.
                     </p>
@@ -101,7 +101,7 @@ const PrivacyPolicy = () => {
                               <li>Request correction or deletion of your data</li>
                               <li>Object to or restrict processing</li>
                               <li>Withdraw consent at any time (for marketing)</li>
-                              <li>Lodge a complaint with the Information Commissioner's Office (ICO)</li>
+                              <li>Lodge a complaint with the Information Commissioner&apos;s Office (ICO)</li>
                          </ul>
                          <p className="text-black text-sm sm:text-base">
                               Contact the ICO: <a href="https://ico.org.uk/" className="text-black hover:underline" target="_blank" rel="noopener noreferrer">https://ico.org.uk/</a>
