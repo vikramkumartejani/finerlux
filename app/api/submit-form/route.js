@@ -71,7 +71,7 @@ export async function POST(request) {
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: "info@finerlux.com",
-      subject: `New ${formType} Form Submission from ${name}`,
+      subject: `${formType} from ${name}`,
       html: `
         <h1>New ${formType} Form Submission</h1>
         <h2>Contact Information:</h2>
