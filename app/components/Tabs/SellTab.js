@@ -389,11 +389,11 @@ export default function SellTab() {
                   className="ml-1 text-gray-400 cursor-pointer"
                   onClick={openModal}
                 >
-                  <img
+                  <Image
                     src="/assets/conditions.svg"
                     alt="conditions"
-                    width="16"
-                    height="16"
+                    width={16}
+                    height={16}
                   />
                 </div>
 
